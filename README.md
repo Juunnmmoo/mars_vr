@@ -3,5 +3,5 @@ mars_vr team
 
 
 - part
-design : 호진 건우 명지
+design : 호진 건우 명지 혜민
 programming : 태윤 태욱 성원 준모
