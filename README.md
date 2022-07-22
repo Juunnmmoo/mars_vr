@@ -2,11 +2,11 @@
 mars_vr team
 
 
-- part
+<b>part</b>
 design : 호진 건우 명지 혜민
 programming : 태윤 태욱 성원 준모
 
-- detail part <br>
+<b>detail part</b> <br><br>
 Player Controller : 태욱
 Score Controller : 태윤
 Object Controller : 성원, 준모 // 맞나?
