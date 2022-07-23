@@ -26,10 +26,15 @@ public class BottleCtrl : MonoBehaviour
         BOTTLETYPE3,
     }
 
+    public bool isUsing;                            //현재 사용 중인 병인지
     [Header("Bottle Type 관련 (타입, etc...)")]
     public BottleType bottleType;
+    [Header("Raycast")]
     public Transform bottleTop;                     //병 입구 (여기에서 붓는 이펙트 넣어주기)
     public Transform bottleBottom;
+    [Range(1f, 10f)]
+    public float rayDist;                           //레이캐스트 사거리
+    private RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
@@ -40,19 +45,37 @@ public class BottleCtrl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.LogWarning("병이 따라지는지? : " + isPoured());
+        PouringLiquid();
     }
 
     /*
      * 현재 병이 따라지고 있는 지 판단 여부
      * Top y가 Bottom y보다 낮을 때 true
      */
-    public bool isPoured()
+    public bool IsPoured()
     {
         Debug.Log(bottleTop.position.y+", "+ bottleBottom.position.y);
         if (bottleTop.position.y > bottleBottom.position.y)
             return false;
         else
             return true;
+    }
+
+    public void PouringLiquid()
+    {
+        if (IsPoured())
+        {
+            //디버깅용, 씬 뷰에서 레이캐스트를 시각적으로 보여줌 (인게임에선 안보임)
+            Debug.DrawRay(bottleTop.position, Vector3.down * rayDist, Color.blue);
+            if (Physics.Raycast(bottleTop.position, Vector3.down, out hit, rayDist))
+            {
+                //레이캐스트에 충동한 물체의 태그가 Cup일 경우
+                if (hit.transform.gameObject.CompareTag("Cup"))
+                {
+                    Debug.LogWarning("물 따라짐!");
+                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType);
+                }
+            }
+        }
     }
 }
