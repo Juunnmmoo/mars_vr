@@ -9,7 +9,7 @@ programming : 태윤 태욱 성원 준모
 <b>detail part</b> <br><br>
 Player Controller : 태욱
 Score Controller : 태윤
-Object Controller : 성원, 준모 // 맞나?
+Object Controller : 성원, 준모 // 맞나? 맞습니당 ㅎㅎ
 
 Level Design : 호진
 UI/UX Design : 명지
