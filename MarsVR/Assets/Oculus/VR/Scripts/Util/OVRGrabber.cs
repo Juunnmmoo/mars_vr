@@ -91,10 +91,22 @@ public class OVRGrabber : MonoBehaviour
 
     public GameObject GetGrabbedObj()
     {
-        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 0.5f, 1 << 6);
+        Collider[] colliders = Physics.OverlapSphere(m_lastPos, 0.5f, 1 << 6);
         if (colliders.Length > 0)
         {
-            return colliders[0].gameObject;
+            float min = Vector3.Distance(m_lastPos, colliders[0].transform.position);
+            int idx = 0;
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                Debug.LogWarning(colliders[i].name);
+                float dist = Vector3.Distance(m_lastPos, colliders[i].transform.position);
+                if(dist < min)
+                {
+                    min = dist;
+                    idx = i;
+                }
+            }
+            return colliders[idx].gameObject;
         }
         else
         {

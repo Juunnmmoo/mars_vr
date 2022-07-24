@@ -9,10 +9,9 @@ public class PlayerCtrl : MonoBehaviour
     public OVRGrabber lGrabber;
     public OVRGrabber rGrabber;
 
-    private GameObject lGrabbedObject;
-    private GameObject rGrabbedObject;
+    public GameObject lGrabbedObject;
+    public GameObject rGrabbedObject;
 
-    private OVRGrabbable grabbedObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +27,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void ControllerAction()
     {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             //¿ÞÂÊ ÁÂÅ¬¸¯
             if(lGrabber.GetGrabbedObj() != null)
@@ -39,18 +38,20 @@ public class PlayerCtrl : MonoBehaviour
                     lGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
                 }
             }
-            Debug.LogWarning(lGrabbedObject.name);
         }
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
-            if (lGrabbedObject.CompareTag("Bottle"))
+            if(lGrabbedObject != null)
             {
-                lGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                if (lGrabbedObject.CompareTag("Bottle"))
+                {
+                    lGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                }
+                lGrabbedObject = null;
             }
-            lGrabbedObject = null;
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             //¿À¸¥ÂÊ ÁÂÅ¬¸¯
             if (rGrabber.GetGrabbedObj() != null)
@@ -58,18 +59,21 @@ public class PlayerCtrl : MonoBehaviour
                 rGrabbedObject = rGrabber.GetGrabbedObj();
                 if (rGrabbedObject.CompareTag("Bottle"))
                 {
+                    Debug.LogWarning(rGrabbedObject.name);
                     rGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
                 }
             }
-            Debug.LogWarning(rGrabbedObject.name);
         }
         if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
         {
-            if (rGrabbedObject.CompareTag("Bottle"))
+            if(rGrabbedObject != null)
             {
-                rGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                if (rGrabbedObject.CompareTag("Bottle"))
+                {
+                    rGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                }
+                rGrabbedObject = null;
             }
-            rGrabbedObject = null;
         }
     }
 

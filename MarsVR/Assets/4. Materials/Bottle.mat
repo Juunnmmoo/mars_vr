@@ -62,6 +62,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FillAmount: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -69,12 +70,20 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Rim: 0
+    - _RimPower: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WobbleX: 0
+    - _WobbleZ: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.91119623, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.8202615, b: 1, a: 1}
+    - _Colour: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
