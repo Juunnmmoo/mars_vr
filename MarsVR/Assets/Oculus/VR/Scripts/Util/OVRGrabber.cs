@@ -74,7 +74,8 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_lastRot;
     protected Quaternion m_anchorOffsetRotation;
     protected Vector3 m_anchorOffsetPosition;
-    protected float m_prevFlex;
+    [SerializeField]
+    public float m_prevFlex;
 	protected OVRGrabbable m_grabbedObj = null;
     protected Vector3 m_grabbedObjectPosOff;
     protected Quaternion m_grabbedObjectRotOff;
@@ -89,16 +90,16 @@ public class OVRGrabber : MonoBehaviour
         get { return m_grabbedObj; }
     }
 
+    //손에 가장 가까이 있는 오브젝트를 리턴
     public GameObject GetGrabbedObj()
     {
-        Collider[] colliders = Physics.OverlapSphere(m_lastPos, 0.5f, 1 << 6);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.15f, 1 << 6);
         if (colliders.Length > 0)
         {
-            float min = Vector3.Distance(m_lastPos, colliders[0].transform.position);
+            float min = Vector3.Distance(transform.position, colliders[0].transform.position);
             int idx = 0;
             for (int i = 0; i < colliders.Length; i++)
             {
-                Debug.LogWarning(colliders[i].name);
                 float dist = Vector3.Distance(m_lastPos, colliders[i].transform.position);
                 if(dist < min)
                 {
@@ -180,7 +181,7 @@ public class OVRGrabber : MonoBehaviour
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
     // This is done instead of parenting to achieve workable physics. If you don't require physics on
     // your hands or held objects, you may wish to switch to parenting.
-    void OnUpdatedAnchors()
+    public void OnUpdatedAnchors()
     {
         Vector3 destPos = m_parentTransform.TransformPoint(m_anchorOffsetPosition);
         Quaternion destRot = m_parentTransform.rotation * m_anchorOffsetRotation;
@@ -261,7 +262,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    protected virtual void GrabBegin()
+    public virtual void GrabBegin()
     {
         float closestMagSq = float.MaxValue;
 		OVRGrabbable closestGrabbable = null;
@@ -378,7 +379,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    protected void GrabEnd()
+    public void GrabEnd()
     {
         if (m_grabbedObj != null)
         {

@@ -302,6 +302,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lGrabber: {fileID: 933064251}
   rGrabber: {fileID: 114956353313711427}
+  lGrabbedObject: {fileID: 0}
+  rGrabbedObject: {fileID: 0}
+  isDebug: 0
+  keyboardMoveSpeed: 0.3
+  isHolding: 0
+  keyboardRotationSpeed: 0.5
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0

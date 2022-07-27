@@ -143,7 +143,7 @@ namespace OculusSampleFramework
             }
         }
 
-        protected override void GrabBegin()
+        public override void GrabBegin()
         {
             DistanceGrabbable closestGrabbable = m_target;
             Collider closestGrabbableCollider = m_targetCollider;

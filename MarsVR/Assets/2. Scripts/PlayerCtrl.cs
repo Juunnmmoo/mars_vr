@@ -2,20 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OVR;
-
+using OculusSampleFramework;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    //왼손, 오른손 그래버
     public OVRGrabber lGrabber;
     public OVRGrabber rGrabber;
 
+    //각 손의 집고 있는 오브젝트
     public GameObject lGrabbedObject;
     public GameObject rGrabbedObject;
+
+    [Header("키보드 디버깅 관련")]
+    public bool isDebug;
+    [Range(0.1f, 0.3f)]
+    public float keyboardMoveSpeed;
+    public bool isHolding;
+    [Range(0.5f, 1f)]
+    public float keyboardRotationSpeed;
+    private float xRot, zRot;
+    private bool isRotate = false;
+    private Vector3 InitialPos;
+    private OVRGrabber nowControl;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, 1.5f, -6);
+        InitialPos = new Vector3(0, 1.5f, -6); 
+        nowControl = rGrabber;
+        transform.position = InitialPos;
+        lGrabber.transform.position = InitialPos;
+        rGrabber.transform.position = InitialPos;
 
     }
 
@@ -23,9 +41,11 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         ControllerAction();
+        if(isDebug)
+            KeyboardAction();
     }
 
-    public void ControllerAction()
+    private void ControllerAction()
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
@@ -59,7 +79,6 @@ public class PlayerCtrl : MonoBehaviour
                 rGrabbedObject = rGrabber.GetGrabbedObj();
                 if (rGrabbedObject.CompareTag("Bottle"))
                 {
-                    Debug.LogWarning(rGrabbedObject.name);
                     rGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
                 }
             }
@@ -77,5 +96,84 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    
+    private void KeyboardAction()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            isRotate = false;
+            nowControl = rGrabber;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            isRotate = false;
+            nowControl = lGrabber;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+            isRotate = !isRotate;
+        if (Input.GetKeyDown(KeyCode.E))
+            isHolding = !isHolding;
+
+        float xSpeed = Input.GetAxisRaw("Horizontal");
+        float zSpeed = Input.GetAxisRaw("Vertical");
+        if (!isRotate)
+        {
+            if(nowControl == rGrabber)
+                nowControl.transform.Translate(new Vector3(0, xSpeed, zSpeed) * Time.deltaTime * keyboardMoveSpeed);
+            else
+                nowControl.transform.Translate(new Vector3(0, -xSpeed, zSpeed) * Time.deltaTime * keyboardMoveSpeed);
+        }
+        else
+        {
+            xRot -= xSpeed * keyboardRotationSpeed;
+            zRot -= zSpeed * keyboardRotationSpeed;
+            nowControl.transform.localRotation = Quaternion.Euler(new Vector3(nowControl.transform.localRotation.x + xRot, nowControl.transform.localRotation.z + zRot, 0));
+        }
+
+        if (isHolding)
+        {
+            if(nowControl.GetGrabbedObj() != null)
+            {
+                if (nowControl == rGrabber)
+                {
+                    if (rGrabbedObject == null && lGrabbedObject != nowControl.GetGrabbedObj())
+                        rGrabbedObject = nowControl.GetGrabbedObj();
+                    rGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    rGrabbedObject.transform.position = nowControl.transform.position;
+                    rGrabbedObject.transform.rotation = Quaternion.Euler(new Vector3(nowControl.transform.localRotation.z + zRot, -nowControl.transform.localRotation.x, 0));
+                    if (rGrabbedObject.CompareTag("Bottle"))
+                        rGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                }
+                if(nowControl == lGrabber)
+                {
+                    if (lGrabbedObject == null && rGrabbedObject != nowControl.GetGrabbedObj())
+                        lGrabbedObject = nowControl.GetGrabbedObj();
+                    lGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    lGrabbedObject.transform.position = nowControl.transform.position;
+                    lGrabbedObject.transform.localRotation = Quaternion.Euler(new Vector3(-nowControl.transform.localRotation.z - zRot, nowControl.transform.localRotation.x, 0));
+                    if (lGrabbedObject.CompareTag("Bottle"))
+                        lGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                }
+            }
+        }
+        else
+        {
+            if(nowControl == rGrabber)
+            {
+                if(rGrabbedObject != null)
+                {
+                    rGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    if(rGrabbedObject.CompareTag("Bottle"))
+                        rGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                    rGrabbedObject = null;
+                }
+                if(lGrabbedObject != null)
+                {
+                    lGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    if(lGrabbedObject.CompareTag("Bottle"))
+                        lGrabbedObject.GetComponent<BottleCtrl>().isUsing = false;
+                    lGrabbedObject = null;
+                }
+            }
+        }
+    }
 }
