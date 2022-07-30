@@ -7,18 +7,35 @@ public class CupCtrl : MonoBehaviour
     //레시피 재료
     public List<BottleCtrl.BottleType> receipt;
     //레시피 양
-    public List<int> amounts;
-    
+    public List<float> amounts;
+
+    public GameObject bottle;
+    public float bottleRotationX;
+    public Vector3 bottleAngles;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        bottle = GameObject.Find("Bottle");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        bottleAngles = bottle.transform.rotation.eulerAngles;
+
+        if (bottleAngles.y >= 180 && bottleAngles.z >= 180)
+        {
+            if (bottleAngles.x <= 180)
+            {
+                bottleRotationX = 90 + (90 - bottleAngles.x);
+            }
+        }
+        else
+        {
+            bottleRotationX = bottleAngles.x;
+        }
     }
 
     /*
@@ -27,7 +44,7 @@ public class CupCtrl : MonoBehaviour
      */
     public void AddReceipt(BottleCtrl.BottleType bottleType)
     {
-        if(receipt.Count == 0)
+        if (receipt.Count == 0)
         {
             receipt.Add(bottleType);
             amounts.Add(1);
@@ -36,7 +53,20 @@ public class CupCtrl : MonoBehaviour
         {
             if (receipt[receipt.Count - 1].Equals(bottleType))
             {
-                amounts[amounts.Count - 1]++;
+                //amounts[amounts.Count - 1]++;
+                
+                if (bottleRotationX > 90 & bottleRotationX <= 180)
+                {
+                    if (bottleRotationX >= 140)
+                    {
+                        amounts[amounts.Count - 1] += 10.0f * Time.deltaTime;
+                    }
+                    else
+                    {
+                        amounts[amounts.Count - 1] += (bottleRotationX - 90) * 0.2f * Time.deltaTime;
+                    }
+                }
+
             }
             else
             {

@@ -39,7 +39,7 @@ public class BottleCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class BottleCtrl : MonoBehaviour
      */
     public bool IsPoured()
     {
-        Debug.Log(bottleTop.position.y+", "+ bottleBottom.position.y);
+        Debug.Log(bottleTop.position.y + ", " + bottleBottom.position.y);
         if (bottleTop.position.y > bottleBottom.position.y)
             return false;
         else
