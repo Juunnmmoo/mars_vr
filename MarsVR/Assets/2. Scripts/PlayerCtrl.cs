@@ -137,21 +137,27 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     if (rGrabbedObject == null && lGrabbedObject != nowControl.GetGrabbedObj())
                         rGrabbedObject = nowControl.GetGrabbedObj();
-                    rGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                    rGrabbedObject.transform.position = nowControl.transform.position;
-                    rGrabbedObject.transform.rotation = Quaternion.Euler(new Vector3(nowControl.transform.localRotation.z + zRot, -nowControl.transform.localRotation.x, 0));
-                    if (rGrabbedObject.CompareTag("Bottle"))
-                        rGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                    if(rGrabbedObject != null)
+                    {
+                        rGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                        rGrabbedObject.transform.position = nowControl.transform.position;
+                        rGrabbedObject.transform.rotation = Quaternion.Euler(new Vector3(nowControl.transform.localRotation.z + zRot, -nowControl.transform.localRotation.x, 0));
+                        if (rGrabbedObject.CompareTag("Bottle"))
+                            rGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                    }
                 }
                 if(nowControl == lGrabber)
                 {
                     if (lGrabbedObject == null && rGrabbedObject != nowControl.GetGrabbedObj())
                         lGrabbedObject = nowControl.GetGrabbedObj();
-                    lGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                    lGrabbedObject.transform.position = nowControl.transform.position;
-                    lGrabbedObject.transform.localRotation = Quaternion.Euler(new Vector3(-nowControl.transform.localRotation.z - zRot, nowControl.transform.localRotation.x, 0));
-                    if (lGrabbedObject.CompareTag("Bottle"))
-                        lGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                    if(lGrabbedObject != null)
+                    {
+                        lGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                        lGrabbedObject.transform.position = nowControl.transform.position;
+                        lGrabbedObject.transform.localRotation = Quaternion.Euler(new Vector3(-nowControl.transform.localRotation.z - zRot, nowControl.transform.localRotation.x, 0));
+                        if (lGrabbedObject.CompareTag("Bottle"))
+                            lGrabbedObject.GetComponent<BottleCtrl>().isUsing = true;
+                    }
                 }
             }
         }
