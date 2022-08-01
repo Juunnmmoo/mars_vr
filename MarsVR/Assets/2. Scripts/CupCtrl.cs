@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CupCtrl : MonoBehaviour
 {
@@ -13,11 +14,20 @@ public class CupCtrl : MonoBehaviour
     public float bottleRotationX;
     public Vector3 bottleAngles;
 
+    //ML표시(UI)
+    private GameObject ML;
+    //amounts int형
+    int newAmounts;
+
+    //사용되고 있을때
+    public bool isUsing;
+
 
     // Start is called before the first frame update
     void Start()
     {
         bottle = GameObject.Find("Bottle");
+        ML = GameObject.Find("Canvas/ML");
     }
 
     // Update is called once per frame
@@ -36,7 +46,24 @@ public class CupCtrl : MonoBehaviour
         {
             bottleRotationX = bottleAngles.x;
         }
+
+        //ML표시(UI) CUP 따라다니기
+        ML.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.3f, 0.1f, 0.1f));
+        newAmounts = (int)amounts[amounts.Count - 1];
+
+        //사용되고 있을때 MLUI 증가
+        if (isUsing)
+        {
+            ML.gameObject.SetActive(true);
+            if (amounts.Count > 0)
+            {
+                ML.GetComponent<Text>().text = newAmounts.ToString() + " ML";
+            }
+        }
+        else
+            ML.gameObject.SetActive(false);
     }
+
 
     /*
      * 레시피 추가 함수
