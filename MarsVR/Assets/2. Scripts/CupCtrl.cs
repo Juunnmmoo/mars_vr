@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class CupCtrl : MonoBehaviour
 {
+    //사용되고 있을때
+    public bool isUsing;
+
+    [Header("레시피 관련")]
     //레시피 재료
     public List<BottleCtrl.BottleType> receipt;
     //레시피 양
@@ -14,20 +18,18 @@ public class CupCtrl : MonoBehaviour
     public float bottleRotationX;
     public Vector3 bottleAngles;
 
+    [Header("UI 관련")]
     //ML표시(UI)
-    private GameObject ML;
+    public Transform uiPos;
+    public GameObject amountUI;
     //amounts int형
     int newAmounts;
-
-    //사용되고 있을때
-    public bool isUsing;
-
 
     // Start is called before the first frame update
     void Start()
     {
         bottle = GameObject.Find("Bottle");
-        ML = GameObject.Find("Canvas/ML");
+        //ML = GameObject.Find("Canvas/ML");
     }
 
     // Update is called once per frame
@@ -47,23 +49,19 @@ public class CupCtrl : MonoBehaviour
             bottleRotationX = bottleAngles.x;
         }
 
-        //ML표시(UI) CUP 따라다니기
-        ML.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.3f, 0.1f, 0.1f));
-        newAmounts = (int)amounts[amounts.Count - 1];
-
-        //사용되고 있을때 MLUI 증가
-        if (isUsing)
-        {
-            ML.gameObject.SetActive(true);
-            if (amounts.Count > 0)
-            {
-                ML.GetComponent<Text>().text = newAmounts.ToString() + " ML";
-            }
-        }
-        else
-            ML.gameObject.SetActive(false);
+        AmountUI();
     }
 
+    private void AmountUI()
+    {
+        //isUsing에 따라 UI 보이기
+        amountUI.SetActive(isUsing);
+        if (isUsing && amounts.Count > 0)
+        {
+            //사용 중이고 amounts List의 크기가 0 이상일 때 마지막 인덱스의 amounts의 양을 보여줌
+            amountUI.GetComponentInChildren<Text>().text = ((int)amounts[amounts.Count - 1]).ToString() + "ml";
+        }
+    }
 
     /*
      * 레시피 추가 함수

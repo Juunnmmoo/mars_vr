@@ -1,0 +1,124 @@
+[33mcommit 8087e629c09716b31be05ba608662c617f2495d1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Junmo <junmoyang0422@gmail.com>
+Date:   Mon Aug 1 14:59:57 2022 +0900
+
+    Cupctrl.cs
+    
+    기울기에 따른 ML 증가되는 ui생성
+
+[33mcommit 2abcab2dfe701be0fd8aa279e1c4ec78f8a3ef77[m
+Author: superman2080 <superman2080@naver.com>
+Date:   Mon Aug 1 05:06:29 2022 +0900
+
+    xml 파서 추가
+    
+    xml 리소스 파일과 파서 추가, 자세한 사용법은 개인 연락
+    
+    작업한 파일
+    FileIO
+    GameManager(디버깅용)
+    Receipt_Resource.xml
+
+[33mcommit 2fbb3592767c063e5df564a455a27c61bb0db13d[m
+Author: aruel7714 <harunia7714@daum.net>
+Date:   Sun Jul 31 04:51:46 2022 +0900
+
+    fifth commit
+    
+    CupCtrl 수정
+    
+    start 함수에서 bottle을 가져오고
+    update 함수에서 bottle의 기울기값을 받아옵니다.
+    
+    addrecript함수 안에서 조건문으로 ml증가식 썼습니다.
+    
+    참고) 키보드 조종일때의 함수들이라 기울기값이 x라는 가정하에 작성 되어있습니다. 수정예정입니다.
+
+[33mcommit 1e3f3f767a6fb91b3c106835960b00087d6b9bf5[m
+Author: superman2080 <superman2080@naver.com>
+Date:   Thu Jul 28 05:06:06 2022 +0900
+
+    Fourth Commit
+    
+    키보드 전용 디버깅 모드 추가
+    키보드 이용 시 플레이어의
+    isDebug 변수 true로 한 뒤 실행.
+    
+    조작법
+    WASD로 조작
+    Q를 눌러 이동과 회전 모드 토글
+    E로 오브젝트 그랩 토글
+    R과 L로 플레이어 현재 조작하는 손 변경
+
+[33mcommit 66641b9684a82f172027c7fea7a955589b4b7672[m
+Author: superman2080 <superman2080@naver.com>
+Date:   Mon Jul 25 03:40:40 2022 +0900
+
+    Third Commit
+    
+    Liquid Shader 추가
+    BottleManager 추가 (병 객체들 원위치로 돌아오도록)
+
+[33mcommit 842643c4d36397a0dfdd9133e2bae3c94dd67737[m
+Author: superman2080 <superman2080@naver.com>
+Date:   Sun Jul 24 05:39:14 2022 +0900
+
+    Second Commit
+    
+    Player Hand Rotation 버그 수정,
+    BottleCtrl의 액체 따르기 함수 추가,
+    BottleCtrl과 CupCtrl의 상호작용 추가
+
+[33mcommit c954027f3c52d463c80d422e6717c11ffe5f1a1a[m
+Author: Junmo <51073731+junmoyang0422@users.noreply.github.com>
+Date:   Sat Jul 23 17:25:06 2022 +0900
+
+    Update README.md
+
+[33mcommit c9d48948e14fab995f76386ed5dd1cb2cf5f9288[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Fri Jul 22 17:20:00 2022 +0900
+
+    Update README.md
+
+[33mcommit 35c30a5925a4cd6ce4bd770dbcd04148e92676da[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Fri Jul 22 17:19:32 2022 +0900
+
+    Update README.md
+
+[33mcommit 433f03a5a979089d3afa7b8ae7c54da8c5671c44[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Fri Jul 22 17:19:05 2022 +0900
+
+    Update README.md
+
+[33mcommit 497086c954b9c8b7af9f6891f972ae1358540549[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Fri Jul 22 17:18:51 2022 +0900
+
+    Update README.md
+
+[33mcommit 1b054c3a0d37854a2a919333c152693b7e962087[m
+Author: superman2080 <superman2080@naver.com>
+Date:   Fri Jul 22 16:29:15 2022 +0900
+
+    First Upload
+
+[33mcommit 94cc074f9cb47ac7021f0447469a0539cca1ff1e[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Wed Jul 20 21:18:07 2022 +0900
+
+    Update README.md
+
+[33mcommit fe61d82ea05d1b4dcb4b2440067526b60bd46ddc[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Wed Jul 20 18:08:24 2022 +0900
+
+    Update README.md
+
+[33mcommit d171f81496df4cf6cce6a441917b6c4d68a21775[m
+Author: myxxnxxi <83940700+myzi726@users.noreply.github.com>
+Date:   Tue Jul 19 18:14:33 2022 +0900
+
+    Initial commit
