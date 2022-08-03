@@ -34,7 +34,6 @@ public class PlayerCtrl : MonoBehaviour
         transform.position = InitialPos;
         lGrabber.transform.position = InitialPos;
         rGrabber.transform.position = InitialPos;
-
     }
 
     // Update is called once per frame
@@ -71,6 +70,10 @@ public class PlayerCtrl : MonoBehaviour
             if (rGrabber.GetGrabbedObj() != null)
             {
                 rGrabbedObject = rGrabber.GetGrabbedObj();
+                //Debug.LogWarning(((
+                //    rGrabbedObject.GetComponent<Rigidbody>().velocity.x + 
+                //    rGrabbedObject.GetComponent<Rigidbody>().velocity.y + 
+                //    rGrabbedObject.GetComponent<Rigidbody>().velocity.z) / 3f) > 0.5f);
                 CheckISUsing(rGrabbedObject, true);
             }
         }

@@ -43,10 +43,9 @@ public class BottleManager : MonoBehaviour
     {
         for (int i = 0; i < bottles.Length; i++)
         {
-            //원 위치와 다르고 사용 중이 아니며 해당 객체가 움직이지 않았을 경우
+            //원 위치와 다르고 해당 객체가 움직이지 않으며 사용 중이 아닐 경우 
             if (bottles[i].transform.position != originBottleTransform[i].position && !bottles[i].GetComponent<BottleCtrl>().isUsing && !isMoved[i])
             {
-                Debug.LogWarning("!");
                 isMoved[i] = true;
                 StartCoroutine(InitialBottlePosCor(i));
             }

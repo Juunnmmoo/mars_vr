@@ -182,7 +182,7 @@ namespace OculusSampleFramework
                     m_grabbedObjectPosOff = m_gripTransform.localPosition;
                     if (m_grabbedObj.snapOffset)
                     {
-                        Vector3 snapOffset = m_grabbedObj.snapOffset.position;
+                        Vector3 snapOffset = m_grabbedObj.snapOffset.localPosition;
                         if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
                         m_grabbedObjectPosOff += snapOffset;
                     }

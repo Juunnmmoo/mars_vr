@@ -62,6 +62,8 @@ namespace OculusSampleFramework
             base.Start();
             m_crosshair = gameObject.GetComponentInChildren<GrabbableCrosshair>();
             m_renderer = gameObject.GetComponent<Renderer>();
+            if (m_renderer == null)
+                m_renderer = gameObject.GetComponentInChildren<Renderer>();
             m_crosshairManager = FindObjectOfType<GrabManager>();
             m_mpb = new MaterialPropertyBlock();
             RefreshCrosshair();

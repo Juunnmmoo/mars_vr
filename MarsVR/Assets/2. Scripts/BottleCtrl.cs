@@ -54,7 +54,6 @@ public class BottleCtrl : MonoBehaviour
      */
     public bool IsPoured()
     {
-        Debug.Log(bottleTop.position.y + ", " + bottleBottom.position.y);
         if (bottleTop.position.y > bottleBottom.position.y)
             return false;
         else
@@ -65,6 +64,8 @@ public class BottleCtrl : MonoBehaviour
     {
         if (IsPoured())
         {
+            //z축 로테이션 값 = 컵의 기울기 값(0 ~ 90)
+            float zRot = Mathf.Abs(Mathf.Abs(transform.localEulerAngles.z - 180) - 90);
             //디버깅용, 씬 뷰에서 레이캐스트를 시각적으로 보여줌 (인게임에선 안보임)
             Debug.DrawRay(bottleTop.position, Vector3.down * rayDist, Color.blue);
             if (Physics.Raycast(bottleTop.position, Vector3.down, out hit, rayDist))
@@ -72,8 +73,8 @@ public class BottleCtrl : MonoBehaviour
                 //레이캐스트에 충동한 물체의 태그가 Cup일 경우
                 if (hit.transform.gameObject.CompareTag("Cup"))
                 {
-                    Debug.LogWarning("물 따라짐!");
-                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType);
+                    //백분율로 환산, 초당 1 ~ 10만큼 채워줌
+                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType, zRot / 90 * 10);
                 }
             }
         }

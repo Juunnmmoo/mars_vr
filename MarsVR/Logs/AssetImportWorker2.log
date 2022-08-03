@@ -1,0 +1,322 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.6f1 (7da38d85baf6) revision 8233869'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 15724 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/Unity/mars_vr/MarsVR
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+3682
+Successfully changed project path to: D:/Unity/mars_vr/MarsVR
+D:/Unity/mars_vr/MarsVR
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 165.16 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.63 ms.
+Initialize engine version: 2021.3.6f1 (7da38d85baf6)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity/mars_vr/MarsVR/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Ti Laptop GPU (ID=0x25a0)
+    Vendor:   NVIDIA
+    VRAM:     3990 MB
+    Driver:   30.0.15.1295
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56112
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006794 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 165.25 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.722 seconds
+Domain Reload Profiling:
+	ReloadAssembly (723ms)
+		BeginReloadAssembly (81ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (524ms)
+			LoadAssemblies (80ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (88ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (362ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (57ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (165ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (93ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.010794 seconds.
+Android Extension - Scanning For ADB Devices 692 ms
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 125.97 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.04 ms.
+Package Manager log level set to [2]
+[XR] OculusXRPlugin: registering subsystems
+[XR] Unable to register display lifecyle provider: [1]
+[XR] Oculus Input lifecycle provider registered.
+[XR] Unable to register input lifecyle provider: [1]
+[XR] OVRP version 1.74.0
+Mono: successfully reloaded assembly
+- Completed reload, in  1.344 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1345ms)
+		BeginReloadAssembly (104ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1139ms)
+			LoadAssemblies (80ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (286ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (111ms)
+			SetupLoadedEditorAssemblies (593ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (19ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (126ms)
+				BeforeProcessingInitializeOnLoad (113ms)
+				ProcessInitializeOnLoadAttributes (295ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.02 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 5315 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 77 unused Assets / (214.5 KB). Loaded Objects now: 5745.
+Memory consumption went from 198.5 MB to 198.3 MB.
+Total: 6.935800 ms (FindLiveObjects: 0.893200 ms CreateObjectMapping: 0.376800 ms MarkObjects: 5.374700 ms  DeleteObjects: 0.289500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 119541.633906 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Glassware/Wine Champ Glasses/Wine Glass Wide_WhiteWine.prefab
+  artifactKey: Guid(6bfbe193267b45a46947c7271390d53f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Glassware/Wine Champ Glasses/Wine Glass Wide_WhiteWine.prefab using Guid(6bfbe193267b45a46947c7271390d53f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e93a446d2e2cd38bd11b40a1f5892c68') in 0.133147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_02.mat
+  artifactKey: Guid(ebc51c338da096f4c9ebf4593e3c078c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_02.mat using Guid(ebc51c338da096f4c9ebf4593e3c078c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5212b5111fa01fac1f7dfa16c860b807') in 0.108697 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Textures/Labels/Wine Bottle Label_02.png
+  artifactKey: Guid(8b54e8f45582bc74b894569459ca5283) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Textures/Labels/Wine Bottle Label_02.png using Guid(8b54e8f45582bc74b894569459ca5283) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd34d4c36d23a96f45d403faeb57695de') in 0.045873 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Textures/Labels/Wine Bottle Label_01.png
+  artifactKey: Guid(601ab3f6071017d47868af054479da42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Textures/Labels/Wine Bottle Label_01.png using Guid(601ab3f6071017d47868af054479da42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '736f1299866eea6930a54d284d61a8cf') in 0.032875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_01.mat
+  artifactKey: Guid(57729e463351f8d4cb71b800e0db2a6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_01.mat using Guid(57729e463351f8d4cb71b800e0db2a6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd92dbb6bd733a52f653094bd847e8c4a') in 0.031936 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Glassware/Wine Champ Glasses/Wine Glass_RedWine.prefab
+  artifactKey: Guid(3cef65ef85b7f064fb6d30d473f76f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Glassware/Wine Champ Glasses/Wine Glass_RedWine.prefab using Guid(3cef65ef85b7f064fb6d30d473f76f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a803be1c24d30d86ea82b0927f7854c') in 0.018060 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_05.mat
+  artifactKey: Guid(7b48840640620564fbdec01d66ffe92a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_05.mat using Guid(7b48840640620564fbdec01d66ffe92a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb151fabb7c14f4dae8657668c3e1c1d') in 0.052006 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Bottles/Wine Bottle_Setup_03.prefab
+  artifactKey: Guid(419910ca30576a54a937982dc37a41f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Props/Bottles/Wine Bottle_Setup_03.prefab using Guid(419910ca30576a54a937982dc37a41f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '671342bff896dc0f54d1fca609997e97') in 0.201390 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_07.mat
+  artifactKey: Guid(58040282156943842af87e2e5d2f713a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Wine Label Setup Label_07.mat using Guid(58040282156943842af87e2e5d2f713a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9cbab20418ce93538764d6c6088956a') in 0.036597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 143.769087 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/glass Stand.mat
+  artifactKey: Guid(ed7611bad4c2aac4a94cea013bcc05bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/glass Stand.mat using Guid(ed7611bad4c2aac4a94cea013bcc05bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8df86ed712efe147ff11a97139ea21d') in 0.011041 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/glass Wall.mat
+  artifactKey: Guid(151daaec8c57c6f46b317424a516f4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/glass Wall.mat using Guid(151daaec8c57c6f46b317424a516f4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3e3b6a650a1fe85631d5c6ce71c6f58') in 0.009853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle 02.mat
+  artifactKey: Guid(569d7797fc6fd3242a0a6bcbe5b43cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle 02.mat using Guid(569d7797fc6fd3242a0a6bcbe5b43cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aeedf9ca554e01c7e58aa6da30251da') in 0.007927 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle 05.mat
+  artifactKey: Guid(2216840ecb4b11f46a6a100c493107c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle 05.mat using Guid(2216840ecb4b11f46a6a100c493107c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f656698834883d8ab6e6a5a2efb8db93') in 0.007896 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 59.516700 seconds.
+  path: Assets/Oculus/SampleFramework/Usage/SharedAssets/Models/ball_billiard_10.fbx
+  artifactKey: Guid(4a42e5011990d97479599bd0c3f4f7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Oculus/SampleFramework/Usage/SharedAssets/Models/ball_billiard_10.fbx using Guid(4a42e5011990d97479599bd0c3f4f7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8acc3d90c8c9241b64a0a35b734a18e8') in 0.035555 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 26.453162 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Champ Labels/Label Unicorn Sparkling 02.mat
+  artifactKey: Guid(ae6ff056b07b3d543a2ddccbdc4cb395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Champ Labels/Label Unicorn Sparkling 02.mat using Guid(ae6ff056b07b3d543a2ddccbdc4cb395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a81ee6142bad84d7a3ee935709f064c3') in 0.017678 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Liquor_Labels_02.mat
+  artifactKey: Guid(9e29ed2e5a452bc4fb76e2ac74c57372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Labels/Liquor_Labels_02.mat using Guid(9e29ed2e5a452bc4fb76e2ac74c57372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97f0ea419e11ca65bbb53565c8c19c9e') in 0.031271 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 71.026687 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 01.mat
+  artifactKey: Guid(5e1f0569bfb3cec40b7ee84a4576b6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 01.mat using Guid(5e1f0569bfb3cec40b7ee84a4576b6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5a6101ad3cfd103fd41e4c21d0305cb') in 0.017087 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 03.mat
+  artifactKey: Guid(bd4c6478ea2b99c47be26611c2475202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 03.mat using Guid(bd4c6478ea2b99c47be26611c2475202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f62c3516c22f8af6990f2831fede3539') in 0.012940 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 04.mat
+  artifactKey: Guid(fbdf7d463fb468444995229f065bf338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 04.mat using Guid(fbdf7d463fb468444995229f065bf338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4e1356eefa84e97d5d069919a06de7d') in 0.012690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 06.mat
+  artifactKey: Guid(0bee78518d2751943a50fd6ced471712) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Wine Labels/Label Wine Bottle 06.mat using Guid(0bee78518d2751943a50fd6ced471712) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55f4d38e2a800d0405a5b750fd0975a7') in 0.016571 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.408094 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 05.mat
+  artifactKey: Guid(ba25d9126ddcf8e47a25836e8a36bb67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 05.mat using Guid(ba25d9126ddcf8e47a25836e8a36bb67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45e55b0b279c0cb253dc338f7dfb5ed8') in 0.008511 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 07.mat
+  artifactKey: Guid(fdacdda96d81885478015c4761bb2300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 07.mat using Guid(fdacdda96d81885478015c4761bb2300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3b398632605307dd81ad440bd473b01') in 0.009681 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 06.mat
+  artifactKey: Guid(7ee4308e182a5b942a2237a020ca0e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Materials/Other/Glass Wine Bottle Wrapper 06.mat using Guid(7ee4308e182a5b942a2237a020ca0e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '641c47a1662878086c9f413b8ac60fd9') in 0.009689 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.830787 seconds.
+  path: Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Materials/WindowStencilWriter.mat
+  artifactKey: Guid(90969dd5aecc40c438a178ce4c40aa8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Materials/WindowStencilWriter.mat using Guid(90969dd5aecc40c438a178ce4c40aa8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05bc84b0912744f0464d7cfac75db0f0') in 0.008916 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
