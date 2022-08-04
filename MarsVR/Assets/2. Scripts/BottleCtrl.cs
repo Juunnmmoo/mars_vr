@@ -36,16 +36,41 @@ public class BottleCtrl : MonoBehaviour
     public float rayDist;                           //레이캐스트 사거리
     private RaycastHit hit;
 
+    private GameObject bottleLiquid;                        //Liquid ui 선언
+    private int fpsNum;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        bottleLiquid = Resources.Load("BottleLiquid") as GameObject;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         PouringLiquid();
+        PlusFpsNum();
+        LiquidMotion();
+    }
+
+    public void PlusFpsNum()
+    {
+        if (bottleTop.position.y < bottleBottom.position.y)
+            fpsNum++;
+        else fpsNum = 0;
+    }
+
+    public void LiquidMotion()
+    {
+        //isPoured true일때 초당 6번 Liquid모션이 나옴
+        if (IsPoured() && fpsNum % 10 == 0 && fpsNum != 0)
+        {
+            GameObject prefab_obj = Instantiate(bottleLiquid);
+            prefab_obj.name = "liquidUI";
+            Vector3 pos = new Vector3(bottleTop.position.x, bottleTop.position.y - 0.3f, bottleTop.position.z);
+            prefab_obj.transform.position = pos;
+            Destroy(prefab_obj, 1.0f);
+        }
     }
 
     /*

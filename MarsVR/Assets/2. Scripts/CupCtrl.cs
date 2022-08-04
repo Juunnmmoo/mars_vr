@@ -49,7 +49,6 @@ public class CupCtrl : MonoBehaviour
      */
     public void AddReceipt(BottleCtrl.BottleType bottleType, float inputAmount)
     {
-        Debug.LogError(inputAmount);
         if (receipt.Count == 0)
         {
             receipt.Add(bottleType);
