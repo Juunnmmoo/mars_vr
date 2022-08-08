@@ -45,7 +45,7 @@ public class BottleCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bottleLiquid = Resources.Load("BottleLiquid") as GameObject;
+        //bottleLiquid = Resources.Load("BottleLiquid") as GameObject;
     }
 
     // Update is called once per frame

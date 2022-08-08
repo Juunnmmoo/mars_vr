@@ -895,10 +895,6 @@
       <Project>{2B6DB47F-C011-68E0-22BF-DDA5BB57D747}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="ZibraAILiquid.csproj">
-      <Project>{C99DD78A-FF87-E050-6C7D-9776C3FECBF7}</Project>
-      <Name>ZibraAILiquid</Name>
-    </ProjectReference>
     <ProjectReference Include="AssistantCoreSDKEditor.csproj">
       <Project>{9A7873C3-FFAE-5A42-D099-6D13C877B2C7}</Project>
       <Name>AssistantCoreSDKEditor</Name>
@@ -963,10 +959,6 @@
       <Project>{4599CF79-5034-CFB3-E440-3F6E3A4858C0}</Project>
       <Name>Oculus.Interaction.Samples.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="ZibraAILiquid.Settings.Editor.csproj">
-      <Project>{E098A09E-7657-5D6A-C829-49E4799AD88E}</Project>
-      <Name>ZibraAILiquid.Settings.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.Editor.csproj">
       <Project>{785CDDAA-A361-A7C2-DCE0-D0EEC7C05737}</Project>
       <Name>Oculus.Interaction.Editor</Name>
@@ -990,14 +982,6 @@
     <ProjectReference Include="Facebook.Wit.Editor.csproj">
       <Project>{3E0B9B8B-D3C0-9614-D516-00903A170328}</Project>
       <Name>Facebook.Wit.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="ZibraAILiquid.Samples.csproj">
-      <Project>{7B5F334D-CDC8-9528-D66D-AA0E57BCCFE6}</Project>
-      <Name>ZibraAILiquid.Samples</Name>
-    </ProjectReference>
-    <ProjectReference Include="ZibraAILiquid.Editor.csproj">
-      <Project>{D0A6B09A-9571-212F-F407-735CB99B65E3}</Project>
-      <Name>ZibraAILiquid.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Platform.Editor.csproj">
       <Project>{480FE4BB-6165-CFE4-1CBA-00CDE29C5CA7}</Project>
