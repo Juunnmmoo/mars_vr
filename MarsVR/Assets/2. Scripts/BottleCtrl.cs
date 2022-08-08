@@ -35,7 +35,10 @@ public class BottleCtrl : MonoBehaviour
     [Range(1f, 10f)]
     public float rayDist;                           //레이캐스트 사거리
     private RaycastHit hit;
+    private Liquid liquid = null;
+    public GameObject liquidPrefab;
 
+    private bool isPouring = false;
     private GameObject bottleLiquid;                        //Liquid ui 선언
     private int fpsNum;
 
@@ -46,11 +49,42 @@ public class BottleCtrl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         PouringLiquid();
-        PlusFpsNum();
-        LiquidMotion();
+        //MakeLiquid();
+        //PlusFpsNum();
+        //LiquidMotion();
+        if(isPouring != IsPoured())
+        {
+            isPouring = IsPoured();
+            if (isPouring)
+            {
+                StartPour();
+            }
+            else
+            {
+                EndPour();
+            }
+        }
+
+    }
+
+    private void StartPour()
+    {
+        liquid = CreateLiquid();
+        liquid.Begin();
+    }
+    private void EndPour()
+    {
+        liquid.End();
+        liquid = null;
+    }
+
+    private Liquid CreateLiquid()
+    {
+        GameObject temp = Instantiate(liquidPrefab, bottleTop.position, Quaternion.identity, transform);
+        return temp.GetComponent<Liquid>();
     }
 
     public void PlusFpsNum()
@@ -89,17 +123,23 @@ public class BottleCtrl : MonoBehaviour
     {
         if (IsPoured())
         {
-            //z축 로테이션 값 = 컵의 기울기 값(0 ~ 90)
-            float zRot = Mathf.Abs(Mathf.Abs(transform.localEulerAngles.z - 180) - 90);
+            //각 축(x축, z축)의 로테이션 값, 각 축이 수직에 가까워 질 때 0 -> 10까지 수가 가까워짐
+            float xRot = (transform.eulerAngles.x < 180 ? 90 - transform.eulerAngles.x : transform.eulerAngles.x - 270) / 90 * 10;
+            float zRot = Mathf.Abs(Mathf.Abs(transform.localEulerAngles.z - 180) - 90) / 90 * 10;
+
+            //각 축을 곱한 뒤 제곱근을 계산해줌(0 ~ 100의 값을 0 ~ 10으로 만들어줌)
+            float amount = Mathf.Sqrt(xRot * zRot);
             //디버깅용, 씬 뷰에서 레이캐스트를 시각적으로 보여줌 (인게임에선 안보임)
             Debug.DrawRay(bottleTop.position, Vector3.down * rayDist, Color.blue);
+
+
             if (Physics.Raycast(bottleTop.position, Vector3.down, out hit, rayDist))
             {
                 //레이캐스트에 충동한 물체의 태그가 Cup일 경우
                 if (hit.transform.gameObject.CompareTag("Cup"))
                 {
-                    //백분율로 환산, 초당 1 ~ 10만큼 채워줌
-                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType, zRot / 90 * 10);
+                    //백분율로 환산, 초당 0 ~ 10만큼 채워줌
+                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType, amount);
                 }
             }
         }
