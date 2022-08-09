@@ -23,14 +23,15 @@ public class BottleManager : MonoBehaviour
         for (int i = 0; i < bottles.Length; i++)
         {
             //깊은 복사를 위해 새 객체 만들어서 넣어줌
-            Transform temp = new GameObject().GetComponent<Transform>();
-            temp.position = bottles[i].transform.position;
-            temp.rotation = bottles[i].transform.rotation;
-            originBottleTransform.Add(temp);
+            Transform bTemp = new GameObject().GetComponent<Transform>();
+            bTemp.position = bottles[i].transform.position;
+            bTemp.rotation = bottles[i].transform.rotation;
+            originBottleTransform.Add(bTemp);
 
             //초기화
             isMoved[i] = false;
         }
+
     }
 
     // Update is called once per frame

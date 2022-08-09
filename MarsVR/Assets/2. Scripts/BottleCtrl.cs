@@ -55,6 +55,8 @@ public class BottleCtrl : MonoBehaviour
         //MakeLiquid();
         //PlusFpsNum();
         //LiquidMotion();
+
+        //물 생성 (IsPoured()의 값이 바뀔 때마다 호출됨
         if(isPouring != IsPoured())
         {
             isPouring = IsPoured();

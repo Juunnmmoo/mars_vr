@@ -13,7 +13,7 @@ public class Attr
 
 public sealed class FileIO
 {
-    public static void Write(List<Attr> wordList)
+    public static void WriteReceipt(List<Attr> wordList)
     {
 
         XmlDocument document = new XmlDocument();
@@ -30,10 +30,8 @@ public sealed class FileIO
         document.Save(Application.dataPath + "/Receipt_Resource.xml");
     }
 
-    public static List<Attr> Read()
+    public static List<Attr> ReadReceipt()
     {
-        //TextAsset textAsset = (TextAsset)Resources.Load(fileName);
-        //string filePath = textAsset.text;
         XmlDocument document = new XmlDocument();
         document.Load(Application.dataPath + "/Receipt_Resource.xml");
         XmlElement receiptListElement = document["ReceiptList"];
@@ -48,5 +46,22 @@ public sealed class FileIO
             receiptList.Add(attr);
         }
         return receiptList;
+    }
+
+    public static List<string> ReadScript()
+    {
+        XmlDocument document = new XmlDocument();
+        document.Load(Application.dataPath + "/Script_Resource.xml");
+        XmlElement receiptListElement = document["ScriptList"];
+
+        List<string> scriptList = new List<string>();
+
+        foreach (XmlElement receiptElement in receiptListElement.ChildNodes)
+        {
+            string temp = "";
+            temp = receiptElement.GetAttribute("Script");
+            scriptList.Add(temp);
+        }
+        return scriptList;
     }
 }

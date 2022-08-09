@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class EvaluateManager : MonoBehaviour
 {
+    [Header("종료 UI 관련")]
     public GameObject endUI;
     public Text endUIText;
     public Image background;
     public Image loadingBar;
+    [Header("로딩 바가 전부 채워지기 까지의 시간")]
     [SerializeField]
     [Range(1f, 3f)]
-    private float enableTime = 0f;
-    private bool isHolding = false;
+    private float enableTime = 2f;
+    public bool isHolding = false;
     private bool isEnd = false;
     private float elapsedTime = 0f;
     private GameObject cup;
@@ -46,6 +48,8 @@ public class EvaluateManager : MonoBehaviour
             isHolding = false;
         }
     }
+
+    //컵홀더 위에 컵이 올라갔을 때 로딩 바 늘어남, 로딩이 됐을 경우엔 EndUI를 보여줌
     private void Loading()
     {
         if (isHolding && elapsedTime < enableTime)
@@ -63,8 +67,12 @@ public class EvaluateManager : MonoBehaviour
             ShowEndUI();
         }
     }
+
+    //UI보여주는 메소드 (페이드 인, 컵에 담긴 레시피 출력)
     private void ShowEndUI()
     {
+        if (cup == null)
+            return;
         endUI.SetActive(true);
         StartCoroutine(FadeUI(0.5f));
         List<BottleCtrl.BottleType> receipts = cup.GetComponent<CupCtrl>().receipt;
