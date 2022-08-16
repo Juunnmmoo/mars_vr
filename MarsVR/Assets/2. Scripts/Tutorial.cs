@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    private CupCtrl cupctrl;
-    private PlayerCtrl playerctrl;
-    private BottleCtrl bottlectrl1;
-    private BottleCtrl bottlectrl2;
-    private BottleCtrl bottlectrl3;
+    private GameObject cup;
+    private GameObject tequila;
+    private GameObject whiteRum;
+    private GameObject lemon;
+    private GameObject cupHolder;
+    private AnchorCtrl[] anchorList = new AnchorCtrl[2];
     private List<string> scriptList = new List<string>();
 
     private int tutorialNum = 0;
 
     private bool check;
+
+
 
     [Range(1.5f, 3.0f)]
     public float nextTime = 2.0f;
@@ -23,34 +26,27 @@ public class Tutorial : MonoBehaviour
     //scriptListUI
     public GameObject scriptUI;
 
+    //SpotLight
+    public GameObject anchorPrefab;
+    
+    private Vector3 offset = Vector3.up * 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
-        cupctrl = GameObject.Find("Cup").GetComponent<CupCtrl>();
-        playerctrl = GameObject.Find("Player").GetComponent<PlayerCtrl>();
-        bottlectrl1 = GameObject.Find("Bottle").GetComponent<BottleCtrl>();
-        bottlectrl2 = GameObject.Find("Bottle (1)").GetComponent<BottleCtrl>();
-        bottlectrl3 = GameObject.Find("Bottle (2)").GetComponent<BottleCtrl>();
+        cup = GameObject.Find("Cup");
+        tequila = GameObject.Find("Tequila");
+        whiteRum = GameObject.Find("WhiteRum");
+        cupHolder = GameObject.Find("CupHolder");
+        lemon = GameObject.Find("Lemon");
 
         scriptList = FileIO.ReadScript();
-        for (int i = 0; i < scriptList.Count; i++)
-        {
-            Debug.LogWarning(i + "=" + scriptList[i]);
-
-        }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        script1();
-    }
 
-    // 튜토리얼 스크립트 진행 함수
-    void script1()
-    {
         switch (tutorialNum)
         {
             case 0:
@@ -59,9 +55,18 @@ public class Tutorial : MonoBehaviour
                 NextScript();
                 break;
             case 3:
+
+                if (anchorList[0] == null)
+                {
+                    anchorList[0] = CreateAnchor(cup.transform.position + offset);
+                }
                 // 컵을 집을때
-                if (cupctrl.isUsing)
-                    NextScript();
+                if (cup.GetComponent<OVRGrabbable>().isGrabbed)
+                {
+                    anchorList[0].EndAnchor();
+                    anchorList[0] = null;
+                    tutorialNum++;
+                }
                 break;
             case 4:
             case 5:
@@ -69,19 +74,24 @@ public class Tutorial : MonoBehaviour
                 break;
             case 6:
                 // 병을 집을때
-                if (bottlectrl1.isUsing)
-                    NextScript();
+                if (anchorList[0] == null)
+                {
+                    anchorList[0] = CreateAnchor(lemon.transform.position + offset);
+                }
+                if (lemon.GetComponent<OVRGrabbable>().isGrabbed)
+                {
+                    anchorList[0].EndAnchor();
+                    anchorList[0] = null;
+                    tutorialNum++;
+                }
                 break;
             case 7:
             case 8:
                 NextScript();
                 break;
             case 9:
-                // 레몬즙 20ml 넣었을때
-                if(((int)cupctrl.amounts[cupctrl.amounts.Count - 1]) >= 20)
-                {
-                    NextScript();
-                }
+                if (CheckAmount(BottleCtrl.BottleType.LEMON, 20))
+                    tutorialNum++;
                 break;
             case 10:
             case 11:
@@ -89,20 +99,66 @@ public class Tutorial : MonoBehaviour
                 NextScript();
                 break;
             case 13:
+                if (anchorList[0] == null)
+                    anchorList[0] = CreateAnchor(tequila.transform.position + offset);
+
+                if (anchorList[1] == null)
+                    anchorList[1] = CreateAnchor(whiteRum.transform.position + offset);
                 // 데킬라 20ml, 화이트럼 20ml 넣었을때
+                if (CheckAmount(BottleCtrl.BottleType.TEQUILA, 20) && CheckAmount(BottleCtrl.BottleType.WHITERUM, 20))
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        anchorList[i].EndAnchor();
+                        anchorList[i] = null;
+                    }
+                    tutorialNum++;
+                }
+                break;
             case 14:
-                
+                if (anchorList[0] == null)
+                {
+                    anchorList[0] = CreateAnchor(cupHolder.transform.position + offset);
+                }
+                if (cupHolder.GetComponent<EvaluateManager>().isEnd)
+                {
+                    anchorList[0].EndAnchor();
+                    anchorList[0] = null;
+                    tutorialNum++;
+                }
+                break;
             default:
                 break;
         }
-        gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
-
+        if (tutorialNum < scriptList.Count)
+            gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
     }
 
-    //ScriptUI 바꿔줌 
-    private void scriptChange()
+    private AnchorCtrl CreateAnchor(Vector3 pos)
     {
+        AnchorCtrl temp = Instantiate(anchorPrefab, pos, Quaternion.identity).GetComponent<AnchorCtrl>();
+        temp.originPos = pos;
+        return temp;
+    }
 
+    private void NextScript()
+    {
+        if (check == true)
+            return;
+        check = true;
+        StartCoroutine(NextScriptCor(nextTime));
+    }
+
+    private bool CheckAmount(BottleCtrl.BottleType bottleType, float amount)
+    {
+        for (int i = 0; i < cup.GetComponent<CupCtrl>().receipt.Count; i++)
+        {
+            if (cup.GetComponent<CupCtrl>().receipt[i].Equals(bottleType))
+            {
+                return cup.GetComponent<CupCtrl>().amounts[i] > amount;
+            }
+        }
+        return false;
     }
 
     private IEnumerator NextScriptCor(float time)
@@ -116,15 +172,4 @@ public class Tutorial : MonoBehaviour
         check = false;
         tutorialNum++;
     }
-
-    void NextScript()
-    {
-        if (check == true)
-            return;
-        check = true;
-        StartCoroutine(NextScriptCor(nextTime));
-
-    }
-
-
 }

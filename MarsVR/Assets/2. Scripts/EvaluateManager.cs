@@ -15,7 +15,8 @@ public class EvaluateManager : MonoBehaviour
     [Range(1f, 3f)]
     private float enableTime = 2f;
     public bool isHolding = false;
-    private bool isEnd = false;
+    [HideInInspector]
+    public bool isEnd = false;
     private float elapsedTime = 0f;
     private GameObject cup;
 
@@ -61,7 +62,7 @@ public class EvaluateManager : MonoBehaviour
             elapsedTime -= Time.deltaTime;
         }
         loadingBar.fillAmount = elapsedTime / enableTime;
-        if(isEnd != (elapsedTime / enableTime >= 1f))
+        if(!isEnd && (elapsedTime / enableTime >= 1f))
         {
             isEnd = true;
             ShowEndUI();

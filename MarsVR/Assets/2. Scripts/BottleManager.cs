@@ -47,7 +47,7 @@ public class BottleManager : MonoBehaviour
             //원 위치와 다르고 해당 객체가 움직이지 않으며 사용 중이 아닐 경우 
             if (bottles[i].transform.position.x != originBottleTransform[i].position.x &&
                 bottles[i].transform.position.z != originBottleTransform[i].position.z &&
-                !bottles[i].GetComponent<BottleCtrl>().isUsing && !isMoved[i])
+                !bottles[i].GetComponent<OVRGrabbable>().isGrabbed && !isMoved[i])
             {
                 isMoved[i] = true;
                 StartCoroutine(InitialBottlePosCor(i));
@@ -61,7 +61,7 @@ public class BottleManager : MonoBehaviour
         while (delta < returnTime)
         {
             //3초가 지나기 전 사용 중일 경우 코루틴 탈출
-            if (bottles[idx].GetComponent<BottleCtrl>().isUsing)
+            if (bottles[idx].GetComponent<OVRGrabbable>().isGrabbed)
             {
                 isMoved[idx] = false;
                 yield break;

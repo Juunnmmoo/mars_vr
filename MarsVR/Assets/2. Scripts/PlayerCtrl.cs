@@ -52,14 +52,12 @@ public class PlayerCtrl : MonoBehaviour
             if(lGrabber.GetGrabbedObj() != null)
             {
                 lGrabbedObject = lGrabber.GetGrabbedObj();
-                CheckISUsing(lGrabbedObject, true);
             }
         }
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
             if(lGrabbedObject != null)
             {
-                CheckISUsing(lGrabbedObject, false);
                 lGrabbedObject = null;
             }
         }
@@ -74,31 +72,14 @@ public class PlayerCtrl : MonoBehaviour
                 //    rGrabbedObject.GetComponent<Rigidbody>().velocity.x + 
                 //    rGrabbedObject.GetComponent<Rigidbody>().velocity.y + 
                 //    rGrabbedObject.GetComponent<Rigidbody>().velocity.z) / 3f) > 0.5f);
-                CheckISUsing(rGrabbedObject, true);
             }
         }
         if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
         {
             if(rGrabbedObject != null)
             {
-                CheckISUsing(rGrabbedObject, false);
                 rGrabbedObject = null;
             }
-        }
-    }
-
-    private void CheckISUsing(GameObject grabbedObj, bool b)
-    {
-        switch (grabbedObj.tag)
-        {
-            case "Bottle":
-                grabbedObj.GetComponent<BottleCtrl>().isUsing = b;
-                break;
-            case "Cup":
-                grabbedObj.GetComponent<CupCtrl>().isUsing = b;
-                break;
-            default:
-                break;
         }
     }
 
@@ -148,7 +129,6 @@ public class PlayerCtrl : MonoBehaviour
                         rGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                         rGrabbedObject.transform.position = nowControl.transform.position;
                         rGrabbedObject.transform.rotation = Quaternion.Euler(new Vector3(nowControl.transform.localRotation.z + zRot, -nowControl.transform.localRotation.x, 0));
-                        CheckISUsing(rGrabbedObject, true);
                     }
                 }
                 if(nowControl == lGrabber)
@@ -160,7 +140,6 @@ public class PlayerCtrl : MonoBehaviour
                         lGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                         lGrabbedObject.transform.position = nowControl.transform.position;
                         lGrabbedObject.transform.localRotation = Quaternion.Euler(new Vector3(-nowControl.transform.localRotation.z - zRot, nowControl.transform.localRotation.x, 0));
-                        CheckISUsing(lGrabbedObject, true);
                     }
                 }
             }
@@ -172,13 +151,11 @@ public class PlayerCtrl : MonoBehaviour
                 if(rGrabbedObject != null)
                 {
                     rGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    CheckISUsing(rGrabbedObject, false);
                     rGrabbedObject = null;
                 }
                 if(lGrabbedObject != null)
                 {
                     lGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    CheckISUsing(lGrabbedObject, false);
                     lGrabbedObject = null;
                 }
             }

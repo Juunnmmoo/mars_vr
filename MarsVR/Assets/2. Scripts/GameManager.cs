@@ -21,18 +21,5 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xmlList = FileIO.ReadReceipt();
-
-        foreach(Attr attr in xmlList)
-        {
-            Debug.LogWarning(attr.receipt + ", " + attr.amount);
-        }
-
-
-        scriptList = FileIO.ReadScript();
-        foreach(string str in scriptList)
-        {
-            Debug.LogWarning(str);
-        }
     }
 }

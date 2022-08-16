@@ -78,7 +78,6 @@ public class Liquid : MonoBehaviour
             AnimateToPosition(1, targetPos);
             yield return null;
         }
-        Debug.Log("!");
         Destroy(gameObject);
     }
 

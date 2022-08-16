@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class CupCtrl : MonoBehaviour
 {
     //사용되고 있을때
-    public bool isUsing;
+    [HideInInspector]
+    public OVRGrabbable ovrGrabbable;
 
     [Header("레시피 관련")]
     //레시피 재료
@@ -20,7 +21,6 @@ public class CupCtrl : MonoBehaviour
 
     [Range(1f, 5f)]
     public float returnTime;
-    [SerializeField]
     private GameObject cupholder;
     private bool isMoved;
     private Vector3 originPos;
@@ -31,6 +31,7 @@ public class CupCtrl : MonoBehaviour
     void Start()
     {
         cupholder = GameObject.Find("CupHolder");
+        ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originRot = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
     }
@@ -57,11 +58,11 @@ public class CupCtrl : MonoBehaviour
     private void AmountUI()
     {
         //isUsing에 따라 UI 보이기
-        amountUI.SetActive(isUsing);
-        if (isUsing && amounts.Count > 0)
+        amountUI.SetActive(ovrGrabbable.isGrabbed);
+        if (ovrGrabbable.isGrabbed && amounts.Count > 0)
         {
             //사용 중이고 amounts List의 크기가 0 이상일 때 마지막 인덱스의 amounts의 양을 보여줌
-            amountUI.GetComponentInChildren<Text>().text = ((int)amounts[amounts.Count - 1]).ToString() + "ml";
+            amountUI.GetComponentInChildren<Text>().text = (Mathf.Round(amounts[amounts.Count - 1])).ToString() + "ml";
         }
     }
 
@@ -96,7 +97,7 @@ public class CupCtrl : MonoBehaviour
         while (delta < returnTime)
         {
             //3초가 지나기 전 사용 중이거나 평가 중일 경우 경우 코루틴 탈출
-            if (isUsing || cupholder.GetComponent<EvaluateManager>().isHolding)
+            if (ovrGrabbable.isGrabbed || cupholder.GetComponent<EvaluateManager>().isHolding)
             {
                 isMoved = false;
                 yield break;

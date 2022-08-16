@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
     변수명 규칙은
@@ -15,47 +16,44 @@ using UnityEngine;
     이 receipt 필드를 통해 평가하는 식으로 진행
 
  */
+[RequireComponent(typeof(OVRGrabbable), typeof(Rigidbody))]
 
 public class BottleCtrl : MonoBehaviour
 {
     public enum BottleType
     {
         NONE,
-        BOTTLETYPE1,
-        BOTTLETYPE2,
-        BOTTLETYPE3,
+        TEQUILA,
+        WHITERUM,
+        LEMON
     }
-
-    public bool isUsing;                            //현재 사용 중인 병인지
     [Header("Bottle Type 관련 (타입, etc...)")]
     public BottleType bottleType;
     [Header("Raycast")]
     public Transform bottleTop;                     //병 입구 (여기에서 붓는 이펙트 넣어주기)
     public Transform bottleBottom;
     [Range(1f, 10f)]
-    public float rayDist;                           //레이캐스트 사거리
+    public float rayDist = 5f;                           //레이캐스트 사거리
     private RaycastHit hit;
     private Liquid liquid = null;
+
     public GameObject liquidPrefab;
-
     private bool isPouring = false;
-    private GameObject bottleLiquid;                        //Liquid ui 선언
-    private int fpsNum;
+    public GameObject nameUI;
+    public AudioSource audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //bottleLiquid = Resources.Load("BottleLiquid") as GameObject;
+        audioSource = gameObject.GetComponent<AudioSource>();
+        gameObject.GetComponentInChildren<Text>().text = name;
     }
 
     // Update is called once per frame
     void Update()
     {
         PouringLiquid();
-        //MakeLiquid();
-        //PlusFpsNum();
-        //LiquidMotion();
 
+        nameUI.SetActive(gameObject.GetComponent<OVRGrabbable>().isGrabbed);
         //물 생성 (IsPoured()의 값이 바뀔 때마다 호출됨
         if(isPouring != IsPoured())
         {
@@ -63,10 +61,12 @@ public class BottleCtrl : MonoBehaviour
             if (isPouring)
             {
                 StartPour();
+                SoundManager.instance.PlayAudioSmooth(audioSource, SoundManager.instance.water1, 0.5f, 1f);
             }
             else
             {
                 EndPour();
+                SoundManager.instance.StopAudioSmooth(audioSource, 0.5f, 1f);
             }
         }
 
@@ -87,26 +87,6 @@ public class BottleCtrl : MonoBehaviour
     {
         GameObject temp = Instantiate(liquidPrefab, bottleTop.position, Quaternion.identity, transform);
         return temp.GetComponent<Liquid>();
-    }
-
-    public void PlusFpsNum()
-    {
-        if (bottleTop.position.y < bottleBottom.position.y)
-            fpsNum++;
-        else fpsNum = 0;
-    }
-
-    public void LiquidMotion()
-    {
-        //isPoured true일때 초당 6번 Liquid모션이 나옴
-        if (IsPoured() && fpsNum % 10 == 0 && fpsNum != 0)
-        {
-            GameObject prefab_obj = Instantiate(bottleLiquid);
-            prefab_obj.name = "liquidUI";
-            Vector3 pos = new Vector3(bottleTop.position.x, bottleTop.position.y - 0.3f, bottleTop.position.z);
-            prefab_obj.transform.position = pos;
-            Destroy(prefab_obj, 1.0f);
-        }
     }
 
     /*
