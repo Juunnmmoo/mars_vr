@@ -21,7 +21,7 @@ public class CupCtrl : MonoBehaviour
 
     [Range(1f, 5f)]
     public float returnTime;
-    private GameObject cupholder;
+    private EvaluateManager cupholder;
     private bool isMoved;
     private Vector3 originPos;
     private Vector3 originRot;
@@ -30,7 +30,7 @@ public class CupCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cupholder = GameObject.Find("CupHolder");
+        cupholder = GameObject.Find("CupHolder").GetComponent<EvaluateManager>();
         ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originRot = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
@@ -97,7 +97,7 @@ public class CupCtrl : MonoBehaviour
         while (delta < returnTime)
         {
             //3초가 지나기 전 사용 중이거나 평가 중일 경우 경우 코루틴 탈출
-            if (ovrGrabbable.isGrabbed || cupholder.GetComponent<EvaluateManager>().isHolding)
+            if (ovrGrabbable.isGrabbed || cupholder.isHolding)
             {
                 isMoved = false;
                 yield break;

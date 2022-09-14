@@ -15,7 +15,7 @@ D:/Unity/mars_vr/MarsVR
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-9778
+4562
 Successfully changed project path to: D:/Unity/mars_vr/MarsVR
 D:/Unity/mars_vr/MarsVR
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,8 +47,8 @@ D:/Unity/mars_vr/MarsVR
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 139.14 ms, found 14 plugins.
-Preloading 1 native plugins for Editor in 0.44 ms.
+Refreshing native plugins compatible for Editor in 166.97 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.98 ms.
 Initialize engine version: 2021.3.6f1 (7da38d85baf6)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path D:/Unity/mars_vr/MarsVR/Assets
@@ -64,58 +64,57 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56076
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56644
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006953 seconds.
+Registered in 0.006884 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 112.75 ms, found 14 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
+Refreshing native plugins compatible for Editor in 123.57 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.602 seconds
+- Completed reload, in  0.659 seconds
 Domain Reload Profiling:
-	ReloadAssembly (603ms)
-		BeginReloadAssembly (64ms)
+	ReloadAssembly (659ms)
+		BeginReloadAssembly (75ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (444ms)
-			LoadAssemblies (62ms)
+		EndReloadAssembly (486ms)
+			LoadAssemblies (75ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (92ms)
+			SetupTypeCache (97ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (27ms)
-			SetupLoadedEditorAssemblies (280ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (315ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (48ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (113ms)
+				InitializePlatformSupportModulesInManaged (54ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (124ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (81ms)
-				ProcessInitializeOnLoadMethodAttributes (36ms)
+				ProcessInitializeOnLoadAttributes (95ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.008263 seconds.
-Android Extension - Scanning For ADB Devices 649 ms
+Registered in 0.009020 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 121.84 ms, found 14 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 128.11 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
 Package Manager log level set to [2]
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
@@ -123,44 +122,44 @@ Package Manager log level set to [2]
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.74.0
 Mono: successfully reloaded assembly
-- Completed reload, in  1.192 seconds
+- Completed reload, in  1.411 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1193ms)
-		BeginReloadAssembly (98ms)
+	ReloadAssembly (1412ms)
+		BeginReloadAssembly (219ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (23ms)
-		EndReloadAssembly (997ms)
-			LoadAssemblies (79ms)
+			CreateAndSetChildDomain (131ms)
+		EndReloadAssembly (1089ms)
+			LoadAssemblies (138ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (255ms)
+			SetupTypeCache (276ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (70ms)
-			SetupLoadedEditorAssemblies (546ms)
+			RebuildScriptCaches (68ms)
+			SetupLoadedEditorAssemblies (559ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (14ms)
+				InitializePlatformSupportModulesInManaged (13ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (122ms)
+				RefreshPlugins (128ms)
 				BeforeProcessingInitializeOnLoad (105ms)
-				ProcessInitializeOnLoadAttributes (266ms)
-				ProcessInitializeOnLoadMethodAttributes (32ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				ProcessInitializeOnLoadAttributes (273ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 2.90 ms, found 14 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 5368 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 77 unused Assets / (206.6 KB). Loaded Objects now: 5814.
-Memory consumption went from 213.9 MB to 213.7 MB.
-Total: 3.913000 ms (FindLiveObjects: 0.473000 ms CreateObjectMapping: 0.163900 ms MarkObjects: 3.066600 ms  DeleteObjects: 0.208400 ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.89 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 5372 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 77 unused Assets / (206.4 KB). Loaded Objects now: 5819.
+Memory consumption went from 214.5 MB to 214.3 MB.
+Total: 4.341800 ms (FindLiveObjects: 0.457100 ms CreateObjectMapping: 0.462400 ms MarkObjects: 3.223200 ms  DeleteObjects: 0.197700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -174,58 +173,93 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 170522.429928 seconds.
-  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Models/6.0 lower poly Display.fbx
-  artifactKey: Guid(73ffd84696be64d419801ea07c293290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Models/6.0 lower poly Display.fbx using Guid(73ffd84696be64d419801ea07c293290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb665ad24e72e3d2bd344fac8dc37453') in 0.378797 seconds 
+  Time since last request: 2855089.677423 seconds.
+  path: Assets/2. Scripts/AnchorCtrl.cs
+  artifactKey: Guid(574d51a4adaa0334f9d565783d23dba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2. Scripts/AnchorCtrl.cs using Guid(574d51a4adaa0334f9d565783d23dba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fba654b25819fe34cb52dfbc1d88b85f') in 0.025504 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010340 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image D:\Unity\mars_vr\MarsVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.76 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.080 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1080ms)
+		BeginReloadAssembly (136ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (49ms)
+		EndReloadAssembly (856ms)
+			LoadAssemblies (85ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (279ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (400ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (23ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (263ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Refreshing native plugins compatible for Editor in 8.84 ms, found 14 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 5252 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 67 unused Assets / (182.4 KB). Loaded Objects now: 5823.
+Memory consumption went from 205.1 MB to 204.9 MB.
+Total: 4.610300 ms (FindLiveObjects: 0.492600 ms CreateObjectMapping: 0.542200 ms MarkObjects: 3.388700 ms  DeleteObjects: 0.185700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Oculus/VR/Meshes/OculusTouchForQuest2/OculusTouchForQuest2_Left.fbx
-  artifactKey: Guid(8b83018900d13bb4f8e0ad895cb004e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Meshes/OculusTouchForQuest2/OculusTouchForQuest2_Left.fbx using Guid(8b83018900d13bb4f8e0ad895cb004e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cc2d739f312a494be42ad7893f25a9f') in 0.059385 seconds 
+  Time since last request: 188.650489 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Furniture/Display/Display Case_WBG_01_01_Setup_01.prefab
+  artifactKey: Guid(4043817f5d7ec1648a4fad92211bf168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Furniture/Display/Display Case_WBG_01_01_Setup_01.prefab using Guid(4043817f5d7ec1648a4fad92211bf168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45e34dd6e934f2cc3783f1c59e913b6c') in 0.990772 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Oculus/SampleFramework/Usage/Locomotion/Models/WorldGeo.fbx
-  artifactKey: Guid(fb9ba08c9d86b5a409b5fe2eb4f02f5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/SampleFramework/Usage/Locomotion/Models/WorldGeo.fbx using Guid(fb9ba08c9d86b5a409b5fe2eb4f02f5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f13d81c9e67af909c7076fd055b12cd') in 0.248282 seconds 
+  Time since last request: 0.000032 seconds.
+  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Furniture/Display/Display Case_WBG_01_02_Setup_01.prefab
+  artifactKey: Guid(40d23279202d32848a1a502563887f1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Prefabs/Furniture/Display/Display Case_WBG_01_02_Setup_01.prefab using Guid(40d23279202d32848a1a502563887f1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b86ccca0a988e9baf7075466bf6a967') in 0.658597 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Models/backgroundSkyDome.fbx
-  artifactKey: Guid(216e64467da9e644b990c6663f483186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Models/backgroundSkyDome.fbx using Guid(216e64467da9e644b990c6663f483186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78540d5950b10939a4d618c73cb88f27') in 0.022534 seconds 
+  Time since last request: 1.680915 seconds.
+  path: Assets/Oculus/Interaction/Samples/Audio/Content/Interaction_DistanceGrab_Pull.wav
+  artifactKey: Guid(fbedf1b2a14410642b76da03d6d664f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Oculus/Interaction/Samples/Audio/Content/Interaction_DistanceGrab_Pull.wav using Guid(fbedf1b2a14410642b76da03d6d664f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35d64e5eba7fcb260a89be78c3b1e6e3') in 0.053809 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Oculus/VR/Meshes/HandTracking/OculusHand_L.fbx
-  artifactKey: Guid(442d5b4503ed83c4897ef44659446587) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Meshes/HandTracking/OculusHand_L.fbx using Guid(442d5b4503ed83c4897ef44659446587) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1463114cffad397243ee901127041fee') in 0.033990 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Models/Build Kit WLG Exterior_04.fbx
-  artifactKey: Guid(3ee981ba0b4271b428517a091428c092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/7. Assets/Brick Project Studio/Bar Interior Exterior Kit/Models/Build Kit WLG Exterior_04.fbx using Guid(3ee981ba0b4271b428517a091428c092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e13ffa9aeecd62ab7882b81fc95e111') in 0.366840 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Oculus/VR/Meshes/HandTracking/OculusHand_R.fbx
-  artifactKey: Guid(88e2e1bfe11ec6c438b0ade27eaeded1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Meshes/HandTracking/OculusHand_R.fbx using Guid(88e2e1bfe11ec6c438b0ade27eaeded1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a53011e3518e0bb578a058b02567a373') in 0.055918 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000053 seconds.
-  path: Assets/Oculus/VR/Meshes/OculusTouchForRift/right_touch_controller_model_skel.fbx
-  artifactKey: Guid(c3798d66af7bbe54bbfe22a3b302300b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/VR/Meshes/OculusTouchForRift/right_touch_controller_model_skel.fbx using Guid(c3798d66af7bbe54bbfe22a3b302300b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19e49f0ed7aadff4b44feac16d1d3f87') in 0.070979 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Models/SmallRoom.fbx
-  artifactKey: Guid(78906942dba6db24ca155679a45f60ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Oculus/Interaction/Samples/Objects/Environment/Room/Models/SmallRoom.fbx using Guid(78906942dba6db24ca155679a45f60ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '409fcd28c5d19cfcd0b769324a68ca9b') in 0.200722 seconds 
+  Time since last request: 31.354962 seconds.
+  path: Assets/Oculus/Interaction/Samples/Audio/Content/Interaction_BasicRay_Hover.wav
+  artifactKey: Guid(1310bd00360df084e96ccc9a42f601b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Oculus/Interaction/Samples/Audio/Content/Interaction_BasicRay_Hover.wav using Guid(1310bd00360df084e96ccc9a42f601b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc539a269496e7da807cab686564dc2a') in 0.019621 seconds 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting

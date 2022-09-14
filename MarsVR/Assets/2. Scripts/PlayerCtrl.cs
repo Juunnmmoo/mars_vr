@@ -123,7 +123,10 @@ public class PlayerCtrl : MonoBehaviour
                 if (nowControl == rGrabber)
                 {
                     if (rGrabbedObject == null && lGrabbedObject != nowControl.GetGrabbedObj())
+                    {
                         rGrabbedObject = nowControl.GetGrabbedObj();
+                        rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
+                    }
                     if(rGrabbedObject != null)
                     {
                         rGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -134,7 +137,10 @@ public class PlayerCtrl : MonoBehaviour
                 if(nowControl == lGrabber)
                 {
                     if (lGrabbedObject == null && rGrabbedObject != nowControl.GetGrabbedObj())
+                    {
                         lGrabbedObject = nowControl.GetGrabbedObj();
+                        lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
+                    }
                     if(lGrabbedObject != null)
                     {
                         lGrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -151,11 +157,13 @@ public class PlayerCtrl : MonoBehaviour
                 if(rGrabbedObject != null)
                 {
                     rGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
                     rGrabbedObject = null;
                 }
                 if(lGrabbedObject != null)
                 {
                     lGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
                     lGrabbedObject = null;
                 }
             }

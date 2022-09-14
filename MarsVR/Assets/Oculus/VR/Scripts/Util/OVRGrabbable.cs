@@ -54,7 +54,9 @@ public class OVRGrabbable : MonoBehaviour
 	/// </summary>
     public bool isGrabbed
     {
-        get { return m_grabbedBy != null; }
+        //get { return m_grabbedBy != null; }
+        //set { isGrabbed = value; }
+        get; set;
     }
 
 	/// <summary>

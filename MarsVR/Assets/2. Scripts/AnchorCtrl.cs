@@ -15,11 +15,6 @@ public class AnchorCtrl : MonoBehaviour
         BeginAnchor();
     }
 
-    private void Update()
-    {
-
-    }
-
     public void BeginAnchor()
     {
          currentCor = StartCoroutine(AnchorMove());
