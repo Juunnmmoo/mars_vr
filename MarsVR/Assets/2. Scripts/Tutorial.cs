@@ -90,7 +90,7 @@ public class Tutorial : MonoBehaviour
                 NextScript();
                 break;
             case 9:
-                if (CheckAmount(BottleCtrl.BottleType.LEMON, 20))
+                if (CheckAmount(BottleType.LEMON, 20))
                     tutorialNum++;
                 break;
             case 10:
@@ -105,7 +105,7 @@ public class Tutorial : MonoBehaviour
                 if (anchorList[1] == null)
                     anchorList[1] = CreateAnchor(whiteRum.transform.position + offset);
                 // 데킬라 20ml, 화이트럼 20ml 넣었을때
-                if (CheckAmount(BottleCtrl.BottleType.TEQUILA, 20) && CheckAmount(BottleCtrl.BottleType.WHITERUM, 20))
+                if (CheckAmount(BottleType.TEQUILA, 20) && CheckAmount(BottleType.WHITE_RUM, 20))
                 {
                     for (int i = 0; i < 2; i++)
                     {
@@ -149,7 +149,7 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(NextScriptCor(nextTime));
     }
 
-    private bool CheckAmount(BottleCtrl.BottleType bottleType, float amount)
+    private bool CheckAmount(BottleType bottleType, float amount)
     {
         for (int i = 0; i < cup.GetComponent<CupCtrl>().receipt.Count; i++)
         {

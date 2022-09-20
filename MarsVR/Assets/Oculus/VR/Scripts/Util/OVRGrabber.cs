@@ -305,7 +305,7 @@ public class OVRGrabber : MonoBehaviour
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
-            m_lastPos = transform.position;
+            m_lastPos = transform.position + m_grabbedObj.snapOffset.localPosition;
             m_lastRot = transform.rotation;
 
             // Set up offsets for grabbed object desired position relative to hand.
@@ -328,7 +328,7 @@ public class OVRGrabber : MonoBehaviour
 
             if (m_grabbedObj.snapOrientation)
             {
-                m_grabbedObjectRotOff = m_gripTransform.localRotation;
+                m_grabbedObjectRotOff = m_gripTransform.rotation;
                 if(m_grabbedObj.snapOffset)
                 {
                     m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;

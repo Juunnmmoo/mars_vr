@@ -18,8 +18,4 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 }

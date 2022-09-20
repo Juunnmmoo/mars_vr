@@ -4,69 +4,107 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
-    º¯¼ö¸í ±ÔÄ¢Àº
-    Class = ÆÄ½ºÄ®
-    Method = ÆÄ½ºÄ®
-    Variable = Ä«¸á
-    ÆÄÀÏ¸í = ÆÄ½ºÄ®
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¢ï¿½ï¿½
+    Class = ï¿½Ä½ï¿½Ä®
+    Method = ï¿½Ä½ï¿½Ä®
+    Variable = Ä«ï¿½ï¿½
+    ï¿½ï¿½ï¿½Ï¸ï¿½ = ï¿½Ä½ï¿½Ä®
 
-    °¢ BottleCtrl °´Ã¼´Â °íÀ¯ÇÑ BottleTypeÀ» °¡Áö°í ÀÖÀ½.
-    Bottle °´Ã¼ÀÇ ÀÔ±¸¿¡¼­ RayCast¸¦ ÇÏ¿© Cup BottomÀÇ ÄÝ¶óÀÌ´õ¿¡ ´êÀ» °æ¿ì ÄÅ¿¡ µû¸£´Â °ÍÀ¸·Î ÆÇ´Ü.
-    Cup °´Ã¼¿¡ µû¸¦ ¶§ CupCtrlÀÇ receipt ¸®½ºÆ®¿¡ Ãß°¡
-    ÀÌ receipt ÇÊµå¸¦ ÅëÇØ Æò°¡ÇÏ´Â ½ÄÀ¸·Î ÁøÇà
+    ï¿½ï¿½ BottleCtrl ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ BottleTypeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+    Bottle ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ RayCastï¿½ï¿½ ï¿½Ï¿ï¿½ Cup Bottomï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½.
+    Cup ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ CupCtrlï¿½ï¿½ receipt ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
+    ï¿½ï¿½ receipt ï¿½Êµå¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
  */
+
+public enum BottleType
+{
+    NONE,
+    TEQUILA,
+    WHITE_RUM,
+    VODKA,
+    PEACH_TREE,
+    DRY_GIN,
+    LEMON,
+
+}
+
 [RequireComponent(typeof(OVRGrabbable), typeof(Rigidbody))]
 
 public class BottleCtrl : MonoBehaviour
 {
-    public enum BottleType
-    {
-        NONE,
-        TEQUILA,
-        WHITERUM,
-        LEMON
-    }
-    [Header("Bottle Type °ü·Ã (Å¸ÀÔ, etc...)")]
+
+    [Header("Bottle Type ï¿½ï¿½ï¿½ï¿½ (Å¸ï¿½ï¿½, etc...)")]
     public BottleType bottleType;
+
     [Header("Raycast")]
-    public Transform bottleTop;                     //º´ ÀÔ±¸ (¿©±â¿¡¼­ º×´Â ÀÌÆåÆ® ³Ö¾îÁÖ±â)
+    public Transform bottleTop;                     //ï¿½ï¿½ ï¿½Ô±ï¿½ (ï¿½ï¿½ï¿½â¿¡ï¿½ï¿½ ï¿½×´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ö¾ï¿½ï¿½Ö±ï¿½);
     public Transform bottleBottom;
+    public GameObject offset;
+    private CupCtrl curCup;
+    private bool isExistCup;
+
+    [Header("Liquid Associated...")]
     [Range(1f, 10f)]
-    public float rayDist = 5f;                           //·¹ÀÌÄ³½ºÆ® »ç°Å¸®
+    public float rayDist = 5f;                           //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ® ï¿½ï¿½Å¸ï¿½
     private RaycastHit hit;
     private Liquid liquid = null;
-
     public GameObject liquidPrefab;
     private bool isPouring = false;
+
+    [Header("UI Associated...")]
     public GameObject nameUI;
+
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [Header("Sounds Associated...")]
     public AudioSource audioSource;
+    private Coroutine nowCor;
 
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         gameObject.GetComponentInChildren<Text>().text = name;
+        nameUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         PouringLiquid();
 
         nameUI.SetActive(gameObject.GetComponent<OVRGrabbable>().isGrabbed);
-        //¹° »ý¼º (IsPoured()ÀÇ °ªÀÌ ¹Ù²ð ¶§¸¶´Ù È£ÃâµÊ
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (IsPoured()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½
         if(isPouring != IsPoured())
         {
             isPouring = IsPoured();
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             if (isPouring)
             {
+                //ï¿½ï¿½ ï¿½×±ï¿½
                 StartPour();
-                SoundManager.instance.PlayAudioSmooth(audioSource, SoundManager.instance.water1, 0.5f, 1f);
+                //ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+                nowCor = SoundManager.instance.PlayAudioSmooth(audioSource, SoundManager.instance.waterSound2, 0.5f, 1f, true);
             }
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ ï¿½ï¿½
             else
             {
+                //ï¿½ï¿½ ï¿½×±ï¿½ ï¿½ß´ï¿½
                 EndPour();
-                SoundManager.instance.StopAudioSmooth(audioSource, 0.5f, 1f);
+                //ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ PlayAudioSmooth ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ù¸ï¿½ ï¿½Ø´ï¿½ ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+                if(nowCor != null)
+                {
+                    SoundManager.instance.GetComponent<SoundManager>().StopCoroutine(nowCor);
+                    nowCor = null;
+                }
+                SoundManager.instance.StopAudioSmooth(audioSource, 0.5f);
+
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+                if (isExistCup && curCup != null)
+                {
+                    isExistCup = false;
+                }
+                curCup = null;
             }
         }
 
@@ -90,8 +128,8 @@ public class BottleCtrl : MonoBehaviour
     }
 
     /*
-     * ÇöÀç º´ÀÌ µû¶óÁö°í ÀÖ´Â Áö ÆÇ´Ü ¿©ºÎ
-     * Top y°¡ Bottom yº¸´Ù ³·À» ¶§ true
+     * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * Top yï¿½ï¿½ Bottom yï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ true
      */
     public bool IsPoured()
     {
@@ -105,23 +143,34 @@ public class BottleCtrl : MonoBehaviour
     {
         if (IsPoured())
         {
-            //°¢ Ãà(xÃà, zÃà)ÀÇ ·ÎÅ×ÀÌ¼Ç °ª, °¢ ÃàÀÌ ¼öÁ÷¿¡ °¡±î¿ö Áú ¶§ 0 -> 10±îÁö ¼ö°¡ °¡±î¿öÁü
+            //ï¿½ï¿½ ï¿½ï¿½(xï¿½ï¿½, zï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ 0 -> 10ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             float xRot = (transform.eulerAngles.x < 180 ? 90 - transform.eulerAngles.x : transform.eulerAngles.x - 270) / 90 * 10;
             float zRot = Mathf.Abs(Mathf.Abs(transform.localEulerAngles.z - 180) - 90) / 90 * 10;
 
-            //°¢ ÃàÀ» °öÇÑ µÚ Á¦°ö±ÙÀ» °è»êÇØÁÜ(0 ~ 100ÀÇ °ªÀ» 0 ~ 10À¸·Î ¸¸µé¾îÁÜ)
+            //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(0 ~ 100ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0 ~ 10ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
             float amount = Mathf.Sqrt(xRot * zRot);
-            //µð¹ö±ë¿ë, ¾À ºä¿¡¼­ ·¹ÀÌÄ³½ºÆ®¸¦ ½Ã°¢ÀûÀ¸·Î º¸¿©ÁÜ (ÀÎ°ÔÀÓ¿¡¼± ¾Èº¸ÀÓ)
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ä¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½Î°ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½Èºï¿½ï¿½ï¿½)
             Debug.DrawRay(bottleTop.position, Vector3.down * rayDist, Color.blue);
 
 
             if (Physics.Raycast(bottleTop.position, Vector3.down, out hit, rayDist))
             {
-                //·¹ÀÌÄ³½ºÆ®¿¡ Ãæµ¿ÇÑ ¹°Ã¼ÀÇ ÅÂ±×°¡ CupÀÏ °æ¿ì
+                //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½æµ¿ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Â±×°ï¿½ Cupï¿½ï¿½ ï¿½ï¿½ï¿½
                 if (hit.transform.gameObject.CompareTag("Cup"))
                 {
-                    //¹éºÐÀ²·Î È¯»ê, ÃÊ´ç 0 ~ 10¸¸Å­ Ã¤¿öÁÜ
-                    hit.transform.gameObject.GetComponent<CupCtrl>().AddReceipt(bottleType, amount);
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¯ï¿½ï¿½, ï¿½Ê´ï¿½ 0 ~ 10ï¿½ï¿½Å­ Ã¤ï¿½ï¿½ï¿½ï¿½
+                    isExistCup = true;
+                    curCup = hit.transform.gameObject.GetComponent<CupCtrl>();
+                    curCup.AddReceipt(bottleType, amount);
+                }
+                else
+                {
+                    //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+                    if (isExistCup && curCup != null)
+                    {
+                        isExistCup = false;
+                    }
+                    curCup = null;
                 }
             }
         }

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &900511943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 2113295929}
   m_Father: {fileID: 1295738293452793363}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -281,7 +281,6 @@ Transform:
   - {fileID: 686666706705634760}
   - {fileID: 686666706473985677}
   - {fileID: 4496995272512711954}
-  - {fileID: 7447468978241345725}
   - {fileID: 900511943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -381,6 +380,7 @@ MonoBehaviour:
   bottleType: 1
   bottleTop: {fileID: 686666706705634760}
   bottleBottom: {fileID: 686666706473985677}
+  offset: {fileID: 0}
   rayDist: 10
   liquidPrefab: {fileID: 6787850819273416406, guid: fd4bc65792bbafa4bb233c5a51e4b17e, type: 3}
   nameUI: {fileID: 900511939}
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_allowOffhandGrab: 1
   m_snapPosition: 1
   m_snapOrientation: 1
-  m_snapOffset: {fileID: 7447468978241345725}
+  m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: 
 --- !u!82 &91971086891793438
@@ -499,37 +499,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1745244186868178860
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7447468978241345725}
-  m_Layer: 6
-  m_Name: Offset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7447468978241345725
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745244186868178860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.155, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1295738293452793363}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4496995272512711957
 GameObject:
   m_ObjectHideFlags: 0

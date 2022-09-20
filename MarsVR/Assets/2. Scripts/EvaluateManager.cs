@@ -18,7 +18,7 @@ public class EvaluateManager : MonoBehaviour
     [HideInInspector]
     public bool isEnd = false;
     private float elapsedTime = 0f;
-    private GameObject cup;
+    private CupCtrl cup;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class EvaluateManager : MonoBehaviour
     {
         if (other.transform.CompareTag("Cup"))
         {
-            cup = other.gameObject;
+            cup = other.gameObject.GetComponent<CupCtrl>();
             isHolding = true;
         }
     }
@@ -76,13 +76,12 @@ public class EvaluateManager : MonoBehaviour
             return;
         endUI.SetActive(true);
         StartCoroutine(FadeUI(0.5f));
-        List<BottleCtrl.BottleType> receipts = cup.GetComponent<CupCtrl>().receipt;
-        List<float> amount = cup.GetComponent<CupCtrl>().amounts;
+        cup.Evaluation();
 
         endUIText.text = "Receipt\n";
-        for (int i = 0; i < receipts.Count; i++)
+        for (int i = 0; i < cup.receipt.Count; i++)
         {
-            endUIText.text += receipts[i].ToString() + " : " + Mathf.Round(amount[i]).ToString() + "\n";
+            endUIText.text += cup.receipt[i].ToString() + " : " + Mathf.Round(cup.amounts[i]).ToString() + "\n";
         }
     }
 

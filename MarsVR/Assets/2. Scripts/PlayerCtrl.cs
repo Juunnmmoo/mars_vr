@@ -6,6 +6,7 @@ using OculusSampleFramework;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    public float score;
     //왼손, 오른손 그래버
     public OVRGrabber lGrabber;
     public OVRGrabber rGrabber;
@@ -29,6 +30,7 @@ public class PlayerCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 100;
         InitialPos = new Vector3(0, 1.5f, -6); 
         nowControl = rGrabber;
         transform.position = InitialPos;
@@ -125,7 +127,7 @@ public class PlayerCtrl : MonoBehaviour
                     if (rGrabbedObject == null && lGrabbedObject != nowControl.GetGrabbedObj())
                     {
                         rGrabbedObject = nowControl.GetGrabbedObj();
-                        rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
+                        //rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
                     }
                     if(rGrabbedObject != null)
                     {
@@ -139,7 +141,7 @@ public class PlayerCtrl : MonoBehaviour
                     if (lGrabbedObject == null && rGrabbedObject != nowControl.GetGrabbedObj())
                     {
                         lGrabbedObject = nowControl.GetGrabbedObj();
-                        lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
+                        //lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = true;
                     }
                     if(lGrabbedObject != null)
                     {
@@ -157,13 +159,13 @@ public class PlayerCtrl : MonoBehaviour
                 if(rGrabbedObject != null)
                 {
                     rGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
+                   // rGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
                     rGrabbedObject = null;
                 }
                 if(lGrabbedObject != null)
                 {
                     lGrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
+                    //lGrabbedObject.GetComponent<OVRGrabbable>().isGrabbed = false;
                     lGrabbedObject = null;
                 }
             }

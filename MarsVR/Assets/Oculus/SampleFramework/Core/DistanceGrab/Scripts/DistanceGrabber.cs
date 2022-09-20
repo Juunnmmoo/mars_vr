@@ -178,13 +178,16 @@ namespace OculusSampleFramework
                 }
                 else
                 {
+                    //Mathf.Acos(Vector3.Dot(Vector3.up, m_grabbedObj.snapOffset.eulerAngles));
+
                     // Set up offsets for grabbed object desired position relative to hand.
                     m_grabbedObjectPosOff = m_gripTransform.localPosition;
                     if (m_grabbedObj.snapOffset)
                     {
                         Vector3 snapOffset = m_grabbedObj.snapOffset.localPosition;
-                        if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
-                        m_grabbedObjectPosOff += snapOffset;
+                        Vector3 temp = new Vector3(snapOffset.x, snapOffset.y, snapOffset.z);
+                        if (m_controller == OVRInput.Controller.LTouch) temp.x = -temp.x;
+                        m_grabbedObjectPosOff += temp;
                     }
 
                     m_grabbedObjectRotOff = m_gripTransform.localRotation;
