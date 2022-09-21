@@ -3890,7 +3890,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6868973591675786676}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4005,14 +4005,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  lGrabber: {fileID: 0}
-  rGrabber: {fileID: 0}
+  lGrabber: {fileID: 8503370823573678407}
+  rGrabber: {fileID: 4613765929190423362}
   lGrabbedObject: {fileID: 0}
   rGrabbedObject: {fileID: 0}
   isDebug: 0
-  keyboardMoveSpeed: 0
+  keyboardMoveSpeed: 0.3
   isHolding: 0
-  keyboardRotationSpeed: 0
+  keyboardRotationSpeed: 1
 --- !u!1 &7158505527320221720
 GameObject:
   m_ObjectHideFlags: 0
