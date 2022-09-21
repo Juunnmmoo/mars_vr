@@ -35,7 +35,7 @@ public class CupCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        correct = FileIO.ReadReceipt();
+        correct = FileIO.ReadReceipt("Tutorial");
         cupholder = GameObject.Find("CupHolder").GetComponent<EvaluateManager>();
         ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();

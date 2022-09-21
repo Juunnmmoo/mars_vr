@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
 
 
 
-    [Range(1.5f, 3.0f)]
+    [Range(1.5f, 5.0f)]
     public float nextTime = 2.0f;
 
     [Header("UI ฐüทร")]
@@ -41,6 +41,13 @@ public class Tutorial : MonoBehaviour
         lemon = GameObject.Find("Lemon");
 
         scriptList = FileIO.ReadScript();
+
+        List<Attr> debug = new List<Attr>();
+        debug = FileIO.ReadReceipt("PeachTree");
+        for (int i = 0; i < debug.Count; i++)
+        {
+            Debug.LogError(debug[i].receipt + ", " + debug[i].amount);
+        }
     }
 
     // Update is called once per frame

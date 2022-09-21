@@ -30,15 +30,16 @@ public sealed class FileIO
         document.Save(Application.dataPath + "/Receipt_Resource.xml");
     }
 
-    public static List<Attr> ReadReceipt()
+    public static List<Attr> ReadReceipt(string receiptName)
     {
         XmlDocument document = new XmlDocument();
         document.Load(Application.dataPath + "/Receipt_Resource.xml");
-        XmlElement receiptListElement = document["ReceiptList"];
+        //XmlElement receiptListElement = document[receiptName];
 
+        XmlNodeList receiptListElement = document.SelectNodes("ReceiptList/" + receiptName);
         List<Attr> receiptList = new List<Attr>();
 
-        foreach (XmlElement receiptElement in receiptListElement.ChildNodes)
+        foreach (XmlElement receiptElement in receiptListElement)
         {
             Attr attr = new Attr();
             attr.receipt = receiptElement.GetAttribute("Receipt");

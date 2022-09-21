@@ -25,8 +25,12 @@ public enum BottleType
     VODKA,
     PEACH_TREE,
     DRY_GIN,
+    COINTREAU,
     LEMON,
-
+    CRANBERRY_JUICE,
+    PINEAPPLE_JUICE,
+    COCONUT_MILK,
+    COKE,
 }
 
 [RequireComponent(typeof(OVRGrabbable), typeof(Rigidbody))]
@@ -141,11 +145,20 @@ public class BottleCtrl : MonoBehaviour
 
     public void PouringLiquid()
     {
+        float dot = Vector3.Dot(transform.position, transform.up);
+
+        float rot = Mathf.Acos(dot) * Mathf.Rad2Deg;
+
+        Debug.LogWarning(name + ", " + (rot > 90f));
+        //Debug.LogWarning(name + ", " + transform.up);
+
         if (IsPoured())
         {
             //�� ��(x��, z��)�� �����̼� ��, �� ���� ������ ����� �� �� 0 -> 10���� ���� �������
             float xRot = (transform.eulerAngles.x < 180 ? 90 - transform.eulerAngles.x : transform.eulerAngles.x - 270) / 90 * 10;
             float zRot = Mathf.Abs(Mathf.Abs(transform.localEulerAngles.z - 180) - 90) / 90 * 10;
+
+
 
             //�� ���� ���� �� �������� �������(0 ~ 100�� ���� 0 ~ 10���� �������)
             float amount = Mathf.Sqrt(xRot * zRot);
