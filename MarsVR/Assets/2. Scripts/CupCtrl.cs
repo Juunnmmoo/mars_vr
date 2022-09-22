@@ -8,7 +8,6 @@ public class CupCtrl : MonoBehaviour
 {
     //점수 평가
     private PlayerCtrl player;
-    private int bias = 0;
     //사용되고 있을때
     [HideInInspector]
     public OVRGrabbable ovrGrabbable;

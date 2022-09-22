@@ -25,6 +25,7 @@ public class Tutorial : MonoBehaviour
     [Header("UI 관련")]
     //scriptListUI
     public GameObject scriptUI;
+    private GameObject nextBtn;
 
     //SpotLight
     public GameObject anchorPrefab;
@@ -39,18 +40,9 @@ public class Tutorial : MonoBehaviour
         whiteRum = GameObject.Find("WhiteRum");
         cupHolder = GameObject.Find("CupHolder");
         lemon = GameObject.Find("Lemon");
+        nextBtn = transform.Find("NextBtn").gameObject;
 
         scriptList = FileIO.ReadScript("Tutorial");
-        foreach (string script in scriptList)
-        {
-            Debug.LogError(script);
-        }
-
-        List<Attr> debug = FileIO.ReadReceipt("PeachTree");
-        for (int i = 0; i < debug.Count; i++)
-        {
-            Debug.LogError(debug[i].receipt + ", " + debug[i].amount);
-        }
     }
 
     // Update is called once per frame
@@ -59,13 +51,8 @@ public class Tutorial : MonoBehaviour
 
         switch (tutorialNum)
         {
-            case 0:
-            case 1:
-            case 2:
-                NextScript();
-                break;
             case 3:
-
+                nextBtn.SetActive(false);
                 if (anchorList[0] == null)
                 {
                     anchorList[0] = CreateAnchor(cup.transform.position + offset);
@@ -73,56 +60,53 @@ public class Tutorial : MonoBehaviour
                 // 컵을 집을때
                 if (cup.GetComponent<OVRGrabbable>().isGrabbed)
                 {
+                    nextBtn.SetActive(true);
                     anchorList[0].EndAnchor();
                     anchorList[0] = null;
                     tutorialNum++;
                 }
                 break;
-            case 4:
-            case 5:
-                NextScript();
-                break;
             case 6:
                 // 병을 집을때
+                nextBtn.SetActive(false);
                 if (anchorList[0] == null)
                 {
                     anchorList[0] = CreateAnchor(lemon.transform.position + offset);
                 }
                 if (lemon.GetComponent<OVRGrabbable>().isGrabbed)
                 {
+                    nextBtn.SetActive(true);
                     anchorList[0].EndAnchor();
                     anchorList[0] = null;
                     tutorialNum++;
                 }
                 break;
-            case 7:
-            case 8:
-                NextScript();
-                break;
             case 9:
+                nextBtn.SetActive(false);
                 if (CheckAmount(BottleType.LEMON, 20))
+                {
+                    nextBtn.SetActive(true);
                     tutorialNum++;
-                break;
-            case 10:
-            case 11:
-            case 12:
-                NextScript();
+                }
                 break;
             case 13:
-                if (anchorList[0] == null)
-                    anchorList[0] = CreateAnchor(tequila.transform.position + offset);
-
-                if (anchorList[1] == null)
-                    anchorList[1] = CreateAnchor(whiteRum.transform.position + offset);
-                // 데킬라 20ml, 화이트럼 20ml 넣었을때
-                if (CheckAmount(BottleType.TEQUILA, 20) && CheckAmount(BottleType.WHITE_RUM, 20))
                 {
-                    for (int i = 0; i < 2; i++)
+                    nextBtn.SetActive(false);
+                    if (anchorList[0] == null)
+                        anchorList[0] = CreateAnchor(tequila.transform.position + offset);
+
+                    if (anchorList[1] == null)
+                        anchorList[1] = CreateAnchor(whiteRum.transform.position + offset);
+                    // 데킬라 20ml, 화이트럼 20ml 넣었을때
+                    if (CheckAmount(BottleType.TEQUILA, 20) && CheckAmount(BottleType.WHITE_RUM, 20)) 
                     {
-                        anchorList[i].EndAnchor();
+                        for (int i = 0; i < 2; i++)
+                        {
+                            anchorList[i].EndAnchor();
                         anchorList[i] = null;
+                        }
+                        tutorialNum++;
                     }
-                    tutorialNum++;
                 }
                 break;
             case 14:
@@ -132,6 +116,7 @@ public class Tutorial : MonoBehaviour
                 }
                 if (cupHolder.GetComponent<EvaluateManager>().isEnd)
                 {
+                    nextBtn.SetActive(true);
                     anchorList[0].EndAnchor();
                     anchorList[0] = null;
                     tutorialNum++;
@@ -144,6 +129,11 @@ public class Tutorial : MonoBehaviour
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
     }
 
+    public void NextScript()
+    {
+        tutorialNum++;
+    }
+
     private AnchorCtrl CreateAnchor(Vector3 pos)
     {
         AnchorCtrl temp = Instantiate(anchorPrefab, pos, Quaternion.identity).GetComponent<AnchorCtrl>();
@@ -151,13 +141,13 @@ public class Tutorial : MonoBehaviour
         return temp;
     }
 
-    private void NextScript()
-    {
-        if (check == true)
-            return;
-        check = true;
-        StartCoroutine(NextScriptCor(nextTime));
-    }
+    //private void NextScript()
+    //{
+    //    if (check == true)
+    //        return;
+    //    check = true;
+    //    StartCoroutine(NextScriptCor(nextTime));
+    //}
 
     private bool CheckAmount(BottleType bottleType, float amount)
     {
@@ -171,15 +161,15 @@ public class Tutorial : MonoBehaviour
         return false;
     }
 
-    private IEnumerator NextScriptCor(float time)
-    {
-        float elaspedTime = 0;      // 경과 시간
-        while (elaspedTime < time)
-        {
-            elaspedTime += Time.deltaTime;
-            yield return null;
-        }
-        check = false;
-        tutorialNum++;
-    }
+    //private IEnumerator NextScriptCor(float time)
+    //{
+    //    float elaspedTime = 0;      // 경과 시간
+    //    while (elaspedTime < time)
+    //    {
+    //        elaspedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //    check = false;
+    //    tutorialNum++;
+    //}
 }

@@ -145,14 +145,6 @@ public class BottleCtrl : MonoBehaviour
 
     public void PouringLiquid()
     {
-        //float dot = Vector3.Dot(transform.position, transform.up);
-
-        //float rot = Mathf.Acos(dot) * Mathf.Rad2Deg;
-
-        //Debug.LogWarning(name + ", " + (rot > 90f));
-
-        //Debug.LogWarning(name + ", " + transform.up);
-
         if (IsPoured())
         {
             //�� ��(x��, z��)�� �����̼� ��, �� ���� ������ ����� �� �� 0 -> 10���� ���� �������

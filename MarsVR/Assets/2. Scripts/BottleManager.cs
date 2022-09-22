@@ -24,6 +24,7 @@ public class BottleManager : MonoBehaviour
         {
             //깊은 복사를 위해 새 객체 만들어서 넣어줌
             Transform bTemp = new GameObject().GetComponent<Transform>();
+            bTemp.name = "OriginPos";
             bTemp.position = bottles[i].transform.position;
             bTemp.rotation = bottles[i].transform.rotation;
             originBottleTransform.Add(bTemp);
