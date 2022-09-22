@@ -11,7 +11,7 @@ public class Tutorial : MonoBehaviour
     private GameObject lemon;
     private GameObject cupHolder;
     private AnchorCtrl[] anchorList = new AnchorCtrl[2];
-    private List<string> scriptList = new List<string>();
+    public List<string> scriptList = new List<string>();
 
     private int tutorialNum = 0;
 
@@ -40,10 +40,13 @@ public class Tutorial : MonoBehaviour
         cupHolder = GameObject.Find("CupHolder");
         lemon = GameObject.Find("Lemon");
 
-        scriptList = FileIO.ReadScript();
+        scriptList = FileIO.ReadScript("Tutorial");
+        foreach (string script in scriptList)
+        {
+            Debug.LogError(script);
+        }
 
-        List<Attr> debug = new List<Attr>();
-        debug = FileIO.ReadReceipt("PeachTree");
+        List<Attr> debug = FileIO.ReadReceipt("PeachTree");
         for (int i = 0; i < debug.Count; i++)
         {
             Debug.LogError(debug[i].receipt + ", " + debug[i].amount);

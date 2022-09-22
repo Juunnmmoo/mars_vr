@@ -49,18 +49,17 @@ public sealed class FileIO
         return receiptList;
     }
 
-    public static List<string> ReadScript()
+    public static List<string> ReadScript(string scriptName)
     {
         XmlDocument document = new XmlDocument();
         document.Load(Application.dataPath + "/Script_Resource.xml");
-        XmlElement receiptListElement = document["ScriptList"];
-
+        //XmlElement receiptListElement = document["ScriptList"];
+        XmlNodeList scriptListElement = document.SelectNodes("ScriptList/" + scriptName);
         List<string> scriptList = new List<string>();
 
-        foreach (XmlElement receiptElement in receiptListElement.ChildNodes)
+        foreach (XmlElement scriptElement in scriptListElement)
         {
-            string temp = "";
-            temp = receiptElement.GetAttribute("Script");
+            string temp = scriptElement.GetAttribute("Script");
             scriptList.Add(temp);
         }
         return scriptList;
