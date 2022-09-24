@@ -23,7 +23,7 @@ public class SceneCtrl : MonoBehaviour
     }
     public void ToLevel2() {
         //Level1IsOver = 1;
-        SceneManager.LoadScene("Bar");
+        SceneManager.LoadScene("bar");
     }
     
 

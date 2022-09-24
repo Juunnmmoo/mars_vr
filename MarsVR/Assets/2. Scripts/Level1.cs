@@ -12,30 +12,27 @@ public class Level1 : MonoBehaviour
     private AnchorCtrl[] anchorList = new AnchorCtrl[2];
     private List<string> scriptList = new List<string>();
 
+    [SerializeField]
     private int tutorialNum = 0;
-    private bool check;
-
-    [Range(1.5f, 3.0f)]
-    public float nextTime = 2.0f;
 
     public GameObject anchorPrefab;
+    private GameObject nextBtn;
 
     private Vector3 offset = Vector3.up * 0.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneCtrl = GameObject.Find("SceneCtrl").GetComponent<SceneCtrl>(); 
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>(); 
         cup = GameObject.Find("Cup");
         cupHolder = GameObject.Find("CupHolder");
-
         scriptList = FileIO.ReadScript("Level1");
-        foreach (string script in scriptList)
-        {
-            Debug.LogError(script);
-        }
+        nextBtn = transform.Find("NextBtn").gameObject;       
 
         if (PlayerPrefs.GetInt("oncePlayed")==1) {
-            tutorialNum = 6;
+            tutorialNum = 7;
+            PlayerPrefs.SetInt("oncePlayed", 0);
         }
     }
 
@@ -43,73 +40,43 @@ public class Level1 : MonoBehaviour
     {
         switch (tutorialNum)
         {
-            case 0:
-                //NextScript();
-                break;
             case 1:
                 // 스크롤 에 앵커 띄우기
                 //if (anchorList[0] == null)
                 //{
-                //    anchorList[0] = CreateAnchor(cup.transform.position + offset);
+                //    anchorList[0] = CreateAnchor(스크롤.transform.position + offset);
                 //}
-                //NextScript();
-                break;
-            case 2:
-                //앵커[0] 삭제
-                //anchorList[0].EndAnchor();
-                //anchorList[0] = null;
-                //NextScript();
                 break;
             case 3:
-                //앵커[0] 생성 (평가 오브젝트)
-                if (anchorList[0] == null)
-                {
-                    anchorList[0] = CreateAnchor(cupHolder.transform.position + offset);
-                }
-                //평가 오브젝트 위에 올라가면 nextScript()실행
+                nextBtn.SetActive(false);     
                 if (cupHolder.GetComponent<EvaluateManager>().isEnd) {
-                    NextScript();
-                    //앵거[0] 삭제
-                    anchorList[0].EndAnchor();
-                    anchorList[0] = null;
+                    nextBtn.SetActive(true);                   
+                    tutorialNum++;
                 }
-
-                break;
-            case 4:
-                //NextScript();
                 break;
             case 5:
                 PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
                 PlayerPrefs.SetInt("oncePlayed", 1);
+                break;
+            case 6:
                 sceneCtrl.ToLevel2();
                 break;
-            //2단계 시작
-            case 6:
-            case 7:
-                //NextScript();
-                break;
-            case 8:
-                //앵커[0] 생성 (평가 오브젝트)
-                if (anchorList[0] == null)
-                {
-                    anchorList[0] = CreateAnchor(cupHolder.transform.position + offset);
-                }
-                //평가 오브젝트 위에 올라가면 nextScript()실행
+            //1단계 종료 후 2단계 시작
+            case 9:
+                nextBtn.SetActive(false);               
                 if (cupHolder.GetComponent<EvaluateManager>().isEnd)
                 {
-                    NextScript();
-                    //앵거[0] 삭제
-                    anchorList[0].EndAnchor();
-                    anchorList[0] = null;
+                    nextBtn.SetActive(true);                    
+                    tutorialNum++;
                 }
                 break;
-            case 9:
+            case 10:
                 PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
                 break;
-            case 10:
+            case 11:
                 gameObject.GetComponentInChildren<Text>().text = "당신의 점수는 " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " 입니다";
                 break;
-            case 11:
+            case 12:
                 gameObject.GetComponentInChildren<Text>().text = "게임이 종료되었습니다,";
                 break;
         }
@@ -124,25 +91,9 @@ public class Level1 : MonoBehaviour
         return temp;
     }
 
-    public void NextScript2() {
+    public void NextScript() {
         tutorialNum++;
     }
-    private void NextScript()
-    {
-        if (check == true)
-            return;
-        check = true;
-        StartCoroutine(NextScriptCor(nextTime));
-    }
-    private IEnumerator NextScriptCor(float time)
-    {
-        float elaspedTime = 0;      // 경과 시간
-        while (elaspedTime < time)
-        {
-            elaspedTime += Time.deltaTime;
-            yield return null;
-        }
-        check = false;
-        tutorialNum++;
-    }
+    
+   
 }

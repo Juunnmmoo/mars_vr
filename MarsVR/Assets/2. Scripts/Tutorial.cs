@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
     private AnchorCtrl[] anchorList = new AnchorCtrl[2];
     public List<string> scriptList = new List<string>();
 
+    [SerializeField]
     private int tutorialNum = 0;
 
     private bool check;
