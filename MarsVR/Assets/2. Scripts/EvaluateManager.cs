@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EvaluateManager : MonoBehaviour
 {
+    private PlayerCtrl player;
     [Header("종료 UI 관련")]
     public GameObject endUI;
     public Text endUIText;
@@ -83,6 +84,7 @@ public class EvaluateManager : MonoBehaviour
         {
             endUIText.text += cup.receipt[i].ToString() + " : " + Mathf.Round(cup.amounts[i]).ToString() + "\n";
         }
+        endUIText.text += "Score : " + Mathf.Round(player.score).ToString();
     }
 
     IEnumerator FadeUI(float fadeTime)

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Level1 : MonoBehaviour
 {
+    private PlayerCtrl player;
+    private SceneCtrl sceneCtrl;
     private GameObject cup;
     private GameObject cupHolder;
     private AnchorCtrl[] anchorList = new AnchorCtrl[2];
@@ -31,6 +33,10 @@ public class Level1 : MonoBehaviour
         {
             Debug.LogError(script);
         }
+
+        if (PlayerPrefs.GetInt("oncePlayed")==1) {
+            tutorialNum = 6;
+        }
     }
 
     void Update()
@@ -38,40 +44,74 @@ public class Level1 : MonoBehaviour
         switch (tutorialNum)
         {
             case 0:
-                NextScript();
+                //NextScript();
                 break;
             case 1:
-                //앵커[0] 생성 (스크롤버튼)
-                NextScript();
+                // 스크롤 에 앵커 띄우기
+                //if (anchorList[0] == null)
+                //{
+                //    anchorList[0] = CreateAnchor(cup.transform.position + offset);
+                //}
+                //NextScript();
                 break;
             case 2:
                 //앵커[0] 삭제
-                NextScript();
+                //anchorList[0].EndAnchor();
+                //anchorList[0] = null;
+                //NextScript();
                 break;
             case 3:
                 //앵커[0] 생성 (평가 오브젝트)
+                if (anchorList[0] == null)
+                {
+                    anchorList[0] = CreateAnchor(cupHolder.transform.position + offset);
+                }
                 //평가 오브젝트 위에 올라가면 nextScript()실행
-                NextScript();
+                if (cupHolder.GetComponent<EvaluateManager>().isEnd) {
+                    NextScript();
+                    //앵거[0] 삭제
+                    anchorList[0].EndAnchor();
+                    anchorList[0] = null;
+                }
+
                 break;
             case 4:
-                //앵거[0] 삭제
-                NextScript();
+                //NextScript();
                 break;
             case 5:
+                PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
+                PlayerPrefs.SetInt("oncePlayed", 1);
+                sceneCtrl.ToLevel2();
+                break;
+            //2단계 시작
             case 6:
             case 7:
-                NextScript();
+                //NextScript();
                 break;
             case 8:
                 //앵커[0] 생성 (평가 오브젝트)
+                if (anchorList[0] == null)
+                {
+                    anchorList[0] = CreateAnchor(cupHolder.transform.position + offset);
+                }
                 //평가 오브젝트 위에 올라가면 nextScript()실행
-                NextScript();
+                if (cupHolder.GetComponent<EvaluateManager>().isEnd)
+                {
+                    NextScript();
+                    //앵거[0] 삭제
+                    anchorList[0].EndAnchor();
+                    anchorList[0] = null;
+                }
                 break;
             case 9:
-                //앵거[0] 삭제
-                NextScript();
+                PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
                 break;
-
+            case 10:
+                gameObject.GetComponentInChildren<Text>().text = "당신의 점수는 " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " 입니다";
+                break;
+            case 11:
+                gameObject.GetComponentInChildren<Text>().text = "게임이 종료되었습니다,";
+                break;
         }
         if (tutorialNum < scriptList.Count)
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
@@ -84,6 +124,9 @@ public class Level1 : MonoBehaviour
         return temp;
     }
 
+    public void NextScript2() {
+        tutorialNum++;
+    }
     private void NextScript()
     {
         if (check == true)
