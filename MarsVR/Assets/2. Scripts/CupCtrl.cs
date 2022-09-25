@@ -33,8 +33,8 @@ public class CupCtrl : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        correct = FileIO.ReadReceipt("Tutorial");
+    {      
+        correct = FileIO.ReadReceipt("Tutorial"); 
         cupholder = GameObject.Find("CupHolder").GetComponent<EvaluateManager>();
         ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
@@ -44,7 +44,7 @@ public class CupCtrl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         AmountUI();
         InitialCupPos();
     }
@@ -89,6 +89,11 @@ public class CupCtrl : MonoBehaviour
 
     public void Evaluation()
     {
+        if (PlayerPrefs.GetInt("LevelReceipt") == 1)
+            correct = FileIO.ReadReceipt("PeachTree");
+        else if(PlayerPrefs.GetInt("LevelReceipt")==2)
+            correct = FileIO.ReadReceipt("PinaColada");
+
         //    if (receipt[receipt.Count - 2].Equals(bottleType) && receipt.Count > 1)
         //        idx--;
 

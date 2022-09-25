@@ -48,6 +48,7 @@ public class Level1 : MonoBehaviour
                 //}
                 break;
             case 3:
+                PlayerPrefs.SetInt("LevelReceipt", 1);
                 nextBtn.SetActive(false);     
                 if (cupHolder.GetComponent<EvaluateManager>().isEnd) {
                     nextBtn.SetActive(true);                   
@@ -63,6 +64,7 @@ public class Level1 : MonoBehaviour
                 break;
             //1단계 종료 후 2단계 시작
             case 9:
+                PlayerPrefs.SetInt("LevelReceipt", 2);
                 nextBtn.SetActive(false);               
                 if (cupHolder.GetComponent<EvaluateManager>().isEnd)
                 {
@@ -74,10 +76,12 @@ public class Level1 : MonoBehaviour
                 PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
                 break;
             case 11:
+                
                 gameObject.GetComponentInChildren<Text>().text = "당신의 점수는 " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " 입니다";
                 break;
             case 12:
-                gameObject.GetComponentInChildren<Text>().text = "게임이 종료되었습니다,";
+                PlayerPrefs.SetInt("LevelReceipt", 2);
+                gameObject.GetComponentInChildren<Text>().text = "게임이 종료되었습니다,";               
                 break;
         }
         if (tutorialNum < scriptList.Count)
