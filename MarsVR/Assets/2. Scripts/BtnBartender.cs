@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class BtnBartender : MonoBehaviour
 {
     public void SceneChange() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tutorial");
     }
 }
