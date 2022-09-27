@@ -80,7 +80,7 @@ public class Level1 : MonoBehaviour
                 gameObject.GetComponentInChildren<Text>().text = "당신의 점수는 " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " 입니다";
                 break;
             case 12:
-                PlayerPrefs.SetInt("LevelReceipt", 2);
+                PlayerPrefs.SetInt("LevelReceipt", 0);
                 gameObject.GetComponentInChildren<Text>().text = "게임이 종료되었습니다,";               
                 break;
         }

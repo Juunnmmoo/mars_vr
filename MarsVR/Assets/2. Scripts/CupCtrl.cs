@@ -40,6 +40,7 @@ public class CupCtrl : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originRot = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        
     }
 
     // Update is called once per frame
@@ -264,4 +265,16 @@ public class CupCtrl : MonoBehaviour
             isMoved = false;
         }
     }
+
+    /*public float liquidAmount (int amount)
+    {
+        float resultAmount = 0;
+        resultAmount = (float)(100 * ((float)amount / (100 + (float)amount)) * 0.01 * 0.1);
+        return resultAmount;
+    }
+
+    public void fillAmount()
+    {
+        
+    }*/
 }
