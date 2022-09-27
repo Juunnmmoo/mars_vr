@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using OVR;
 using OculusSampleFramework;
+using UnityEngine.SceneManagement;
 
 public class PlayerCtrl : MonoBehaviour
 {
+
     public float score;
     //왼손, 오른손 그래버
     public OVRGrabber lGrabber;
@@ -26,12 +28,30 @@ public class PlayerCtrl : MonoBehaviour
     private bool isRotate = false;
     private Vector3 InitialPos;
     private OVRGrabber nowControl;
-
+    
     // Start is called before the first frame update
+
     void Start()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "GameTitle")
+        {
+            InitialPos = new Vector3(297, 550, -2945);
+        }
+        else if (scene.name == "GameSelect")
+        {
+            InitialPos = new Vector3(353, 166, -229);
+        }
+        else if (scene.name == "Tutorial") {
+            InitialPos = new Vector3(0, 1.5f, -6);
+        }
+        else if (scene.name == "bar")
+        {
+            InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
+        }
+
         score = 100;
-        InitialPos = new Vector3(0, 1.5f, -6); 
+         
         nowControl = rGrabber;
         transform.position = InitialPos;
         lGrabber.transform.position = InitialPos;
