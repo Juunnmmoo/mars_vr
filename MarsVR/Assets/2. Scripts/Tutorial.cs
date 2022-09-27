@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     private GameObject whiteRum;
     private GameObject lemon;
     private GameObject cupHolder;
+    private SceneCtrl sceneCtrl;
     private AnchorCtrl[] anchorList = new AnchorCtrl[2];
     public List<string> scriptList = new List<string>();
 
@@ -36,6 +37,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneCtrl = GameObject.Find("SceneCtrl").GetComponent<SceneCtrl>();
         cup = GameObject.Find("Cup");
         tequila = GameObject.Find("Tequila");
         whiteRum = GameObject.Find("WhiteRum");
@@ -123,9 +125,13 @@ public class Tutorial : MonoBehaviour
                     tutorialNum++;
                 }
                 break;
+            case 17:
+                sceneCtrl.ToBar();
+                break;
             default:
                 break;
         }
+
         if (tutorialNum < scriptList.Count)
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
     }

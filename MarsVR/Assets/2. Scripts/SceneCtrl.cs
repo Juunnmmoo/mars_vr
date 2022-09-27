@@ -21,6 +21,11 @@ public class SceneCtrl : MonoBehaviour
     public void NextTo(string scene) {
         SceneManager.LoadScene(scene);
     }
+
+    public void ToBar() {
+        SceneManager.LoadScene("bar");
+    }
+
     public void ToLevel2() {
         //Level1IsOver = 1;
         SceneManager.LoadScene("bar");
