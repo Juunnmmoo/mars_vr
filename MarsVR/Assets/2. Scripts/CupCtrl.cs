@@ -280,6 +280,7 @@ public class CupCtrl : MonoBehaviour
         glassOfWaterObject = transform.Find("CupLiquid").gameObject;
         glassOfWaterMaterial = glassOfWaterObject.GetComponent<MeshRenderer>().materials[0];
         glassOfWater = glassOfWaterMaterial.GetFloat("_FillAmount");
+        allAmount = 0;
     }
 
     private void GlassOfWaterPlus(float plusAmount)

@@ -47,7 +47,8 @@ public class PlayerCtrl : MonoBehaviour
         }
         else if (scene.name == "bar")
         {
-            InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
+            // InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
+            InitialPos = new Vector3(16.0f, 2.2f, -46.8f);
         }
         else if (scene.name == "Score")
         {

@@ -126,7 +126,7 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 17:
-                //sceneCtrl.ToBar();
+                sceneCtrl.ToBar();
                 break;
             default:
                 break;
