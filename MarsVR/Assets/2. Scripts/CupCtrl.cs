@@ -30,6 +30,12 @@ public class CupCtrl : MonoBehaviour
     private Vector3 originPos;
     private Vector3 originRot;
 
+    private GameObject glassOfWaterObject;
+    private Material glassOfWaterMaterial;
+    [Header("컵 안의 물")]
+    // 컵 안의 물 양
+    public float allAmount;
+    public float glassOfWater;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +46,7 @@ public class CupCtrl : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originRot = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-        
+        GlassOfWaterFuntion();
     }
 
     // Update is called once per frame
@@ -48,6 +54,7 @@ public class CupCtrl : MonoBehaviour
     {   
         AmountUI();
         InitialCupPos();
+        GlassOfWaterPlus(allAmount);
     }
 
     //리스트 요소 원자값으로 만들어줌
@@ -241,6 +248,7 @@ public class CupCtrl : MonoBehaviour
                 amounts.Add(inputAmount);
             }
         }
+        allAmount = amounts.Sum();
     }
 
     IEnumerator InitialCupPosCor()
@@ -266,15 +274,20 @@ public class CupCtrl : MonoBehaviour
         }
     }
 
-    /*public float liquidAmount (int amount)
+    // glassOfWater 초기화 함수
+    private void GlassOfWaterFuntion()
     {
-        float resultAmount = 0;
-        resultAmount = (float)(100 * ((float)amount / (100 + (float)amount)) * 0.01 * 0.1);
-        return resultAmount;
+        glassOfWaterObject = transform.Find("CupLiquid").gameObject;
+        glassOfWaterMaterial = glassOfWaterObject.GetComponent<MeshRenderer>().materials[0];
+        glassOfWater = glassOfWaterMaterial.GetFloat("_FillAmount");
     }
 
-    public void fillAmount()
+    private void GlassOfWaterPlus(float plusAmount)
     {
-        
-    }*/
+        float minus = (100 * (plusAmount / (100 + plusAmount))) / 1000;
+        glassOfWater = 0.61f-minus;
+        glassOfWaterMaterial.SetFloat("_FillAmount", glassOfWater);
+
+    }
+
 }
