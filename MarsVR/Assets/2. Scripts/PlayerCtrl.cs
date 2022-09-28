@@ -9,15 +9,15 @@ public class PlayerCtrl : MonoBehaviour
 {
 
     public float score;
-    //¿Þ¼Õ, ¿À¸¥¼Õ ±×·¡¹ö
+    //ï¿½Þ¼ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½
     public OVRGrabber lGrabber;
     public OVRGrabber rGrabber;
 
-    //°¢ ¼ÕÀÇ Áý°í ÀÖ´Â ¿ÀºêÁ§Æ®
+    //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public GameObject lGrabbedObject;
     public GameObject rGrabbedObject;
 
-    [Header("Å°º¸µå µð¹ö±ë °ü·Ã")]
+    [Header("Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public bool isDebug;
     [Range(0.1f, 0.3f)]
     public float keyboardMoveSpeed;
@@ -49,6 +49,10 @@ public class PlayerCtrl : MonoBehaviour
         {
             InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
         }
+        else if (scene.name == "Score")
+        {
+            InitialPos = new Vector3(406, 171, -517);
+        }
 
         score = 100;
          
@@ -70,7 +74,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
-            //¿ÞÂÊ ÁÂÅ¬¸¯
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬ï¿½ï¿½
             if(lGrabber.GetGrabbedObj() != null)
             {
                 lGrabbedObject = lGrabber.GetGrabbedObj();
@@ -86,7 +90,7 @@ public class PlayerCtrl : MonoBehaviour
 
         if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
-            //¿À¸¥ÂÊ ÁÂÅ¬¸¯
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¬ï¿½ï¿½
             if (rGrabber.GetGrabbedObj() != null)
             {
                 rGrabbedObject = rGrabber.GetGrabbedObj();

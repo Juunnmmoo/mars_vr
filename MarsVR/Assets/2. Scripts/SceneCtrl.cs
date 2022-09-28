@@ -31,5 +31,8 @@ public class SceneCtrl : MonoBehaviour
         SceneManager.LoadScene("bar");
     }
     
+    public void ToScore() {
+        SceneManager.LoadScene("Score");
+    }
 
 }

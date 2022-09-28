@@ -41,10 +41,10 @@ public class Level1 : MonoBehaviour
         switch (tutorialNum)
         {
             case 1:
-                // ½ºÅ©·Ñ ¿¡ ¾ŞÄ¿ ¶ç¿ì±â
+                // ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¿ ï¿½ï¿½ï¿½ï¿½
                 //if (anchorList[0] == null)
                 //{
-                //    anchorList[0] = CreateAnchor(½ºÅ©·Ñ.transform.position + offset);
+                //    anchorList[0] = CreateAnchor(ï¿½ï¿½Å©ï¿½ï¿½.transform.position + offset);
                 //}
                 break;
             case 3:
@@ -62,7 +62,7 @@ public class Level1 : MonoBehaviour
             case 6:
                 sceneCtrl.ToLevel2();
                 break;
-            //1´Ü°è Á¾·á ÈÄ 2´Ü°è ½ÃÀÛ
+            //1ï¿½Ü°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 2ï¿½Ü°ï¿½ ï¿½ï¿½ï¿½ï¿½
             case 9:
                 PlayerPrefs.SetInt("LevelReceipt", 2);
                 nextBtn.SetActive(false);               
@@ -77,11 +77,15 @@ public class Level1 : MonoBehaviour
                 break;
             case 11:
                 
-                gameObject.GetComponentInChildren<Text>().text = "´ç½ÅÀÇ Á¡¼ö´Â " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " ÀÔ´Ï´Ù";
+                gameObject.GetComponentInChildren<Text>().text = "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " ï¿½Ô´Ï´ï¿½";
                 break;
             case 12:
                 PlayerPrefs.SetInt("LevelReceipt", 0);
-                gameObject.GetComponentInChildren<Text>().text = "°ÔÀÓÀÌ Á¾·áµÇ¾ú½À´Ï´Ù,";               
+                gameObject.GetComponentInChildren<Text>().text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½,";               
+                break;
+            case 13:
+                gameObject.GetComponentInChildren<Text>().text = "Detail score check please";  // ë§¥ë¶ì´ë¼ í•œê¸€ê¹¨ì§ˆê¹Œë´ ì˜ì–´ë¡œ ì ì—ˆìŠµë‹ˆë‹¤,,
+                sceneCtrl.ToScore();
                 break;
         }
         if (tutorialNum < scriptList.Count)
