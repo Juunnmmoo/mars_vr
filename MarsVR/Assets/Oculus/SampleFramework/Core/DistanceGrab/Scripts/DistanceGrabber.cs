@@ -312,14 +312,16 @@ namespace OculusSampleFramework
             Ray ray = new Ray(m_gripTransform.position, m_gripTransform.forward);
             RaycastHit hitInfo;
 
-			// If no objects in grab volume, raycast.
-			// Potential optimization: 
-			// In DistanceGrabbable.RefreshCrosshairs, we could move the object between collision layers.
-			// If it's in range, it would move into the layer DistanceGrabber.m_grabObjectsInLayer,
-			// and if out of range, into another layer so it's ignored by DistanceGrabber's SphereCast.
-			// However, we're limiting the SphereCast by m_maxGrabDistance, so the optimization doesn't seem
-			// essential.
-			int layer = (m_grabObjectsInLayer == -1) ? ~0 : 1 << m_grabObjectsInLayer;
+
+
+            // If no objects in grab volume, raycast.
+            // Potential optimization: 
+            // In DistanceGrabbable.RefreshCrosshairs, we could move the object between collision layers.
+            // If it's in range, it would move into the layer DistanceGrabber.m_grabObjectsInLayer,
+            // and if out of range, into another layer so it's ignored by DistanceGrabber's SphereCast.
+            // However, we're limiting the SphereCast by m_maxGrabDistance, so the optimization doesn't seem
+            // essential.
+            int layer = (m_grabObjectsInLayer == -1) ? ~0 : 1 << m_grabObjectsInLayer;
             if (Physics.SphereCast(ray, m_spherecastRadius, out hitInfo, m_maxGrabDistance, layer))
             {
                 DistanceGrabbable grabbable = null;
@@ -349,6 +351,10 @@ namespace OculusSampleFramework
                         if(hitInfo.collider != null)
                         {
                             obstruction = obstructionHitInfo.collider.gameObject.GetComponentInParent<DistanceGrabbable>();
+                            if(obstruction.name == "SignBar_01")
+                            {
+                                Debug.LogError("!");
+                            }
                         }
                         if (obstruction != grabbable && obstructionHitInfo.distance < hitInfo.distance)
                         {

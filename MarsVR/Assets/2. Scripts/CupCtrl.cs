@@ -102,31 +102,6 @@ public class CupCtrl : MonoBehaviour
         else if(PlayerPrefs.GetInt("LevelReceipt")==2)
             correct = FileIO.ReadReceipt("PinaColada");
 
-        //    if (receipt[receipt.Count - 2].Equals(bottleType) && receipt.Count > 1)
-        //        idx--;
-
-        //    if (receipt[receipt.Count - 1].ToString().Equals(correct[idx].receipt)) 
-        //    {
-        //        if (float.Parse(correct[idx].amount) * 1.1f < amounts[amounts.Count - 1])
-        //        {
-        //            Debug.LogWarning("높음!" + ((float.Parse(correct[idx].amount) * 1.1f) - amounts[amounts.Count - 1]).ToString());
-        //            player.score += (float.Parse(correct[idx].amount) * 1.1f) - amounts[amounts.Count - 1];
-        //        }
-        //        if ((idx > 0)
-        //            && (amounts.Count > 1)
-        //            && (float.Parse(correct[idx - 1].amount) * 0.9f > amounts[amounts.Count - 2]))
-        //        {
-        //            Debug.LogWarning("낮음!" + ((float.Parse(correct[idx - 1].amount) * 0.9f) - amounts[amounts.Count - 2]).ToString());
-        //            player.score += (float.Parse(correct[idx - 1].amount) * 0.9f) - amounts[amounts.Count - 2];
-        //        }
-        //        if (amounts[amounts.Count - 1] >= (float.Parse(correct[idx].amount)))
-        //            idx++;
-        //    }
-        //    else
-        //    {
-        //        player.score -= 5;
-        //        Debug.LogWarning("다름! : " + receipt[receipt.Count - 1].ToString() + ", " + correct[idx].receipt);
-        //    }
         int idx = 0;
         IntergrateReceipt();
         List<BottleType> answerReceipt = new List<BottleType>();
@@ -285,10 +260,8 @@ public class CupCtrl : MonoBehaviour
 
     private void GlassOfWaterPlus(float plusAmount)
     {
-        float minus = (100 * (plusAmount / (100 + plusAmount))) / 1000;
+        float minus = (100 * (plusAmount / (100 + plusAmount))) * 0.001f;
         glassOfWater = 0.61f-minus;
         glassOfWaterMaterial.SetFloat("_FillAmount", glassOfWater);
-
     }
-
 }

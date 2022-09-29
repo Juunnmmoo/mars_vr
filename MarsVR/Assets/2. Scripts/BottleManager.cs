@@ -6,7 +6,7 @@ public class BottleManager : MonoBehaviour
 {
     //초기화 시간
     [Range(1f, 5f)]
-    public float returnTime;
+    public float returnTime = 3;
     //Bottle 게임오브젝트 배열
     private GameObject[] bottles;
     //Bottle의 원위치

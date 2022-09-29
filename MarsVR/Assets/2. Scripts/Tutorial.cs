@@ -158,14 +158,16 @@ public class Tutorial : MonoBehaviour
 
     private bool CheckAmount(BottleType bottleType, float amount)
     {
+        float result = 0;
         for (int i = 0; i < cup.GetComponent<CupCtrl>().receipt.Count; i++)
         {
             if (cup.GetComponent<CupCtrl>().receipt[i].Equals(bottleType))
             {
-                return cup.GetComponent<CupCtrl>().amounts[i] > amount;
+                result += cup.GetComponent<CupCtrl>().amounts[i];
+                
             }
         }
-        return false;
+        return result > amount;
     }
 
     //private IEnumerator NextScriptCor(float time)

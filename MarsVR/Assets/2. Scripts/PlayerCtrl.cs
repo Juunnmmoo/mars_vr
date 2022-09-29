@@ -70,9 +70,27 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ControllerAction();
-        if(isDebug)
-            KeyboardAction();
+        ClickReceipt(rGrabber);
+        ClickReceipt(lGrabber);
+        //ControllerAction();
+/*        if(isDebug)
+            KeyboardAction();*/
+    }
+
+    private void ClickReceipt(OVRGrabber hand)
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(hand.transform.position, hand.transform.forward);
+        Debug.Log(hand.GetController().ToString());
+        if(Physics.Raycast(ray, out hit, 10f, 1 << 6))
+        {
+            if((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                && hit.transform.gameObject.CompareTag("Receipt"))
+            {
+                //받아올 때 이부분 수정
+                hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Tutorial");
+            }
+        }
     }
 
     private void ControllerAction()

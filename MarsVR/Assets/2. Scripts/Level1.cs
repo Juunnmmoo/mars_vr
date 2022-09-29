@@ -30,9 +30,9 @@ public class Level1 : MonoBehaviour
         scriptList = FileIO.ReadScript("Level1");
         nextBtn = transform.Find("NextBtn").gameObject;       
 
-        if (PlayerPrefs.GetInt("oncePlayed")==1) {
+        if (PlayerPrefs.GetInt("OncePlayed")==1) {
             tutorialNum = 7;
-            PlayerPrefs.SetInt("oncePlayed", 0);
+            PlayerPrefs.SetInt("OncePlayed", 0);
         }
     }
 
@@ -57,7 +57,7 @@ public class Level1 : MonoBehaviour
                 break;
             case 5:
                 PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
-                PlayerPrefs.SetInt("oncePlayed", 1);
+                PlayerPrefs.SetInt("OncePlayed", 1);
                 break;
             case 6:
                 sceneCtrl.ToLevel2();
@@ -76,7 +76,6 @@ public class Level1 : MonoBehaviour
                 PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
                 break;
             case 11:
-                
                 gameObject.GetComponentInChildren<Text>().text = "����� ������ " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " �Դϴ�";
                 break;
             case 12:

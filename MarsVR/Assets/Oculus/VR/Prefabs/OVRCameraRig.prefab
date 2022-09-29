@@ -107,7 +107,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 459718}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.139, y: 85.845, z: -2.183}
 --- !u!81 &8100000
 AudioListener:
   m_ObjectHideFlags: 0
@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 114473266101150724}
   - component: {fileID: 1385651477}
+  - component: {fileID: 1430522584}
   m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: Player
@@ -309,6 +310,18 @@ MonoBehaviour:
   keyboardMoveSpeed: 0.3
   isHolding: 0
   keyboardRotationSpeed: 0.5
+--- !u!114 &1430522584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0
