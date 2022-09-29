@@ -50,9 +50,13 @@ public class PlayerCtrl : MonoBehaviour
             // InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
             InitialPos = new Vector3(16.0f, 2.2f, -46.8f);
         }
+         else if (scene.name == "baker")
+        {
+            InitialPos = new Vector3(-0.057f, 1.38f, -1.74f);
+        }
         else if (scene.name == "Score")
         {
-            InitialPos = new Vector3(406, 171, -517);
+            InitialPos = new Vector3(413, 170, -935);
         }
 
         score = 100;
