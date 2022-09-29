@@ -99,7 +99,7 @@ public class CupCtrl : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("LevelReceipt") == 1)
             correct = FileIO.ReadReceipt("PeachTree");
-        else if(PlayerPrefs.GetInt("LevelReceipt")==2)
+        else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
             correct = FileIO.ReadReceipt("PinaColada");
 
         int idx = 0;
@@ -159,14 +159,17 @@ public class CupCtrl : MonoBehaviour
             if (answerReceipt.Equals(BottleType.NONE))
                 continue;
 
+            //초과
             if (float.Parse(correct[idx].amount) * 1.1f < answerAmounts[i])
             {
                 player.score -= answerAmounts[i] - float.Parse(correct[idx].amount) * 1.1f;
             }
+            //미만
             else if(float.Parse(correct[idx].amount) * 0.9f > answerAmounts[i])
             {
                 player.score -= float.Parse(correct[idx].amount) - answerAmounts[i];
             }
+            //오버한 만큼 점수를 까줌
             idx++;
         }
 

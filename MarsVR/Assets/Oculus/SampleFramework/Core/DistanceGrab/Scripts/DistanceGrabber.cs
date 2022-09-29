@@ -351,10 +351,6 @@ namespace OculusSampleFramework
                         if(hitInfo.collider != null)
                         {
                             obstruction = obstructionHitInfo.collider.gameObject.GetComponentInParent<DistanceGrabbable>();
-                            if(obstruction.name == "SignBar_01")
-                            {
-                                Debug.LogError("!");
-                            }
                         }
                         if (obstruction != grabbable && obstructionHitInfo.distance < hitInfo.distance)
                         {

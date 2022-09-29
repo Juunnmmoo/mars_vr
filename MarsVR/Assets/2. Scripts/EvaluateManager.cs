@@ -20,17 +20,17 @@ public class EvaluateManager : MonoBehaviour
     public bool isEnd = false;
     private float elapsedTime = 0f;
     private CupCtrl cup;
+    [Header("종료시간 관련")]
+    public string endTimeStr;
+    private float playTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
         endUI.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Loading();
+        StartCoroutine(LoadingCor());
+        StartCoroutine(PlayTimeCor());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,7 +63,7 @@ public class EvaluateManager : MonoBehaviour
             elapsedTime -= Time.deltaTime;
         }
         loadingBar.fillAmount = elapsedTime / enableTime;
-        if(!isEnd && (elapsedTime / enableTime >= 1f))
+        if(!isEnd && (elapsedTime / enableTime >= 1f) && !isEnd)
         {
             isEnd = true;
             ShowEndUI();
@@ -101,5 +101,29 @@ public class EvaluateManager : MonoBehaviour
             endUIText.color = textColor;
             yield return null;
         }
+    }
+
+    IEnumerator LoadingCor()
+    {
+        while (!isEnd)
+        {
+            Loading();
+            yield return null;
+        }
+    }
+
+    IEnumerator PlayTimeCor()
+    {
+        while (!isEnd)
+        {
+            playTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playTime = Mathf.Round(playTime);
+        int min = (int)(playTime / 60);
+        float sec = Mathf.Round(playTime % min * 60);
+        endTimeStr = min.ToString() + "분 " + sec.ToString() + "초";
+        Debug.LogError(endTimeStr);
     }
 }

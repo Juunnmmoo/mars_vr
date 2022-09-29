@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 1210758860}
   - component: {fileID: 1210758862}
   - component: {fileID: 1210758861}
+  - component: {fileID: 6977221826279907324}
   m_Layer: 6
   m_Name: TequilaLiquid
   m_TagString: Untagged
@@ -184,6 +185,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6977221826279907324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210758859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46dbe5aa135162647b2740c4a000e480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxWobble: 0.03
+  WobbleSpeed: 5
+  RecoveryRate: 1
 --- !u!1 &2113295928
 GameObject:
   m_ObjectHideFlags: 0
