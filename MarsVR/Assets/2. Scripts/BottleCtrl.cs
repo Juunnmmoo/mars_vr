@@ -31,6 +31,7 @@ public enum BottleType
     PINEAPPLE_JUICE,
     COCONUT_MILK,
     COKE,
+    FLOUR,
 }
 
 [RequireComponent(typeof(OVRGrabbable), typeof(Rigidbody))]
@@ -54,6 +55,7 @@ public class BottleCtrl : MonoBehaviour
     private RaycastHit hit;
     private Liquid liquid = null;
     public GameObject liquidPrefab;
+    public GameObject flourPrefab;
     private bool isPouring = false;
 
     [Header("UI Associated...")]
@@ -69,12 +71,13 @@ public class BottleCtrl : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         gameObject.GetComponentInChildren<Text>().text = name;
         nameUI.SetActive(false);
+        if (flourPrefab != null)
+            flourPrefab.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         PouringLiquid();
 
         nameUI.SetActive(gameObject.GetComponent<OVRGrabbable>().isGrabbed);
@@ -86,22 +89,36 @@ public class BottleCtrl : MonoBehaviour
             if (isPouring)
             {
                 //�� �ױ�
-                StartPour();
-                //�ε巴�� �� �Ҹ� ����
-                nowCor = SoundManager.instance.PlayAudioSmooth(audioSource, SoundManager.instance.waterSound2, 0.5f, 1f, true);
+                if(liquidPrefab != null)
+                {
+                    StartPour();
+                    //�ε巴�� �� �Ҹ� ����
+                    nowCor = SoundManager.instance.PlayAudioSmooth(audioSource, SoundManager.instance.waterSound2, 0.5f, 1f, true);
+                }
+                else
+                {
+                    flourPrefab.SetActive(true);
+                }
             }
             //�������� �ʾ��� ��
             else
             {
                 //�� �ױ� �ߴ�
-                EndPour();
-                //�ε巴�� �� �Ҹ� ���� (���� PlayAudioSmooth �ڷ�ƾ�� ���ư��ٸ� �ش� �ڷ�ƾ�� ������Ű�� �ε巴�� ����������)
-                if(nowCor != null)
+                if(liquidPrefab != null)
                 {
-                    SoundManager.instance.GetComponent<SoundManager>().StopCoroutine(nowCor);
-                    nowCor = null;
+                    EndPour();
+                    //�ε巴�� �� �Ҹ� ���� (���� PlayAudioSmooth �ڷ�ƾ�� ���ư��ٸ� �ش� �ڷ�ƾ�� ������Ű�� �ε巴�� ����������)
+                    if(nowCor != null)
+                    {
+                        SoundManager.instance.GetComponent<SoundManager>().StopCoroutine(nowCor);
+                        nowCor = null;
+                    }
+                    SoundManager.instance.StopAudioSmooth(audioSource, 0.5f);
                 }
-                SoundManager.instance.StopAudioSmooth(audioSource, 0.5f);
+                else
+                {
+                    flourPrefab.SetActive(false);
+                }
 
                 //���� ���÷� ����ĳ��Ʈ�� ������ �� ���� ��
                 if (isExistCup && curCup != null)
