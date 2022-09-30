@@ -32,6 +32,10 @@ public enum BottleType
     COCONUT_MILK,
     COKE,
     FLOUR,
+    WATER,
+    EGG,
+    BUTTER,
+    YEAST
 }
 
 [RequireComponent(typeof(OVRGrabbable), typeof(Rigidbody))]
