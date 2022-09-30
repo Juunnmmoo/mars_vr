@@ -31,6 +31,6 @@ public class SceneCtrl : MonoBehaviour
         SceneManager.LoadScene("baker");
     }
     public void ToBar() {
-        SceneManager.LoadScene("bar");
+        SceneManager.LoadScene("Bar");
     }
 }
