@@ -29,19 +29,16 @@ public class Level1 : MonoBehaviour
             
             tutorialNum = 7;
         }
+        else
+        {
+            GameManager.instance.InitialList();
+        }
     }
 
     void Update()
     {
         switch (tutorialNum)
         {
-            case 1:
-                // ��ũ�� �� ��Ŀ ����
-                //if (anchorList[0] == null)
-                //{
-                //    anchorList[0] = CreateAnchor(��ũ��.transform.position + offset);
-                //}
-                break;
             case 3:
                 PlayerPrefs.SetInt("LevelReceipt", 1);
                 nextBtn.SetActive(false);     
@@ -58,7 +55,6 @@ public class Level1 : MonoBehaviour
             case 6:
                 sceneCtrl.ToBar();
                 break;
-            //1�ܰ� ���� �� 2�ܰ� ����
             case 9:
                 PlayerPrefs.SetInt("LevelReceipt", 2);
                 nextBtn.SetActive(false);               
@@ -70,17 +66,13 @@ public class Level1 : MonoBehaviour
                 break;
             case 10:
                 PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
+                PlayerPrefs.SetInt("OncePlayed", 0);
                 break;
             case 11:
-                gameObject.GetComponentInChildren<Text>().text = "����� ������ " + ((PlayerPrefs.GetFloat("Level1Score") + PlayerPrefs.GetFloat("Level2Score"))/2).ToString() + " �Դϴ�";
+                gameObject.GetComponentInChildren<Text>().text = "Detail score check please";
                 break;
             case 12:
                 PlayerPrefs.SetInt("LevelReceipt", 0);
-                PlayerPrefs.SetInt("OncePlayed", 0);
-                gameObject.GetComponentInChildren<Text>().text = "������ ����Ǿ����ϴ�,";               
-                break;
-            case 13:
-                gameObject.GetComponentInChildren<Text>().text = "Detail score check please";  // 맥북이라 한글깨질까봐 영어로 적었습니다,,
                 sceneCtrl.ToScore();
                 break;
         }

@@ -67,6 +67,13 @@ public class EvaluateManager : MonoBehaviour
         if(!isEnd && (elapsedTime / enableTime >= 1f) && !isEnd)
         {
             isEnd = true;
+            List<string> temp = new List<string>();
+            for (int i = 0; i < cup.receipt.Count; i++)
+            {
+                temp.Add(cup.receipt[i].ToString());
+            }
+            GameManager.instance.receipt.Add(temp);
+            GameManager.instance.amount.Add(cup.amounts);
             ShowEndUI();
         }
     }
