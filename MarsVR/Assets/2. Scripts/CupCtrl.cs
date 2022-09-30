@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CupCtrl : MonoBehaviour
 {
     //점수 평가
-    private PlayerCtrl player;
+    public PlayerCtrl player; // private PlayerCtrl player;
     //사용되고 있을때
     [HideInInspector]
     public OVRGrabbable ovrGrabbable;
