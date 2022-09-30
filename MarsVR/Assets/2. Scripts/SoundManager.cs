@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
             return;
         instance = this;
         DontDestroyOnLoad(instance);
+
     }
 
     //오디오클립 로드

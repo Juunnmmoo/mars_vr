@@ -3,11 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CupCtrl : MonoBehaviour
 {
     //점수 평가
     public PlayerCtrl player; // private PlayerCtrl player;
+    private Scene scene;
     //사용되고 있을때
     [HideInInspector]
     public OVRGrabbable ovrGrabbable;
@@ -39,7 +41,8 @@ public class CupCtrl : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {      
+    {
+        scene = SceneManager.GetActiveScene();
         correct = FileIO.ReadReceipt("Tutorial"); 
         cupholder = GameObject.Find("CupHolder").GetComponent<EvaluateManager>();
         ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
@@ -97,10 +100,19 @@ public class CupCtrl : MonoBehaviour
 
     public void Evaluation()
     {
-        if (PlayerPrefs.GetInt("LevelReceipt") == 1)
-            correct = FileIO.ReadReceipt("PeachTree");
-        else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
-            correct = FileIO.ReadReceipt("PinaColada");
+        switch (scene.name)
+        {
+            case "Tutorial":
+                correct = FileIO.ReadReceipt("Tutorial");
+                break;
+            case "bar":
+                if (PlayerPrefs.GetInt("LevelReceipt") == 1)
+                    correct = FileIO.ReadReceipt("PeachTree");
+                else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
+                    correct = FileIO.ReadReceipt("PinaColada");
+                break;
+        }
+
 
         int idx = 0;
         IntergrateReceipt();
@@ -138,7 +150,7 @@ public class CupCtrl : MonoBehaviour
             else if (IsExistReceipt(receipt[i], i) == -256)
             {
                 Debug.LogWarning("항목이 존재하지 않는 경우");
-                player.score -= 10;
+                player.score -= 15;
             }
             //항목이 존재하나 순서가 맞지 않는 경우
             else
@@ -172,6 +184,8 @@ public class CupCtrl : MonoBehaviour
             //오버한 만큼 점수를 까줌
             idx++;
         }
+        if (player.score < 0)
+            player.score = 0;
 
         for (int i = 0; i < answerReceipt.Count; i++)
         {

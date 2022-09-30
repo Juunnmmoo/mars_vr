@@ -21,8 +21,9 @@ public class EvaluateManager : MonoBehaviour
     private float elapsedTime = 0f;
     private CupCtrl cup;
     [Header("종료시간 관련")]
-    public string endTimeStr;
-    private float playTime;
+    public string playTimeStr;
+    private float playMin;
+    private float playSec;
 
     // Start is called before the first frame update
     void Start()
@@ -116,14 +117,15 @@ public class EvaluateManager : MonoBehaviour
     {
         while (!isEnd)
         {
-            playTime += Time.deltaTime;
+            playSec += Time.deltaTime;
+            if(playSec >= 60)
+            {
+                playMin += 1;
+                playSec = 0;
+            }
             yield return null;
         }
-
-        playTime = Mathf.Round(playTime);
-        int min = (int)(playTime / 60);
-        float sec = Mathf.Round(playTime % min * 60);
-        endTimeStr = min.ToString() + "분 " + sec.ToString() + "초";
-        Debug.LogError(endTimeStr);
+        playTimeStr = playMin.ToString() + "분 " + Mathf.Round(playSec).ToString() + "초";
+        Debug.LogError(playTimeStr);
     }
 }

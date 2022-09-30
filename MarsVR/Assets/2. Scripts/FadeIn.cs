@@ -23,11 +23,6 @@ public class FadeIn : MonoBehaviour
         fadeImage = GetComponent<Image>();  
     }  
 
-    void Start()  
-    {  
-        
-    }  
-
     void Update(){
 
         // 투명해지는 = FadeIn 애니메이션 재생.  

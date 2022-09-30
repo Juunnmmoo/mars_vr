@@ -28,12 +28,13 @@ public class PlayerCtrl : MonoBehaviour
     private bool isRotate = false;
     private Vector3 InitialPos;
     private OVRGrabber nowControl;
-    
+    private Scene scene;
+
     // Start is called before the first frame update
 
     void Start()
     {
-        Scene scene = SceneManager.GetActiveScene();
+        scene = SceneManager.GetActiveScene();
         if (scene.name == "GameTitle")
         {
             InitialPos = new Vector3(297, 550, -2945);
@@ -48,7 +49,7 @@ public class PlayerCtrl : MonoBehaviour
         else if (scene.name == "bar")
         {
             // InitialPos = new Vector3(15.5f, 2.7f, -46.8f);
-            InitialPos = new Vector3(16.0f, 2.2f, -46.8f);
+            InitialPos = new Vector3(16.0f, 2.7f, -46.8f);
         }
          else if (scene.name == "baker")
         {
@@ -88,7 +89,18 @@ public class PlayerCtrl : MonoBehaviour
                 && hit.transform.gameObject.CompareTag("Receipt"))
             {
                 //받아올 때 이부분 수정
-                hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Tutorial");
+                switch (scene.name)
+                {
+                    case "Tutorial":
+                        hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Tutorial");
+                        break;
+                    case "bar":
+                        if (PlayerPrefs.GetInt("OncePlayed") == 0)
+                            hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PeachTree");
+                        else if (PlayerPrefs.GetInt("OncePlayed") == 1)
+                            hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PinaColada");
+                        break;
+                }
             }
         }
     }

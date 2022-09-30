@@ -5,34 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class SceneCtrl : MonoBehaviour
 {
-    public static SceneCtrl Instance { get; private set; }
-
-    //public int Level1IsOver = 0;
-
-    private void Awake()
-    {
-        if (Instance != null) { return; }
-
-        DontDestroyOnLoad(this);
-        Instance = this;
-        
-    }
-
     public void NextTo(string scene) {
         SceneManager.LoadScene(scene);
     }
 
-    public void ToBar() {
-        SceneManager.LoadScene("bar");
-    }
-
-    public void ToLevel2() {
-        //Level1IsOver = 1;
-        SceneManager.LoadScene("bar");
-    }
     
     public void ToScore() {
         SceneManager.LoadScene("Score");
     }
+    public void ToGameTitle()
+    {
+        SceneManager.LoadScene("GameTitle");
+    }
 
+    public void ToGameSelect()
+    {
+        SceneManager.LoadScene("GameSelect");
+    }
+    public void ToTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+    public void ToBaker()
+    {
+        SceneManager.LoadScene("baker");
+    }
+    public void ToBar() {
+        SceneManager.LoadScene("bar");
+    }
 }

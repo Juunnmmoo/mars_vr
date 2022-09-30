@@ -7,9 +7,7 @@ public class Level1 : MonoBehaviour
 {
     private PlayerCtrl player;
     private SceneCtrl sceneCtrl;
-    private GameObject cup;
     private GameObject cupHolder;
-    private AnchorCtrl[] anchorList = new AnchorCtrl[2];
     private List<string> scriptList = new List<string>();
 
     [SerializeField]
@@ -18,21 +16,18 @@ public class Level1 : MonoBehaviour
     public GameObject anchorPrefab;
     private GameObject nextBtn;
 
-    private Vector3 offset = Vector3.up * 0.2f;
-
     // Start is called before the first frame update
     void Start()
     {
         sceneCtrl = GameObject.Find("SceneCtrl").GetComponent<SceneCtrl>(); 
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>(); 
-        cup = GameObject.Find("Cup");
         cupHolder = GameObject.Find("CupHolder");
         scriptList = FileIO.ReadScript("Level1");
-        nextBtn = transform.Find("NextBtn").gameObject;       
+        nextBtn = transform.Find("NextBtn").gameObject;
 
-        if (PlayerPrefs.GetInt("OncePlayed")==1) {
+        if (PlayerPrefs.GetInt("OncePlayed") == 1) {
+            
             tutorialNum = 7;
-            PlayerPrefs.SetInt("OncePlayed", 0);
         }
     }
 
@@ -57,10 +52,11 @@ public class Level1 : MonoBehaviour
                 break;
             case 5:
                 PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
+                Debug.LogError(Mathf.Round(player.score));
                 PlayerPrefs.SetInt("OncePlayed", 1);
                 break;
             case 6:
-                sceneCtrl.ToLevel2();
+                sceneCtrl.ToBar();
                 break;
             //1�ܰ� ���� �� 2�ܰ� ����
             case 9:
@@ -80,6 +76,7 @@ public class Level1 : MonoBehaviour
                 break;
             case 12:
                 PlayerPrefs.SetInt("LevelReceipt", 0);
+                PlayerPrefs.SetInt("OncePlayed", 0);
                 gameObject.GetComponentInChildren<Text>().text = "������ ����Ǿ����ϴ�,";               
                 break;
             case 13:
@@ -89,13 +86,6 @@ public class Level1 : MonoBehaviour
         }
         if (tutorialNum < scriptList.Count)
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
-    }
-
-    private AnchorCtrl CreateAnchor(Vector3 pos)
-    {
-        AnchorCtrl temp = Instantiate(anchorPrefab, pos, Quaternion.identity).GetComponent<AnchorCtrl>();
-        temp.originPos = pos;
-        return temp;
     }
 
     public void NextScript() {
