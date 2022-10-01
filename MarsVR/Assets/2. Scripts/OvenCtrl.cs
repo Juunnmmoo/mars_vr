@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class OvenCtrl : EvaluateManager
 {
-    private DoorCtrl door;
+    public DoorCtrl door;
     public Transform ovenPos;
-    private CupCtrl cup;
     private bool isContainedCup;
 
     void Start()

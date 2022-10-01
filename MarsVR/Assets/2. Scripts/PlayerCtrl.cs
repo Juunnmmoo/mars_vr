@@ -75,18 +75,17 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ClickReceipt(rGrabber);
-        ClickReceipt(lGrabber);
+        ClickObject(rGrabber);
+        ClickObject(lGrabber);
         //ControllerAction();
 /*        if(isDebug)
             KeyboardAction();*/
     }
 
-    private void ClickReceipt(OVRGrabber hand)
+    private void ClickObject(OVRGrabber hand)
     {
         RaycastHit hit;
         Ray ray = new Ray(hand.transform.position, hand.transform.forward);
-        Debug.Log(hand.GetController().ToString());
         if(Physics.Raycast(ray, out hit, 10f, 1 << 6))
         {
             if((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
@@ -103,6 +102,12 @@ public class PlayerCtrl : MonoBehaviour
                             hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PeachTree");
                         else if (PlayerPrefs.GetInt("OncePlayed") == 1)
                             hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PinaColada");
+                        break;
+                    case "bakery":
+                        if (PlayerPrefs.GetInt("OncePlayed") == 0)
+                            hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Baguette");
+                        else if (PlayerPrefs.GetInt("OncePlayed") == 1)
+                            hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Croissant");
                         break;
                 }
             }

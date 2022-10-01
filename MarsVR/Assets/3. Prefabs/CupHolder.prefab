@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6194948346262275957}
   m_Layer: 0
   m_Name: CupHolder
-  m_TagString: Untagged
+  m_TagString: Evaluator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   loadingBar: {fileID: 6194948346437599972}
   enableTime: 2
   isHolding: 0
+  isEnd: 0
+  playTimeStr: 
 --- !u!135 &6194948346262275957
 SphereCollider:
   m_ObjectHideFlags: 0

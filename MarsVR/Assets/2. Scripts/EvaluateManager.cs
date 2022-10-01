@@ -19,7 +19,7 @@ public class EvaluateManager : MonoBehaviour
     [HideInInspector]
     public bool isEnd = false;
     private float elapsedTime = 0f;
-    private CupCtrl cup;
+    protected CupCtrl cup;
     [Header("종료시간 관련")]
     [HideInInspector]
     public string playTimeStr;

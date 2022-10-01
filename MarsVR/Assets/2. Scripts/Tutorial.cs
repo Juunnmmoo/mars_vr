@@ -31,8 +31,8 @@ public class Tutorial : MonoBehaviour
 
     //SpotLight
     public GameObject anchorPrefab;
-    
-    private Vector3 offset = Vector3.up * 0.2f;
+
+    private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +46,12 @@ public class Tutorial : MonoBehaviour
         nextBtn = transform.Find("NextBtn").gameObject;
 
         scriptList = FileIO.ReadScript("Tutorial");
+        offset = Vector3.up * 0.2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         switch (tutorialNum)
         {
             case 3:

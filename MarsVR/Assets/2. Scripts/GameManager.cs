@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameResult
 {
@@ -11,6 +12,8 @@ public class GameResult
 }
 public class GameManager : MonoBehaviour
 {
+    private Scene scene;
+
     public GameResult GetGameLevel()
     {
         GameResult gameResult = new GameResult();
@@ -32,7 +35,10 @@ public class GameManager : MonoBehaviour
     public GameResult GetTotalScore()
     {
         GameResult gameResult = new GameResult();
-        gameResult.totalScore = (gameResult.score1 + gameResult.score2) / 2;
+        if(scene.name=="bar")
+            gameResult.totalScore = (gameResult.score1 + gameResult.score2) / 2;
+        if (scene.name == "bakery")
+            gameResult.totalScore = gameResult.score1;
         return gameResult;
     }
 
@@ -52,7 +58,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        scene = SceneManager.GetActiveScene();
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);

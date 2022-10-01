@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class CupCtrl : MonoBehaviour
 {
     //점수 평가
+    [HideInInspector]
     public PlayerCtrl player; // private PlayerCtrl player;
     private Scene scene;
     //사용되고 있을때
-    [HideInInspector]
     public OVRGrabbable ovrGrabbable;
 
     [Header("레시피 관련")]
@@ -44,7 +44,7 @@ public class CupCtrl : MonoBehaviour
     {
         scene = SceneManager.GetActiveScene();
         correct = FileIO.ReadReceipt("Tutorial"); 
-        cupholder = GameObject.Find("CupHolder").GetComponent<EvaluateManager>();
+        cupholder = GameObject.FindWithTag("Evaluator").GetComponent<EvaluateManager>();
         ovrGrabbable = gameObject.GetComponent<OVRGrabbable>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -110,6 +110,12 @@ public class CupCtrl : MonoBehaviour
                     correct = FileIO.ReadReceipt("PeachTree");
                 else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
                     correct = FileIO.ReadReceipt("PinaColada");
+                break;
+            case "bakery":
+                if (PlayerPrefs.GetInt("LevelReceipt") == 1)
+                    correct = FileIO.ReadReceipt("Baguette");
+                else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
+                    correct = FileIO.ReadReceipt("Croissant");
                 break;
         }
 

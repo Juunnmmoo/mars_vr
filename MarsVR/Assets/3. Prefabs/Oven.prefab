@@ -4011,6 +4011,7 @@ GameObject:
   - component: {fileID: 5877723371049668283}
   - component: {fileID: 5877723371050634363}
   - component: {fileID: 5877723371048735993}
+  - component: {fileID: 7062061053702857173}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -4025,7 +4026,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5877723371048702651}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 0.7325093, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4167,6 +4168,28 @@ LODGroup:
     - renderer: {fileID: 2800159692030958424}
     - renderer: {fileID: 2800159692030958426}
   m_Enabled: 1
+--- !u!114 &7062061053702857173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877723371048702651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d5db9aa8f14ac4da562e71c3fcb20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endUI: {fileID: 0}
+  endUIText: {fileID: 0}
+  background: {fileID: 0}
+  loadingBar: {fileID: 0}
+  enableTime: 2
+  isHolding: 0
+  isEnd: 0
+  playTimeStr: 
+  door: {fileID: 0}
+  ovenPos: {fileID: 0}
 --- !u!1 &5877723371048702653
 GameObject:
   m_ObjectHideFlags: 0

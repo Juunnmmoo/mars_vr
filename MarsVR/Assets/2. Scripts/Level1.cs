@@ -72,7 +72,6 @@ public class Level1 : MonoBehaviour
                 gameObject.GetComponentInChildren<Text>().text = "Detail score check please";
                 break;
             case 12:
-                PlayerPrefs.SetInt("LevelReceipt", 0);
                 sceneCtrl.ToScore();
                 break;
         }
