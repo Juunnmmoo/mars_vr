@@ -79,7 +79,7 @@ public class EvaluateManager : MonoBehaviour
     }
 
     //UI보여주는 메소드 (페이드 인, 컵에 담긴 레시피 출력)
-    private void ShowEndUI()
+    protected void ShowEndUI()
     {
         if (cup == null)
             return;
@@ -111,7 +111,7 @@ public class EvaluateManager : MonoBehaviour
         }
     }
 
-    IEnumerator LoadingCor()
+    protected IEnumerator LoadingCor()
     {
         while (!isEnd)
         {
@@ -120,7 +120,7 @@ public class EvaluateManager : MonoBehaviour
         }
     }
 
-    IEnumerator PlayTimeCor()
+    protected IEnumerator PlayTimeCor()
     {
         while (!isEnd)
         {

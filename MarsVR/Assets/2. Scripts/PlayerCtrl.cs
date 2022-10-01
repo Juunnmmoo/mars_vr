@@ -59,6 +59,10 @@ public class PlayerCtrl : MonoBehaviour
         {
             InitialPos = new Vector3(413, 170, -935);
         }
+        else if (scene.name == "Demo Scene 2")
+        {
+            InitialPos = new Vector3(3, 1.5f, 1.7f);
+        }
 
         score = 100;
          
@@ -100,6 +104,18 @@ public class PlayerCtrl : MonoBehaviour
                         else if (PlayerPrefs.GetInt("OncePlayed") == 1)
                             hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PinaColada");
                         break;
+                }
+            }
+            else if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                && hit.transform.gameObject.CompareTag("Door"))
+            {
+                if (!hit.transform.gameObject.GetComponent<DoorCtrl>().isOpened)
+                {
+                    hit.transform.gameObject.GetComponent<DoorCtrl>().OpenDoor();
+                }
+                else
+                {
+                    hit.transform.gameObject.GetComponent<DoorCtrl>().CloseDoor();
                 }
             }
         }

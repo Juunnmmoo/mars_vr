@@ -49,7 +49,6 @@ public class BottleCtrl : MonoBehaviour
     [Header("Raycast")]
     public Transform bottleTop;                     //�� �Ա� (���⿡�� �״� ����Ʈ �־��ֱ�);
     public Transform bottleBottom;
-    public GameObject offset;
     private CupCtrl curCup;
     private bool isExistCup;
 
