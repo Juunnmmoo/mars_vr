@@ -5,50 +5,34 @@ using UnityEngine.UI;
 
 public class ScoreCtrl : MonoBehaviour
 {
-    
+
     public PlayerCtrl player;
     public Text myScore;
-    public int score;
+    public ScrollRect[] resultScroll = new ScrollRect[2];
+    public GameObject[] contents = new GameObject[2];
+    public GameObject resultItemPrefab;
+    private List<List<string>> receiptList;
+    private List<List<float>> amountList;
 
     void Start()
     {
-        
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
+        receiptList = GameManager.instance.receipt;
+        amountList = GameManager.instance.amount;
 
-        // score = (int)player.score;
-        // score = 80;
-        score = (int)player.score;
-        myScore.text = score.ToString();
 
-        Debug.Log(myScore.text);
+        for (int i = 0; i < receiptList.Count; i++)
+        {
+            resultScroll[i].content.sizeDelta = new Vector2(0, receiptList[i].Count * 50);
+            for (int j = 0; j < receiptList[i].Count; j++)
+            {
+                GameObject temp = Instantiate(resultItemPrefab, Vector2.zero, Quaternion.identity, contents[i].transform);
+                temp.transform.Find("Receipt").GetComponent<Text>().text = receiptList[i][j];
+                temp.transform.Find("Amount").GetComponent<Text>().text = amountList[i][j].ToString();
+                temp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (-50 * j));
+            }
+        }
+
+        myScore.text = GameManager.instance.GetTotalScore().totalScore.ToString();
 
     }
-
-    void Update(){
-      
-
-    }
-    
-
 }
-/*
- 
-        List<string> receipt1 = GameManager.instance.receipt[0];
-        List<float> amount1 = GameManager.instance.amount[0];
-        List<string> receipt2 = GameManager.instance.receipt[1];
-        List<float> amount2 = GameManager.instance.amount[1];
-
-        for (int i = 0; i < receipt1.Count-1; i++)
-        {
-            endUIText.text += receipt1[i].ToString() + " : " + Mathf.Round(amount1[i]).ToString() + "\n";
-        }
-
-        for (int i = 0; i < receipt2.Count - 1; i++)
-        {
-            endUIText.text += receipt2[i].ToString() + " : " + Mathf.Round(amount2[i]).ToString() + "\n";
-        }
-
-        ÃÑ ½ºÄÚ¾î
-        GameManager.instance.GetTotalScore().ToString();
-
- */
