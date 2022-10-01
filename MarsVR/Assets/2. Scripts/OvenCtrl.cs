@@ -43,4 +43,14 @@ public class OvenCtrl : EvaluateManager
             }
         }
     }
+
+    new protected void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Cup"))
+        {
+            cup = null;
+            isHolding = false;
+            isContainedCup = false;
+        }
+    }
 }

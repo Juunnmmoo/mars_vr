@@ -44,7 +44,7 @@ public class EvaluateManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.transform.CompareTag("Cup"))
         {
