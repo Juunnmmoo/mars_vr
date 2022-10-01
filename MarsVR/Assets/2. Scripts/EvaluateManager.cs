@@ -21,6 +21,7 @@ public class EvaluateManager : MonoBehaviour
     private float elapsedTime = 0f;
     private CupCtrl cup;
     [Header("종료시간 관련")]
+    [HideInInspector]
     public string playTimeStr;
     private float playMin;
     private float playSec;
@@ -34,7 +35,7 @@ public class EvaluateManager : MonoBehaviour
         StartCoroutine(PlayTimeCor());
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Cup"))
         {
@@ -53,7 +54,7 @@ public class EvaluateManager : MonoBehaviour
     }
 
     //컵홀더 위에 컵이 올라갔을 때 로딩 바 늘어남, 로딩이 됐을 경우엔 EndUI를 보여줌
-    private void Loading()
+    protected void Loading()
     {
         if (isHolding && elapsedTime < enableTime)
         {
@@ -95,7 +96,7 @@ public class EvaluateManager : MonoBehaviour
         endUIText.text += "Score : " + Mathf.Round(player.score).ToString();
     }
 
-    IEnumerator FadeUI(float fadeTime)
+    protected IEnumerator FadeUI(float fadeTime)
     {
         float a = 0;
         Color backColor = background.color;

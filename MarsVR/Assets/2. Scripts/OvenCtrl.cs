@@ -7,6 +7,7 @@ public class OvenCtrl : EvaluateManager
     private DoorCtrl door;
     public Transform ovenPos;
     private CupCtrl cup;
+    private bool isContainedCup;
 
     void Start()
     {
@@ -15,7 +16,20 @@ public class OvenCtrl : EvaluateManager
         StartCoroutine(PlayTimeCor());
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        if(!door.isOpened && isContainedCup)
+        {
+            isHolding = true;
+        }
+        else
+        {
+            isHolding = false;
+        }
+    }
+
+
+    new protected void OnTriggerEnter(Collider other)
     {
         if (door.isOpened && other.gameObject.CompareTag("Cup"))
         {
@@ -25,6 +39,7 @@ public class OvenCtrl : EvaluateManager
                 other.transform.position = ovenPos.position;
                 other.transform.rotation = ovenPos.rotation;
                 cup = other.gameObject.GetComponent<CupCtrl>();
+                isContainedCup = true;
             }
         }
     }
