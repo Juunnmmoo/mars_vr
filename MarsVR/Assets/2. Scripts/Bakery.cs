@@ -146,7 +146,7 @@ public class Bakery : MonoBehaviour
                 break;
             
             case 27:
-                PlayerPrefs.SetInt("LevelReceipt", 1);
+                PlayerPrefs.SetInt("LevelReceipt", 2);
                 if (anchorList[0] == null)
                 {
                     anchorList[0] = CreateAnchor(oven.transform.position + offset);
