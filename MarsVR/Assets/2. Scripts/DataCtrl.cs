@@ -16,17 +16,23 @@ public class User
 
 public class DataCtrl : MonoBehaviour
 {
-    public string userName;
+    public ScoreCtrl scorectrl;
+    public InputField playerNameInput;
+    public string playerName;
     public int userScore;
 
     void Start()
     {
+        // playerName = "박명지";
+        playerName = playerNameInput.GetComponent<InputField>().text.ToString();
+        // userScore = int.Parse(scorectrl.myScore.text.ToString());
+        userScore = (int)GameManager.instance.GetTotalScore().totalScore;
 
         User user1 = new User
         {
-            name = "mars",
-            score = 80,
-            playing_time = "30",
+            name = playerName,
+            score = userScore,
+            playing_time = "0",
             kind = "baker"
         };
 
