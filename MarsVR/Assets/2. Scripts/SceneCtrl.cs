@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneCtrl : MonoBehaviour
 {
+
+    public Scene scene;
+    
     public void NextTo(string scene) {
         SceneManager.LoadScene(scene);
     }
 
     
     public void ToScore() {
-        SceneManager.LoadScene("Score");
+        if(scene.name == "bar") {
+            SceneManager.LoadScene("BarScore");
+        }else
+        {
+            SceneManager.LoadScene("BakerScore");
+        }
     }
     public void ToGameTitle()
     {
@@ -31,6 +39,6 @@ public class SceneCtrl : MonoBehaviour
         SceneManager.LoadScene("baker");
     }
     public void ToBar() {
-        SceneManager.LoadScene("Bar");
+        SceneManager.LoadScene("bar");
     }
 }

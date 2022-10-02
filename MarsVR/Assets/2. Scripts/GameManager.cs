@@ -66,5 +66,20 @@ public class GameManager : MonoBehaviour
         }  
         else
             Destroy(this.gameObject);
+
+        // 데이터 입력값 테스트
+        // List<string> tempReceipt = new List<string>();
+        // List<float> tempAmount = new List<float>();
+
+        // tempReceipt.Add("PECAH TREE");
+        // tempAmount.Add(32.0f);
+        // tempReceipt.Add("RUM");
+        // tempAmount.Add(16.0f);
+
+        // receipt.Add(tempReceipt);
+        // receipt.Add(tempReceipt);
+        // amount.Add(tempAmount);
+        // amount.Add(tempAmount);
+        
     }
 }
