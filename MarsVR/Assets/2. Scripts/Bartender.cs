@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Level1 : MonoBehaviour
+public class Bartender : MonoBehaviour
 {
     private PlayerCtrl player;
     private SceneCtrl sceneCtrl;
@@ -66,10 +67,9 @@ public class Level1 : MonoBehaviour
                 break;
             case 10:
                 PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
+
+                PlayerPrefs.SetString("CurScene", SceneManager.GetActiveScene().name);
                 PlayerPrefs.SetInt("OncePlayed", 0);
-                break;
-            case 11:
-                gameObject.GetComponentInChildren<Text>().text = "Detail score check please";
                 break;
             case 12:
                 sceneCtrl.ToScore();

@@ -6,11 +6,13 @@ public class OvenCtrl : EvaluateManager
 {
     public DoorCtrl door;
     public Transform ovenPos;
-    private bool isContainedCup;
+    public bool isContainedCup;
 
     void Start()
     {
         door = transform.Find("Door").GetComponent<DoorCtrl>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
+        endUI.SetActive(false);
         StartCoroutine(LoadingCor());
         StartCoroutine(PlayTimeCor());
     }
@@ -25,6 +27,18 @@ public class OvenCtrl : EvaluateManager
         {
             isHolding = false;
         }
+
+        if (isContainedCup)
+        {
+            if(cup.GetComponent<OVRGrabbable>().isGrabbed)
+                isContainedCup = false;
+            else
+            {
+                cup.transform.position = ovenPos.position;
+                cup.transform.rotation = ovenPos.rotation;
+            }
+            
+        }
     }
 
 
@@ -35,8 +49,6 @@ public class OvenCtrl : EvaluateManager
             if (other.gameObject.GetComponent<Rigidbody>() is Rigidbody)
             {
                 other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                other.transform.position = ovenPos.position;
-                other.transform.rotation = ovenPos.rotation;
                 cup = other.gameObject.GetComponent<CupCtrl>();
                 isContainedCup = true;
             }
@@ -48,8 +60,8 @@ public class OvenCtrl : EvaluateManager
         if (other.transform.CompareTag("Cup"))
         {
             cup = null;
-            isHolding = false;
             isContainedCup = false;
+            isHolding = false;
         }
     }
 }

@@ -100,18 +100,18 @@ public class CupCtrl : MonoBehaviour
 
     public void Evaluation()
     {
-        switch (scene.name)
+        switch (scene.name.ToUpper())
         {
-            case "Tutorial":
+            case "TUTORIAL":
                 correct = FileIO.ReadReceipt("Tutorial");
                 break;
-            case "bar":
+            case "BAR":
                 if (PlayerPrefs.GetInt("LevelReceipt") == 1)
                     correct = FileIO.ReadReceipt("PeachTree");
                 else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
                     correct = FileIO.ReadReceipt("PinaColada");
                 break;
-            case "bakery":
+            case "BAKER":
                 if (PlayerPrefs.GetInt("LevelReceipt") == 1)
                     correct = FileIO.ReadReceipt("Baguette");
                 else if (PlayerPrefs.GetInt("LevelReceipt") == 2)
@@ -252,10 +252,15 @@ public class CupCtrl : MonoBehaviour
     IEnumerator InitialCupPosCor()
     {
         float delta = 0;
+        OvenCtrl ovenCtrl = new OvenCtrl();
+        if (cupholder is OvenCtrl)
+        {
+            ovenCtrl = cupholder as OvenCtrl;
+        }
         while (delta < returnTime)
         {
             //3초가 지나기 전 사용 중이거나 평가 중일 경우 경우 코루틴 탈출
-            if (ovrGrabbable.isGrabbed || cupholder.isHolding)
+            if (ovrGrabbable.isGrabbed || cupholder.isHolding || ovenCtrl.isContainedCup)
             {
                 isMoved = false;
                 yield break;

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2400375450511843917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3118671823775968086}
+  m_Layer: 0
+  m_Name: OvenPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3118671823775968086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400375450511843917}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5877723371048341147}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2800159692032951680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4043,7 @@ GameObject:
   - component: {fileID: 5877723371050634363}
   - component: {fileID: 5877723371048735993}
   - component: {fileID: 7062061053702857173}
+  - component: {fileID: 347343581807860703}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -4047,6 +4079,7 @@ Transform:
   - {fileID: 2800159692032727458}
   - {fileID: 3120693290806822928}
   - {fileID: 5877723371048341133}
+  - {fileID: 3118671823775968086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4190,6 +4223,19 @@ MonoBehaviour:
   playTimeStr: 
   door: {fileID: 0}
   ovenPos: {fileID: 0}
+--- !u!65 &347343581807860703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877723371048702651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51, y: 0.85, z: 0.54999995}
+  m_Center: {x: 0, y: 0.42600006, z: -0.019999996}
 --- !u!1 &5877723371048702653
 GameObject:
   m_ObjectHideFlags: 0

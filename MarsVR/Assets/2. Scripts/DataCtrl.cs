@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Data;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class User
@@ -18,27 +19,34 @@ public class DataCtrl : MonoBehaviour
 {
     public ScoreCtrl scorectrl;
     public InputField playerNameInput;
-    public string playerName;
-    public int userScore;
+    private string playerName;
+    private string curScene;
+    private string playTime;
+    private int userScore;
 
-    void Start()
+
+    public void Send()
     {
         // playerName = "박명지";
         playerName = playerNameInput.GetComponent<InputField>().text.ToString();
+        if (string.IsNullOrEmpty(playerName))
+            return;
         // userScore = int.Parse(scorectrl.myScore.text.ToString());
         userScore = (int)GameManager.instance.GetTotalScore().totalScore;
+        playTime = GameManager.instance.GetPlayTime();
+        curScene = PlayerPrefs.GetString("CurScene");
 
         User user1 = new User
         {
             name = playerName,
             score = userScore,
-            playing_time = "0",
-            kind = "baker"
+            playing_time = playTime,
+            kind = curScene
         };
 
         string json = JsonUtility.ToJson(user1);
 
-        StartCoroutine(Upload("http://localhost:8080/play", json));
+        StartCoroutine(Upload("http://184.72.49.233:8080/play", json));
 
         /*StartCoroutine(UnityWebRequestPOSTTEST());*/
     }

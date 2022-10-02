@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EvaluateManager : MonoBehaviour
 {
-    private PlayerCtrl player;
+    protected PlayerCtrl player;
     [Header("종료 UI 관련")]
     public GameObject endUI;
     public Text endUIText;
@@ -20,11 +20,6 @@ public class EvaluateManager : MonoBehaviour
     public bool isEnd = false;
     private float elapsedTime = 0f;
     protected CupCtrl cup;
-    [Header("종료시간 관련")]
-    [HideInInspector]
-    public string playTimeStr;
-    private float playMin;
-    private float playSec;
 
     // Start is called before the first frame update
     void Start()
@@ -125,15 +120,8 @@ public class EvaluateManager : MonoBehaviour
     {
         while (!isEnd)
         {
-            playSec += Time.deltaTime;
-            if(playSec >= 60)
-            {
-                playMin += 1;
-                playSec = 0;
-            }
+            GameManager.instance.playTime += Time.deltaTime;
             yield return null;
         }
-        playTimeStr = playMin.ToString() + "분 " + Mathf.Round(playSec).ToString() + "초";
-        Debug.LogError(playTimeStr);
     }
 }

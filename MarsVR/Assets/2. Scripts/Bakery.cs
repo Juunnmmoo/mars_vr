@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Bakery : MonoBehaviour
@@ -24,6 +25,8 @@ public class Bakery : MonoBehaviour
 
     public GameObject anchorPrefab;
     private Vector3 offset;
+    private Vector3 ovenOffset;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,16 +40,16 @@ public class Bakery : MonoBehaviour
         water = GameObject.Find("Water");
         buter = GameObject.Find("Buter");
         yeast = GameObject.Find("Yeast");
-        //cupHolder = GameObject.Find("CupHolder");
         
         nextBtn = transform.Find("NextBtn").gameObject;
 
         scriptList = FileIO.ReadScript("Bakery");
         offset = Vector3.up * 0.2f;
+        ovenOffset = Vector3.up * 1.0f; 
+
         if (PlayerPrefs.GetInt("OncePlayed") == 1)
         {
-
-            tutorialNum = 23;
+            tutorialNum = 21;
         }
         else
         {
@@ -95,7 +98,7 @@ public class Bakery : MonoBehaviour
            
             case 10:
                 nextBtn.SetActive(false);
-                if (CheckAmount(BottleType.FLOUR, 300))
+                if (CheckAmount(BottleType.FLOUR, 30))
                 {
                     nextBtn.SetActive(true);
                     tutorialNum++;
@@ -110,7 +113,7 @@ public class Bakery : MonoBehaviour
                     anchorList[0] = CreateAnchor(water.transform.position + offset);
                 if (anchorList[1] == null)
                     anchorList[1] = CreateAnchor(yeast.transform.position + offset);
-                if (CheckAmount(BottleType.WATER, 150) && CheckAmount(BottleType.YEAST, 5)) {
+                if (CheckAmount(BottleType.WATER, 20) && CheckAmount(BottleType.YEAST, 5)) {
                     for (int i = 0; i < 2; i++)
                     {
                         anchorList[i].EndAnchor();
@@ -123,9 +126,10 @@ public class Bakery : MonoBehaviour
             
             
             case 16:
+                nextBtn.SetActive(false);
                 if (anchorList[0] == null)
                 {
-                    anchorList[0] = CreateAnchor(oven.transform.position + offset);
+                    anchorList[0] = CreateAnchor(oven.transform.position + ovenOffset);
                 }
                 if (oven.GetComponent<EvaluateManager>().isEnd)
                 {
@@ -135,21 +139,18 @@ public class Bakery : MonoBehaviour
                     tutorialNum++;
                 }
                 break;
-            
-            case 18:
-                //오븐 열기 되면 스크립트 넘어가기
-                break;
 
-            case 22:
+            case 20:
                 PlayerPrefs.SetInt("OncePlayed", 1);
                 sceneCtrl.ToBaker();
                 break;
             
-            case 27:
+            case 24:
+                nextBtn.SetActive(false);
                 PlayerPrefs.SetInt("LevelReceipt", 2);
                 if (anchorList[0] == null)
                 {
-                    anchorList[0] = CreateAnchor(oven.transform.position + offset);
+                    anchorList[0] = CreateAnchor(oven.transform.position + ovenOffset);
                 }
                 if (oven.GetComponent<EvaluateManager>().isEnd)
                 {
@@ -159,9 +160,9 @@ public class Bakery : MonoBehaviour
                     tutorialNum++;
                 }
                 break;
-            
-            case 30:
+            case 26:
                 PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
+                PlayerPrefs.SetString("CurScene", SceneManager.GetActiveScene().name);
                 PlayerPrefs.SetInt("OncePlayed", 0);
                 sceneCtrl.ToScore();
                 break;
@@ -195,6 +196,4 @@ public class Bakery : MonoBehaviour
         }
         return result > amount;
     }
-  
-
 }

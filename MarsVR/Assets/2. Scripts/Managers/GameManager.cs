@@ -12,6 +12,10 @@ public class GameResult
 }
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    public List<List<string>> receipt = new List<List<string>>();
+    public List<List<float>> amount = new List<List<float>>();
+    public float playTime;
     private Scene scene;
 
     public GameResult GetGameLevel()
@@ -35,26 +39,29 @@ public class GameManager : MonoBehaviour
     public GameResult GetTotalScore()
     {
         GameResult gameResult = new GameResult();
-        if(scene.name=="bar")
+        if(scene.name=="Bar")
             gameResult.totalScore = (gameResult.score1 + gameResult.score2) / 2;
-        if (scene.name == "bakery")
+        if (scene.name == "Bakery")
             gameResult.totalScore = gameResult.score1;
         return gameResult;
     }
 
-    public List<List<string>> receipt = new List<List<string>>();
-    public List<List<float>> amount = new List<List<float>>();
+    public string GetPlayTime()
+    {
+        int min = (int)(playTime / 60f);
+        int sec = (int)(playTime - min * 60);
+
+        return min.ToString() + " : " + sec.ToString();
+    }
+
 
     public void InitialList()
     {
         receipt.Clear();
         amount.Clear();
+        playTime = 0f;
     }
 
-
-    public static GameManager instance;
-    private List<Attr> xmlList = new List<Attr>();
-    List<string> scriptList = new List<string>();
 
     private void Awake()
     {
@@ -66,20 +73,5 @@ public class GameManager : MonoBehaviour
         }  
         else
             Destroy(this.gameObject);
-
-        // 데이터 입력값 테스트
-        // List<string> tempReceipt = new List<string>();
-        // List<float> tempAmount = new List<float>();
-
-        // tempReceipt.Add("PECAH TREE");
-        // tempAmount.Add(32.0f);
-        // tempReceipt.Add("RUM");
-        // tempAmount.Add(16.0f);
-
-        // receipt.Add(tempReceipt);
-        // receipt.Add(tempReceipt);
-        // amount.Add(tempAmount);
-        // amount.Add(tempAmount);
-        
     }
 }

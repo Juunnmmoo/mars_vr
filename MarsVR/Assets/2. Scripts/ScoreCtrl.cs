@@ -8,9 +8,12 @@ public class ScoreCtrl : MonoBehaviour
 
     public PlayerCtrl player;
     public Text myScore;
+    public InputField inputField;
     public ScrollRect[] resultScroll = new ScrollRect[2];
     public GameObject[] contents = new GameObject[2];
     public GameObject resultItemPrefab;
+
+    public GameObject keyboard;
     private List<List<string>> receiptList;
     private List<List<float>> amountList;
 
@@ -33,6 +36,10 @@ public class ScoreCtrl : MonoBehaviour
         }
 
         myScore.text = GameManager.instance.GetTotalScore().totalScore.ToString();
+    }
 
+    public void ShowKeyboard()
+    {
+        keyboard.SetActive(true);
     }
 }
