@@ -131,8 +131,8 @@
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Grab\GrabbingRule.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Models\HandGrab\PoseTravelData.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Unity\InteractionOVRCameraRig.cs" />
-    <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Models\DistanceGrab\DistanceGrabInteractor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\PoseDetection\Debug\HandShapeDebugVisual.cs" />
+    <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Models\DistanceGrab\DistanceGrabInteractor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Input\Hands\DataModifiers\HandFilter.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Models\HandGrab\HandGrabPose.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\DistanceGrab\Visuals\ReticleIconDrawer.cs" />
@@ -359,8 +359,8 @@
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Core\ICandidateComparer.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Input\OVRIntegration\FromOVRControllerHandDataSource.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\ProximityField\IProximityField.cs" />
-    <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Core\InteractableRegistry.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Input\OVRIntegration\TrackingToWorldTransformerOVR.cs" />
+    <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Interaction\Core\InteractableRegistry.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\MaterialProperties\MaterialPropertyBlockEditor.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Movements\IMovement.cs" />
     <Compile Include="Assets\Oculus\Interaction\Runtime\Scripts\Unity\UnityCanvas\CanvasRenderTexture.cs" />

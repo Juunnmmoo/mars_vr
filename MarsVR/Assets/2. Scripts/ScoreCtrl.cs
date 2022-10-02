@@ -31,11 +31,11 @@ public class ScoreCtrl : MonoBehaviour
                 GameObject temp = Instantiate(resultItemPrefab, Vector2.zero, Quaternion.identity, contents[i].transform);
                 temp.transform.Find("Receipt").GetComponent<Text>().text = receiptList[i][j];
                 temp.transform.Find("Amount").GetComponent<Text>().text = amountList[i][j].ToString();
-                temp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (-50 * j));
+                temp.GetComponent<RectTransform>().localPosition = new Vector3(0, (-50 * j) - 25, 0);
             }
         }
 
-        myScore.text = GameManager.instance.GetTotalScore().totalScore.ToString();
+        myScore.text = GameManager.instance.GetTotalScore(PlayerPrefs.GetString("CurScene")).ToString();
     }
 
     public void ShowKeyboard()

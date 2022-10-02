@@ -16,34 +16,15 @@ public class GameManager : MonoBehaviour
     public List<List<string>> receipt = new List<List<string>>();
     public List<List<float>> amount = new List<List<float>>();
     public float playTime;
-    private Scene scene;
 
-    public GameResult GetGameLevel()
+    public int GetTotalScore(string sceneName)
     {
-        GameResult gameResult = new GameResult();
-        gameResult.gameLevel = PlayerPrefs.GetInt("oncePlayed") == 0 ? 1 : 2;
-        return gameResult;
-    }
-    public GameResult GetScore1()
-    {
-        GameResult gameResult = new GameResult();
-        gameResult.score1 = PlayerPrefs.GetInt("Level1Score");
-        return gameResult;
-    }
-    public GameResult GetScore2()
-    {
-        GameResult gameResult = new GameResult();
-        gameResult.score1 = PlayerPrefs.GetInt("Level2Score");
-        return gameResult;
-    }
-    public GameResult GetTotalScore()
-    {
-        GameResult gameResult = new GameResult();
-        if(scene.name=="Bar")
-            gameResult.totalScore = (gameResult.score1 + gameResult.score2) / 2;
-        if (scene.name == "Bakery")
-            gameResult.totalScore = gameResult.score1;
-        return gameResult;
+        if(sceneName.ToUpper().Equals("BARTENDER"))
+            return (PlayerPrefs.GetInt("Level1Score") + PlayerPrefs.GetInt("Level2Score")) / 2;
+        if (sceneName.ToUpper().Equals("BAKER"))
+            return PlayerPrefs.GetInt("Level1Score");
+        else
+            return 0;
     }
 
     public string GetPlayTime()
@@ -65,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        scene = SceneManager.GetActiveScene();
         if (instance == null)
         {
             instance = this;
@@ -73,5 +53,25 @@ public class GameManager : MonoBehaviour
         }  
         else
             Destroy(this.gameObject);
+
+
+
+        //List<string> tempR = new List<string>();
+        //List<float> tempA = new List<float>();
+
+        //tempR.Add("1");
+        //tempR.Add("2");
+        //tempR.Add("3");
+
+        //tempA.Add(1);
+        //tempA.Add(2);
+        //tempA.Add(3);
+
+        //receipt.Add(tempR);
+        //receipt.Add(tempR);
+
+        //amount.Add(tempA);
+        //amount.Add(tempA);
+
     }
 }

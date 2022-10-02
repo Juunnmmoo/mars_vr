@@ -38,16 +38,10 @@ public class PlayerCtrl : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         switch (scene.name.ToUpper())
         {
-            case "GAMETITLE":
-                initialPos = new Vector3(297, 550, -2945);
-                break;
-            case "GAMESELECT":
-                initialPos = new Vector3(353, 166, -229);
-                break;
             case "TUTORIAL":
                 initialPos = new Vector3(0, 1.5f, -6);
                 break;
-            case "BAR":
+            case "BARTENDER":
                 initialPos = new Vector3(16.0f, 2.35f, -46.8f);
                 break;
             case "BAKER":
@@ -77,7 +71,6 @@ public class PlayerCtrl : MonoBehaviour
     private void ClickObject(OVRGrabber hand)
     {
         RaycastHit hit;
-        Debug.LogError(hand.name);
         Ray ray = new Ray(hand.transform.position, hand.transform.forward);
         if(Physics.Raycast(ray, out hit, 10f, 1 << 6))
         {
@@ -90,7 +83,7 @@ public class PlayerCtrl : MonoBehaviour
                     case "TUTORIAL":
                         hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("Tutorial");
                         break;
-                    case "BAR":
+                    case "BARTENDER":
                         if (PlayerPrefs.GetInt("OncePlayed") == 0)
                             hit.transform.gameObject.GetComponent<ReceiptCtrl>().ShowReceipt("PeachTree");
                         else if (PlayerPrefs.GetInt("OncePlayed") == 1)

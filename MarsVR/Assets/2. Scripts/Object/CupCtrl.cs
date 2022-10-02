@@ -105,7 +105,7 @@ public class CupCtrl : MonoBehaviour
             case "TUTORIAL":
                 correct = FileIO.ReadReceipt("Tutorial");
                 break;
-            case "BAR":
+            case "BARTENDER":
                 if (PlayerPrefs.GetInt("LevelReceipt") == 1)
                     correct = FileIO.ReadReceipt("PeachTree");
                 else if (PlayerPrefs.GetInt("LevelReceipt") == 2)

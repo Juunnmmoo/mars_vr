@@ -24,17 +24,14 @@ public class DataCtrl : MonoBehaviour
     private string playTime;
     private int userScore;
 
-
     public void Send()
     {
-        // playerName = "박명지";
         playerName = playerNameInput.GetComponent<InputField>().text.ToString();
         if (string.IsNullOrEmpty(playerName))
             return;
-        // userScore = int.Parse(scorectrl.myScore.text.ToString());
-        userScore = (int)GameManager.instance.GetTotalScore().totalScore;
         playTime = GameManager.instance.GetPlayTime();
         curScene = PlayerPrefs.GetString("CurScene");
+        userScore = GameManager.instance.GetTotalScore(curScene);
 
         User user1 = new User
         {

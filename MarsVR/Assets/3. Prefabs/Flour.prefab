@@ -312,7 +312,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.44
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -751,7 +751,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5204,7 +5204,6 @@ MonoBehaviour:
   bottleType: 12
   bottleTop: {fileID: 4817843121665567184}
   bottleBottom: {fileID: 4817843123509107349}
-  offset: {fileID: 0}
   rayDist: 10
   liquidPrefab: {fileID: 0}
   flourPrefab: {fileID: 5430194842530486171}

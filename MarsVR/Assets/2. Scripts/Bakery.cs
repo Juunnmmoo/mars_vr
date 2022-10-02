@@ -98,7 +98,7 @@ public class Bakery : MonoBehaviour
            
             case 10:
                 nextBtn.SetActive(false);
-                if (CheckAmount(BottleType.FLOUR, 30))
+                if (CheckAmount(BottleType.FLOUR, 300))
                 {
                     nextBtn.SetActive(true);
                     tutorialNum++;
@@ -113,7 +113,7 @@ public class Bakery : MonoBehaviour
                     anchorList[0] = CreateAnchor(water.transform.position + offset);
                 if (anchorList[1] == null)
                     anchorList[1] = CreateAnchor(yeast.transform.position + offset);
-                if (CheckAmount(BottleType.WATER, 20) && CheckAmount(BottleType.YEAST, 5)) {
+                if (CheckAmount(BottleType.WATER, 150) && CheckAmount(BottleType.YEAST, 5)) {
                     for (int i = 0; i < 2; i++)
                     {
                         anchorList[i].EndAnchor();
@@ -145,7 +145,7 @@ public class Bakery : MonoBehaviour
                 sceneCtrl.ToBaker();
                 break;
             
-            case 24:
+            case 26:
                 nextBtn.SetActive(false);
                 PlayerPrefs.SetInt("LevelReceipt", 2);
                 if (anchorList[0] == null)
@@ -160,8 +160,8 @@ public class Bakery : MonoBehaviour
                     tutorialNum++;
                 }
                 break;
-            case 26:
-                PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
+            case 28:
+                PlayerPrefs.SetInt("Level1Score", (int)Mathf.Round(player.score));
                 PlayerPrefs.SetString("CurScene", SceneManager.GetActiveScene().name);
                 PlayerPrefs.SetInt("OncePlayed", 0);
                 sceneCtrl.ToScore();

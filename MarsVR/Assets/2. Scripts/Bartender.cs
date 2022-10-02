@@ -49,7 +49,7 @@ public class Bartender : MonoBehaviour
                 }
                 break;
             case 5:
-                PlayerPrefs.SetFloat("Level1Score", Mathf.Round(player.score));
+                PlayerPrefs.SetInt("Level1Score", (int)Mathf.Round(player.score));
                 Debug.LogError(Mathf.Round(player.score));
                 PlayerPrefs.SetInt("OncePlayed", 1);
                 break;
@@ -66,8 +66,7 @@ public class Bartender : MonoBehaviour
                 }
                 break;
             case 10:
-                PlayerPrefs.SetFloat("Level2Score", Mathf.Round(player.score));
-
+                PlayerPrefs.SetInt("Level2Score", (int)Mathf.Round(player.score));
                 PlayerPrefs.SetString("CurScene", SceneManager.GetActiveScene().name);
                 PlayerPrefs.SetInt("OncePlayed", 0);
                 break;
