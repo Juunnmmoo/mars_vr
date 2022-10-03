@@ -15,7 +15,6 @@ public sealed class FileIO
 {
     public static void WriteReceipt(List<Attr> wordList)
     {
-
         XmlDocument document = new XmlDocument();
         XmlElement receiptListElement = document.CreateElement("ReceiptList");
         document.AppendChild(receiptListElement);
@@ -27,13 +26,15 @@ public sealed class FileIO
             receiptElement.SetAttribute("Amount", attr.amount.ToString());
             receiptListElement.AppendChild(receiptElement);
         }
-        document.Save(Application.dataPath + "/Receipt_Resource.xml");
+        document.Save(Application.persistentDataPath + "/Receipt_Resource.xml");
     }
 
     public static List<Attr> ReadReceipt(string receiptName)
     {
+        TextAsset textAsset = Resources.Load<TextAsset>("Xml/Receipt_Resource");
         XmlDocument document = new XmlDocument();
-        document.Load(Application.dataPath + "/Receipt_Resource.xml");
+        Debug.Log(textAsset is null);
+        document.LoadXml(textAsset.text);
         //XmlElement receiptListElement = document[receiptName];
 
         XmlNodeList receiptListElement = document.SelectNodes("ReceiptList/" + receiptName);
@@ -51,8 +52,9 @@ public sealed class FileIO
 
     public static List<string> ReadScript(string scriptName)
     {
+        TextAsset textAsset = Resources.Load<TextAsset>("Xml/Script_Resource");
         XmlDocument document = new XmlDocument();
-        document.Load(Application.dataPath + "/Script_Resource.xml");
+        document.LoadXml(textAsset.text);
         //XmlElement receiptListElement = document["ScriptList"];
         XmlNodeList scriptListElement = document.SelectNodes("ScriptList/" + scriptName);
         List<string> scriptList = new List<string>();

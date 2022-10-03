@@ -29,6 +29,6 @@ public class SceneCtrl : MonoBehaviour
         SceneManager.LoadScene("Baker");
     }
     public void ToBar() {
-        SceneManager.LoadScene("Bar");
+        SceneManager.LoadScene("Bartender");
     }
 }

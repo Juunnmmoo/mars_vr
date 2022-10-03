@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameResult
-{
-    public int gameLevel;
-    public float score1;
-    public float score2;
-    public float totalScore;
-}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,10 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int GetTotalScore(string sceneName)
     {
-        if(sceneName.ToUpper().Equals("BARTENDER"))
+        if(PlayerPrefs.HasKey("Level1Score") && PlayerPrefs.HasKey("Level2Score"))
             return (PlayerPrefs.GetInt("Level1Score") + PlayerPrefs.GetInt("Level2Score")) / 2;
-        if (sceneName.ToUpper().Equals("BAKER"))
-            return PlayerPrefs.GetInt("Level1Score");
         else
             return 0;
     }

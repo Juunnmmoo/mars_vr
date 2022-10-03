@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 public class CupCtrl : MonoBehaviour
 {
     //점수 평가
-    [HideInInspector]
-    public PlayerCtrl player; // private PlayerCtrl player;
+    private PlayerCtrl player; // private PlayerCtrl player;
     private Scene scene;
-    //사용되고 있을때
-    public OVRGrabbable ovrGrabbable;
+    [SerializeField]
+    private OVRGrabbable ovrGrabbable;
+    [Header("빵")]
+    public Mesh[] breadMesh;
+    public Material[] breadMaterial;
+    public Material[] breadAmountMaterial;
 
     [Header("레시피 관련")]
     //레시피 재료
@@ -49,6 +52,32 @@ public class CupCtrl : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<PlayerCtrl>();
         originPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originRot = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        glassOfWaterObject = transform.Find("CupLiquid").gameObject;
+
+        if (scene.name.ToUpper().Equals("BAKER"))
+        {
+            MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
+            MeshFilter breadMeshFilter = glassOfWaterObject.GetComponent<MeshFilter>();
+            MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+            MeshRenderer breadMeshRenderer = glassOfWaterObject.GetComponent<MeshRenderer>();
+            MeshCollider meshCollider = gameObject.gameObject.GetComponent<MeshCollider>();
+            if(PlayerPrefs.GetInt("OncePlayed") == 0)
+            {
+                meshFilter.mesh = breadMesh[0];
+                meshRenderer.material = breadMaterial[0];
+                meshCollider.sharedMesh = breadMesh[0];
+                breadMeshFilter.mesh = breadMesh[0];
+                breadMeshRenderer.material = breadAmountMaterial[0];
+            }
+            else
+            {
+                meshFilter.mesh = breadMesh[1];
+                meshRenderer.material = breadMaterial[1];
+                meshCollider.sharedMesh = breadMesh[1];
+                breadMeshFilter.mesh = breadMesh[1];
+                breadMeshRenderer.material = breadAmountMaterial[1];
+            }
+        }
         GlassOfWaterFuntion();
     }
 
@@ -280,7 +309,6 @@ public class CupCtrl : MonoBehaviour
     // glassOfWater 초기화 함수
     private void GlassOfWaterFuntion()
     {
-        glassOfWaterObject = transform.Find("CupLiquid").gameObject;
         glassOfWaterMaterial = glassOfWaterObject.GetComponent<MeshRenderer>().materials[0];
         glassOfWater = glassOfWaterMaterial.GetFloat("_FillAmount");
         allAmount = 0;
