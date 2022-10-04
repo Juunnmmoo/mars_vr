@@ -17,6 +17,11 @@ public class User
 
 public class DataCtrl : MonoBehaviour
 {
+    public GameObject sentUI;
+    [Range(1f, 5f)]
+    public float sentUITime = 3;
+    private float sentUIDelta;
+
     public ScoreCtrl scorectrl;
     public InputField playerNameInput;
     private string playerName;
@@ -24,6 +29,12 @@ public class DataCtrl : MonoBehaviour
     private string playTime;
     private int userScore;
 
+    void Start()
+    {
+        sentUI.SetActive(false);
+    }
+
+    [ContextMenu("Send")]
     public void Send()
     {
         playerName = playerNameInput.GetComponent<InputField>().text.ToString();
@@ -68,6 +79,14 @@ public class DataCtrl : MonoBehaviour
             else
             {
                 Debug.Log(request.downloadHandler.text);
+                sentUI.SetActive(true);
+                sentUIDelta = 0;
+                while(sentUIDelta < sentUITime)
+                {
+                    sentUIDelta += Time.deltaTime;
+                    yield return null;
+                }
+                sentUI.SetActive(false);
             }
         }
     }
