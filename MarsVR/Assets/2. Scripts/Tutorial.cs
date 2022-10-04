@@ -86,7 +86,7 @@ public class Tutorial : MonoBehaviour
                 break;
             case 9:
                 nextBtn.SetActive(false);
-                if (CheckAmount(BottleType.LEMON, 20))
+                if (CheckAmount(BottleType.LEMON, 19.5f))
                 {
                     nextBtn.SetActive(true);
                     tutorialNum++;
@@ -101,12 +101,12 @@ public class Tutorial : MonoBehaviour
                     if (anchorList[1] == null)
                         anchorList[1] = CreateAnchor(whiteRum.transform.position + offset);
                     // 데킬라 20ml, 화이트럼 20ml 넣었을때
-                    if (CheckAmount(BottleType.TEQUILA, 20) && CheckAmount(BottleType.WHITE_RUM, 20)) 
+                    if (CheckAmount(BottleType.TEQUILA, 19.5f) && CheckAmount(BottleType.WHITE_RUM, 19.5f)) 
                     {
                         for (int i = 0; i < 2; i++)
                         {
                             anchorList[i].EndAnchor();
-                        anchorList[i] = null;
+                            anchorList[i] = null;
                         }
                         tutorialNum++;
                     }
@@ -136,6 +136,7 @@ public class Tutorial : MonoBehaviour
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
     }
 
+    [ContextMenu("Next Script")]
     public void NextScript()
     {
         tutorialNum++;

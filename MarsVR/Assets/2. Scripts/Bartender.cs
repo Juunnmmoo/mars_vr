@@ -71,13 +71,15 @@ public class Bartender : MonoBehaviour
                 PlayerPrefs.SetInt("OncePlayed", 0);
                 break;
             case 12:
-                sceneCtrl.ToScore();
+                sceneCtrl .ToScore();
                 break;
         }
         if (tutorialNum < scriptList.Count)
             gameObject.GetComponentInChildren<Text>().text = scriptList[tutorialNum];
-    }
+        }
 
+
+    [ContextMenu("Next Script")]
     public void NextScript() {
         tutorialNum++;
     }

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         int min = (int)(playTime / 60f);
         int sec = (int)(playTime - min * 60);
 
-        return min.ToString() + " : " + sec.ToString();
+        return ((min < 10) ? "0" + min.ToString() : min.ToString()) + " : " + ((sec < 10) ? "0" + sec.ToString() : sec.ToString());
     }
 
 
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         receipt.Clear();
         amount.Clear();
+        PlayerPrefs.DeleteAll();
         playTime = 0f;
     }
 

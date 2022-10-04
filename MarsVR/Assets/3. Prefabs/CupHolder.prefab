@@ -221,7 +221,6 @@ MonoBehaviour:
   enableTime: 2
   isHolding: 0
   isEnd: 0
-  playTimeStr: 
 --- !u!135 &6194948346262275957
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,7 +232,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.02
   m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!1 &6194948346437599973
 GameObject:

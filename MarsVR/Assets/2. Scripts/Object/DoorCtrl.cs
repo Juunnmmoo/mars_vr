@@ -14,12 +14,14 @@ public class DoorCtrl : MonoBehaviour
         originRot = transform.rotation.eulerAngles;
     }
 
+    [ContextMenu("Open")]
     public void OpenDoor()
     {
         if (!isPlaying && !isOpened)
             StartCoroutine(OpenDoorCor());
     }
 
+    [ContextMenu("Close")]
     public void CloseDoor()
     {
         if (!isPlaying && isOpened)
